@@ -4,4 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="game_settings">Game Settings</string>
     <string name="accessibility_settings">Accessibility Settings</string>
+    <string name="player1">PLAYER 1</string>
+    <string name="player2">PLAYER 2</string>
 </resources>

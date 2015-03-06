@@ -1,14 +1,17 @@
 package com.example.don.othello;
 
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
@@ -21,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         //TODO: remember to change this back to the main activity after testing
-        setContentView(R.layout.grid_fragment);
+        setContentView(R.layout.activity_main);
 
         // create a new grid and populate it
         testGrid();
@@ -29,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
         // colour the grind with the 100 shade orange
         gridView.setBackgroundColor(Color.parseColor("#FFE0B2"));
 
-        //start click listener
+        // start click listener
         setOnClickListener();
 
     }
@@ -47,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
         // Elements go from "0" to "63"
         String[] gridFill = new String[64];
         for (int i = 0; i<gridFill.length; i++) {
-            gridFill[i] = Integer.toString(i);
+            gridFill[i] = "o";
         }
 
         // assign the grid view variable to the grid view on the layout
