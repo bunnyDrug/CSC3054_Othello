@@ -7,8 +7,10 @@ public class Piece {
 
     PieceColour colour;
 
-    public Piece (PieceColour playerColour) {
-     this.colour = playerColour;
+    public Piece () {
+//     this.colour = playerColour;
+
+//        this.colour = player.getColour();
     }
 
     private void placePiece() {
