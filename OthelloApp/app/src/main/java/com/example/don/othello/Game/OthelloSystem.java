@@ -26,6 +26,8 @@ public class OthelloSystem {
 
     public void turn(){
 
+//        player1.placePiece(new Piece(), )
+
     }
 
     /**
