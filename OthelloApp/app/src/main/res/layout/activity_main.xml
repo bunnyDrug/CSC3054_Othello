@@ -9,14 +9,23 @@
                 tools:context=".MainActivity"
                 android:layout_weight="1">
 
-    <!--top half of the screen-->
+    <!--Player 1 top 25% of the screen-->
     <TableRow
-                android:layout_weight="1">
+        android:layout_weight="0.25">
     </TableRow>
 
-    <!--bottom half-->
+    <!--Board lives in here 50%-->
     <TableRow
-                android:layout_weight="1">
+        android:layout_weight="0.50">
+
+
+
+
+    </TableRow>
+
+    <!--Player 2 bottom 25% of screen-->
+    <TableRow
+        android:layout_weight="0.25">
 
     </TableRow>
 
