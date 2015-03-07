@@ -5,4 +5,5 @@ package com.example.don.othello.Game;
  */
 public enum PieceColour {
     BLACK, WHITE
+//    #the dress
 }
