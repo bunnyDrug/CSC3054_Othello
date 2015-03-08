@@ -5,6 +5,7 @@ import java.util.Timer;
 /**
  * Created by don on 05/03/2015.
  */
+
 public class Player {
 
     private String name;
@@ -13,6 +14,7 @@ public class Player {
 
     public Player (String name, Boolean timedGame){
         this.name = name;
+
         if (timedGame) {
 //            individualTimer == settings.timer
         }
@@ -20,6 +22,10 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    private void setPlayerName(String name) {
+
     }
 
     /**
