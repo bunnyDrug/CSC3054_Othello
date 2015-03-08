@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
     android:layout_weight="1"
     android:orientation="vertical"
@@ -41,20 +37,20 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="@string/player1"
-                    android:textSize="32sp"
+                    android:text="@string/label_player_one"
+                    android:textSize="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="Points:100"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:text="Time Remaining 25:00"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -63,13 +59,14 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="0.5">
 
         <GridView xmlns:android="http://schemas.android.com/apk/res/android"
                   android:id="@+id/gridView1"
                   android:numColumns="8"
+<<<<<<< HEAD
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:padding="1dip"
@@ -78,6 +75,10 @@
                   android:gravity="center"
                   android:listSelector="@android:drawable/list_selector_background"
             >
+=======
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+>>>>>>> origin/master
         </GridView>
 
     </LinearLayout>
@@ -105,20 +106,20 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="@string/player2"
-                android:textSize="32sp"
+                android:text="@string/label_player_two"
+                android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:text="Points:100"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:text="Time Remaining 25:00"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
