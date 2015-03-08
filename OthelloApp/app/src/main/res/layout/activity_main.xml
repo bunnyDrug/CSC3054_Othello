@@ -71,7 +71,13 @@
                   android:id="@+id/gridView1"
                   android:numColumns="8"
                   android:layout_width="fill_parent"
-                  android:layout_height="wrap_content" >
+                  android:layout_height="wrap_content"
+                  android:padding="1dip"
+                  android:verticalSpacing="0dip" android:horizontalSpacing="-5dip"
+                  android:columnWidth="60dp" android:stretchMode="none"
+                  android:gravity="center"
+                  android:listSelector="@android:drawable/list_selector_background"
+            >
         </GridView>
 
     </LinearLayout>
