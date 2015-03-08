@@ -66,7 +66,7 @@
         <GridView xmlns:android="http://schemas.android.com/apk/res/android"
                   android:id="@+id/gridView1"
                   android:numColumns="8"
-<<<<<<< HEAD
+
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:padding="1dip"
@@ -75,10 +75,8 @@
                   android:gravity="center"
                   android:listSelector="@android:drawable/list_selector_background"
             >
-=======
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content">
->>>>>>> origin/master
+
+
         </GridView>
 
     </LinearLayout>
