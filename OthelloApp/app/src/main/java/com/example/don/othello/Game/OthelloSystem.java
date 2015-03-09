@@ -30,13 +30,6 @@ public class OthelloSystem extends ActionBarActivity{
     // need this to access the xml layout for activity_main.xml
     Activity activity;
 
-    // The game board class should actually be the one taking care of board
-    // positions - The system should have nothing to do with the board array
-    // apart from passing in new updates
-    // TODO: extract this to the GameBoard class and set getters for it
-    GameBoard gameBoard = new GameBoard();
-    int[] boardPieces;
-
     /**
      * Creates 2 player objects
      * @param player1 A name for player one (Can obtained in from a Text Field)
@@ -55,10 +48,10 @@ public class OthelloSystem extends ActionBarActivity{
         currentPlayerTurn = blackPlayer;
 
         // Creates the gameBoard object that stores the current game pieces
-        boardPieces = gameBoard.initStartingPieces();
+        GameBoard.initStartingPieces();
 
         // Creates the grid that displays the gameBoard
-        updateBoard(boardPieces);
+        updateBoard(GameBoard.getBoard());
 
         // obvious?
         setBoardColour();
@@ -162,17 +155,17 @@ public class OthelloSystem extends ActionBarActivity{
     // THIS SHOULD NOT STAY LIKE THIS - THE TURN METHOD IS ONLY FOR DECIDING
     // THE TURN OF A USER - AT ITS CURRENT SITS IT IS DOING TOO MUCH.
     // TODO: FIX THIS MESS AND BREAK UP INTO SMALLER METHODS
-    private void turn(int positionTapped){
+    private void turn(int tileTapped){
 
-        if (validMovePossible(positionTapped)) {
+        if (validMovePossible(tileTapped)) {
             if (currentPlayerTurn == blackPlayer) {
-                boardPieces[positionTapped] = R.drawable.black_disk;
+                GameBoard.placePiece(tileTapped, R.drawable.black_disk);
                 currentPlayerTurn = whitePlayer;
             } else {
-                boardPieces[positionTapped] = R.drawable.white_disk;
+                GameBoard.placePiece(tileTapped, R.drawable.white_disk);
                 currentPlayerTurn = blackPlayer;
             }
-            updateBoard(boardPieces);
+            updateBoard(GameBoard.getBoard());
         }
         else {
             displayToast("Pick another tile, this one is occupied");
@@ -227,10 +220,10 @@ public class OthelloSystem extends ActionBarActivity{
      *
      * TODO: define rules for validity
      * in its current state it only checks for an occupied tile
-     * @param positionTapped
+     * @param tileTapped
      * @return
      */
-    private boolean validMovePossible(int positionTapped) {
+    private boolean validMovePossible(int tileTapped) {
         //return calculateCurrentValidMoves();
 
         //TODO: split these up into either smaller methods or a static class
@@ -239,7 +232,7 @@ public class OthelloSystem extends ActionBarActivity{
 
 
         // if there is a black or white disk in the tile return false
-        return boardPieces[positionTapped] == R.drawable.placement_counter;
+        return GameBoard.getPiece(tileTapped) == R.drawable.placement_counter;
     }
 
     private void displayToast(String message) {
