@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.example.don.othello.Game.OthelloSystem;
 
@@ -24,15 +21,7 @@ public class MainActivity extends ActionBarActivity {
         // creates the game system that manages the entire game.
         othelloSystem = new OthelloSystem("Spoon", "Cereal", false, this);
 
-        setOnClickListener();
-    }
-
-    public void setOnClickListener() {
-        othelloSystem.getGridView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(getBaseContext(), "" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+        //setOnClickListener();
     }
 
     @Override

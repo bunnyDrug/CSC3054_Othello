@@ -3,7 +3,10 @@ package com.example.don.othello.Game;
 import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
@@ -16,10 +19,15 @@ public class OthelloSystem extends ActionBarActivity{
 
     // new grid view
     GridView gridView;
-    Player player1;
-    Player player2;
+
+    Player whitePlayer;
+    Player blackPlayer;
+    Player currentPlayerTurn;
+
     Activity activity;
+
     GameBoard gameBoard = new GameBoard();
+    int[] boardPieces;
 
     /**
      * Creates 2 player objects
@@ -29,29 +37,46 @@ public class OthelloSystem extends ActionBarActivity{
      */
     public OthelloSystem (String player1, String player2, Boolean timer, Activity activity) {
 
+
         // need to pass this in so this class knows what is going on
         this.activity = activity;
 
         // creates the players for the game
         // TODO: this should be read in via an editText
         createPlayers(player1, player2, timer);
+        currentPlayerTurn = blackPlayer;
+
 
         // Creates the gameBoard object that stores the current game pieces
-        int[] boardPieces = gameBoard.initStartingPieces();
+        boardPieces = gameBoard.initStartingPieces();
 
         // Creates the grid that displays the gameBoard
-        createBoard(boardPieces);
+        updateBoard(boardPieces);
 
         // obvious?
         setBoardColour();
 
+        setOnClickListener();
+
+
+        //might this not be needed since we are working with a tap event?
         //gameLoop();
     }
 
-    /**
-     * this needs to change, maybe keep a themes class where final values are stored
-     * Not sure how themes work at this stage.
-     */
+    public void setOnClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                //Toast.makeText(activity.getBaseContext(), "" + position, Toast.LENGTH_SHORT).show();
+
+                turn(position);
+            }
+        });
+    }
+
+        /**
+         * this needs to change, maybe keep a themes class where final values are stored
+         * Not sure how themes work at this stage.
+         */
     private void setBoardColour() {
         // colour the grind with the 100 shade orange
         gridView.setBackgroundColor(Color.parseColor("#FFE0B2"));
@@ -71,7 +96,7 @@ public class OthelloSystem extends ActionBarActivity{
      *
      * @param initialPieceLayout
      */
-    private void createBoard(int[] initialPieceLayout) {
+    private void updateBoard(int[] initialPieceLayout) {
 
         // find the gridview and assign it to a gridView Object
         gridView = (GridView) this.activity.findViewById(R.id.gridView1);
@@ -86,7 +111,7 @@ public class OthelloSystem extends ActionBarActivity{
      */
     private void gameLoop() {
         while (!gameOver()) {
-            // Do game stuff
+            System.out.println("testing print");
         }
     }
 
@@ -99,13 +124,28 @@ public class OthelloSystem extends ActionBarActivity{
      * @param timer boolean
      */
     private void createPlayers(String player1, String player2, Boolean timer) {
-        this.player1 = new Player(player1, timer);
-        this.player2 = new Player(player2, timer);
+        this.whitePlayer = new Player(player1, timer);
+        this.blackPlayer = new Player(player2, timer);
     }
 
-    private void turn(){
+    // THIS SHOULD NOT STAY LIKE THIS - THE TURN METHOD IS ONLY FOR DECIDING
+    // THE TURN OF A USER - AT ITS CURRENT SITS IT IS DOING TOO MUCH.
+    // TODO: FIX THIS MESS AND BREAK UP INTO SMALLER METHODS
+    private void turn(int positionTapped){
 
-        //player1.placePiece(new Piece(),)
+        if (validMovePossible(positionTapped)) {
+            if (currentPlayerTurn == blackPlayer) {
+                boardPieces[positionTapped] = R.drawable.black_disk;
+                currentPlayerTurn = whitePlayer;
+            } else {
+                boardPieces[positionTapped] = R.drawable.white_disk;
+                currentPlayerTurn = blackPlayer;
+            }
+            updateBoard(boardPieces);
+        }
+        else {
+            displayToast("Pick another tile, this one is occupied");
+        }
     }
 
     /**
@@ -134,11 +174,11 @@ public class OthelloSystem extends ActionBarActivity{
     private boolean gameOver() {
 
         // if player has run out of time
-        // if player1.timer == 0 or something
+        // if whitePlayer.timer == 0 or something
 
         // if both players have NO valid moves.
-        if (!player1.hasValidMovesAvailable()
-                && !player2.hasValidMovesAvailable()){
+        if (!whitePlayer.hasValidMovesAvailable()
+                && !blackPlayer.hasValidMovesAvailable()){
             return true;
         }
         return false;
@@ -148,8 +188,24 @@ public class OthelloSystem extends ActionBarActivity{
         return gridView;
     }
 
-    private boolean validMovePossible() {
-        return calculateCurrentValidMoves();
+    /**
+     * checks if the position tapped is valid and allows the game to progress
+     * without error
+     *
+     * TODO: define rules for validity
+     * in its current state it only checks for an occupied tile
+     * @param positionTapped
+     * @return
+     */
+    private boolean validMovePossible(int positionTapped) {
+        //return calculateCurrentValidMoves();
+
+        // if there is a black or white disk in the tile return false
+        return boardPieces[positionTapped] == R.drawable.placement_counter;
+    }
+
+    private void displayToast(String message) {
+        Toast.makeText(activity.getBaseContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
 
