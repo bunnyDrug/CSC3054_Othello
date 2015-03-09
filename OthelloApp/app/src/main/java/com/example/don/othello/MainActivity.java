@@ -9,7 +9,7 @@ import com.example.don.othello.Game.OthelloSystem;
 
 public class MainActivity extends ActionBarActivity {
 
-    OthelloSystem othelloSystem;
+    private OthelloSystem othelloSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,6 @@ public class MainActivity extends ActionBarActivity {
         // creates the game system that manages the entire game.
         othelloSystem = new OthelloSystem("Spoon", "Cereal", false, this);
 
-        //setOnClickListener();
     }
 
     @Override
