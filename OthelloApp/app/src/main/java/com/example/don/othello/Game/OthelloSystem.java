@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.don.othello.ImageAdapter;
@@ -20,12 +21,19 @@ public class OthelloSystem extends ActionBarActivity{
     // new grid view
     GridView gridView;
 
+    // player variables
     Player whitePlayer;
     Player blackPlayer;
     Player currentPlayerTurn;
 
+    // taken from MainActivity
+    // need this to access the xml layout for activity_main.xml
     Activity activity;
 
+    // The game board class should actually be the one taking care of board
+    // positions - The system should have nothing to do with the board array
+    // apart from passing in new updates
+    // TODO: extract this to the GameBoard class and set getters for it
     GameBoard gameBoard = new GameBoard();
     int[] boardPieces;
 
@@ -35,17 +43,16 @@ public class OthelloSystem extends ActionBarActivity{
      * @param player2 A name for player two (Can obtained in from a Text Field)
      * @param timer Is this game a timed one? Set via the app settings.
      */
-    public OthelloSystem (String player1, String player2, Boolean timer, Activity activity) {
-
+    public OthelloSystem (String player1,
+                          String player2,
+                          Boolean timer,
+                          Activity activity) {
 
         // need to pass this in so this class knows what is going on
         this.activity = activity;
 
-        // creates the players for the game
-        // TODO: this should be read in via an editText
         createPlayers(player1, player2, timer);
         currentPlayerTurn = blackPlayer;
-
 
         // Creates the gameBoard object that stores the current game pieces
         boardPieces = gameBoard.initStartingPieces();
@@ -58,14 +65,24 @@ public class OthelloSystem extends ActionBarActivity{
 
         setOnClickListener();
 
-
+        // TODO: look at removing this as it may not be needed.
         //might this not be needed since we are working with a tap event?
         //gameLoop();
     }
 
+    /**
+     * This is the click listener for the Grid View - it registers a tap from
+     * the user and takes it position to perform various actions.
+     *
+     * As of today 9th/Mar/2015 @ 1:32am it will kick off the turn method which
+     * sparks off a bunch of other checks and validations. This may or may not
+     * be the best way to go about it in the future but at this stage it's a
+     * work in progress.
+     */
     public void setOnClickListener() {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+            public void onItemClick
+                    (AdapterView<?> parent, View v, int position, long id) {
                 //Toast.makeText(activity.getBaseContext(), "" + position, Toast.LENGTH_SHORT).show();
 
                 turn(position);
@@ -73,26 +90,22 @@ public class OthelloSystem extends ActionBarActivity{
         });
     }
 
-        /**
-         * this needs to change, maybe keep a themes class where final values are stored
-         * Not sure how themes work at this stage.
-         */
+    /**
+     * this needs to change, maybe keep a themes class where final values
+     * are stored
+     * Not sure how themes work at this stage.
+     * TODO: implement themes
+     */
     private void setBoardColour() {
         // colour the grind with the 100 shade orange
         gridView.setBackgroundColor(Color.parseColor("#FFE0B2"));
     }
 
     /**
-     * Creates a new grad view and displays it to the screen<br>
-     * The grid is populated with numerical values from 0 to 64.
-     *
+     * Creates a new grid view (8x8) and displays it on the screen.
+     * The grid features the starting positions of the game ready to go.
      * <br>
-     * So the previous solution is not working. I'm not entirely sure how to
-     * get access to elements on the gameBoard - a dirty solution is just to
-     * populate the grid with images of counters and set them to visible or not.
-     *
-     * Since the pieces are displayed via images the need for the int array is
-     * here.
+     * Pieces are displayed via images which are decided by the array parameter
      *
      * @param initialPieceLayout
      */
@@ -126,6 +139,24 @@ public class OthelloSystem extends ActionBarActivity{
     private void createPlayers(String player1, String player2, Boolean timer) {
         this.whitePlayer = new Player(player1, timer);
         this.blackPlayer = new Player(player2, timer);
+
+        updatePlayerText(player1,player2);
+    }
+
+    /**
+     * Sets the TextViews for each player to their desired names
+     * TODO: have player names read in from a main menu.
+     * @param p1
+     * @param p2
+     */
+    private void updatePlayerText(String p1, String p2) {
+        TextView txtPlayer1 = (TextView)
+                this.activity.findViewById(R.id.textview_player1);
+        TextView txtPlayer2 = (TextView)
+                this.activity.findViewById(R.id.textview_player2);
+
+        txtPlayer1.setText(p1);
+        txtPlayer2.setText(p2);
     }
 
     // THIS SHOULD NOT STAY LIKE THIS - THE TURN METHOD IS ONLY FOR DECIDING
@@ -150,8 +181,8 @@ public class OthelloSystem extends ActionBarActivity{
 
     /**
      * Discovers all the valid moves that a player may take in his or her
-     * current turn. A players boardPieces is only allowed to be placed in any of the
-     * legal spaces for that turn.
+     * current turn. A players boardPieces is only allowed to be placed in any
+     * of the legal spaces for that turn.
      *
      * A possible overlay of movies that are valid would be nice
      * @return boolean
@@ -170,7 +201,9 @@ public class OthelloSystem extends ActionBarActivity{
      * This could be due to a player running out of time or that there are no
      * more moves possible to make on the gameBoard.
      * @return boolean
+     *
      */
+    //TODO: split this up into smaller methods.
     private boolean gameOver() {
 
         // if player has run out of time
@@ -199,6 +232,11 @@ public class OthelloSystem extends ActionBarActivity{
      */
     private boolean validMovePossible(int positionTapped) {
         //return calculateCurrentValidMoves();
+
+        //TODO: split these up into either smaller methods or a static class
+        //***************************************************
+        // Othello RULES
+
 
         // if there is a black or white disk in the tile return false
         return boardPieces[positionTapped] == R.drawable.placement_counter;
