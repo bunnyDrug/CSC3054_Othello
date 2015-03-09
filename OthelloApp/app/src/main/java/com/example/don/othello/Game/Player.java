@@ -6,7 +6,7 @@ import java.util.Timer;
  * Created by don on 05/03/2015.
  */
 
-public class Player {
+class Player {
 
     private String name;
     private boolean validMovesAvailable = true;
@@ -22,10 +22,6 @@ public class Player {
 
     public String getName() {
         return name;
-    }
-
-    private void setPlayerName(String name) {
-
     }
 
     /**
