@@ -24,52 +24,86 @@ public class OthelloSystem extends ActionBarActivity{
     private GridView gridView;
     private GameBoard gameBoard;
 
-
     // player variables
     private Player whitePlayer;
     private Player blackPlayer;
     private Player currentPlayerTurn;
+
+    private boolean isTimedGame;
 
     // taken from MainActivity
     // need this to access the xml layout for activity_main.xml
     private Activity activity;
 
     /**
-     * Constructor starts game.
-     * In order it does the following
-     *
-     * 1). Take the activity and assign it to a local variable activity
-     * 2). Create the player objects and assign the first turn to black
-     * 3). Instantiate a new game board which populates itself for a new game
-     * 4). Displays the initial counters on the board
-     * 5). Sets the board colour TODO: change how colour is handled.
-     * 6). Starts the on click listener for the gridView.
-     *
-     * @param player1 A name for player one (Can obtained in from a Text Field)
-     * @param player2 A name for player two (Can obtained in from a Text Field)
-     * @param timer Is this game a timed one? Set via the app settings.
+     * System constructor
+     * @param activity the activity from the MainActivity class.
      */
-    public OthelloSystem (String player1,
-                          String player2,
-                          Boolean timer,
-                          Activity activity) {
-
-        // need to pass this in so this class knows what is going on
+    public OthelloSystem (Activity activity, boolean isTimedGame) {
         this.activity = activity;
+        this.isTimedGame = isTimedGame;
+    }
 
-        createPlayers(player1, player2, timer);
-        currentPlayerTurn = blackPlayer;
-
-        // Creates the gameBoard object that stores the current game pieces
-        gameBoard = new GameBoard();
-
-        // Creates the grid that displays the gameBoard
+    public void startGame(String whitePlayerName, String blackPlayerName) {
+        createPlayers(whitePlayerName, blackPlayerName);
+        printNamesToScreen();
+        createGameBoard();
         updateBoard(gameBoard.getBoard());
-
-        // obvious?
         setBoardColour();
-
         setOnClickListener();
+    }
+
+
+    /**
+     * Creates two player objects required to play the game whitePlayer and
+     * blackPlayer. Each object is given the textViews from the form so it can
+     * handle its own scores and time limit.
+     * Prints the player names to the display
+     * The logic for these values is done in the System class.
+     * @param timer
+     * @param whitePlayerName
+     * @param blackPlayerName
+     */
+    private void createPlayers(String whitePlayerName, String blackPlayerName) {
+        createWhitePlayer(whitePlayerName);
+        createBlackPlayer(blackPlayerName);
+        currentPlayerTurn = blackPlayer;
+    }
+
+    private void printNamesToScreen() {
+        whitePlayer.printName();
+        blackPlayer.printName();
+    }
+
+    private void createBlackPlayer(String blackPlayerName) {
+        TextView textViewBlackPlayerName =
+                (TextView) activity.findViewById(R.id.black_player_name);
+        TextView textViewBlackPlayerScore =
+                (TextView) activity.findViewById(R.id.black_player_score);
+        TextView textViewBlackPlayerTimer =
+                (TextView) activity.findViewById(R.id.black_player_timer);
+
+        blackPlayer = new Player
+                (blackPlayerName, textViewBlackPlayerName, 0, textViewBlackPlayerScore, textViewBlackPlayerTimer);
+    }
+
+    private void createWhitePlayer(String whitePlayerName) {
+        TextView textViewWhitePlayerName =
+                (TextView) activity.findViewById(R.id.white_player_name);
+        TextView textViewWhitePlayerScore =
+                (TextView) activity.findViewById(R.id.white_player_score);
+        TextView textViewWhitePlayerTimer =
+                (TextView) activity.findViewById(R.id.white_player_timer);
+
+        whitePlayer = new Player
+                (whitePlayerName, textViewWhitePlayerName, 0, textViewWhitePlayerScore, textViewWhitePlayerTimer);
+    }
+
+    /**
+     * Creates the gameBoard object that stores the current game pieces
+     */
+    private void createGameBoard() {
+        gameBoard = new GameBoard();
     }
 
     /**
@@ -108,7 +142,6 @@ public class OthelloSystem extends ActionBarActivity{
      * The grid features the starting positions of the game ready to go.
      * <br>
      * Pieces are displayed via images which are decided by the array parameter
-     *
      * @param boardLayout
      */
     private void updateBoard(int[] boardLayout) {
@@ -120,37 +153,6 @@ public class OthelloSystem extends ActionBarActivity{
         gridView.setAdapter(new ImageAdapter(activity, boardLayout));
     }
 
-    /**
-     * creates the two player objects required to play the game.
-     * Players have a default colour and check the timer boolean to enable a
-     * timed game or not.
-     * @param player1 String
-     * @param player2 String
-     * @param timer boolean
-     */
-    private void createPlayers(String player1, String player2, Boolean timer) {
-        this.whitePlayer = new Player(player1, timer);
-        this.blackPlayer = new Player(player2, timer);
-
-        updatePlayerText(player1,player2);
-    }
-
-    /**
-     * Sets the TextViews for each player to their desired names
-     * TODO: have player names read in from a main menu.
-     * @param p1
-     * @param p2
-     */
-    private void updatePlayerText(String p1, String p2) {
-        TextView txtPlayer1 = (TextView)
-                this.activity.findViewById(R.id.textview_player1);
-        TextView txtPlayer2 = (TextView)
-                this.activity.findViewById(R.id.textview_player2);
-
-        txtPlayer1.setText(p1);
-        txtPlayer2.setText(p2);
-    }
-
     // THIS SHOULD NOT STAY LIKE THIS - THE TURN METHOD IS ONLY FOR DECIDING
     // THE TURN OF A USER - AT ITS CURRENT SITS IT IS DOING TOO MUCH.
     // TODO: FIX THIS MESS AND BREAK UP INTO SMALLER METHODS
@@ -160,9 +162,17 @@ public class OthelloSystem extends ActionBarActivity{
             if (currentPlayerTurn == blackPlayer) {
                 gameBoard.placePiece(tileTapped, R.drawable.black_disk);
                 currentPlayerTurn = whitePlayer;
+                if (isTimedGame) {
+                    whitePlayer.startTimer();
+                    blackPlayer.pauseTimer();
+                }
             } else {
                 gameBoard.placePiece(tileTapped, R.drawable.white_disk);
                 currentPlayerTurn = blackPlayer;
+                if (isTimedGame) {
+                    whitePlayer.pauseTimer();
+                    blackPlayer.startTimer();
+                }
             }
             updateBoard(gameBoard.getBoard());
         }
@@ -196,18 +206,18 @@ public class OthelloSystem extends ActionBarActivity{
      *
      */
     //TODO: split this up into smaller methods.
-    private boolean gameOver() {
-
-        // if player has run out of time
-        // if whitePlayer.timer == 0 or something
-
-        // if both players have NO valid moves.
-        if (!whitePlayer.hasValidMovesAvailable()
-                && !blackPlayer.hasValidMovesAvailable()){
-            return true;
-        }
-        return false;
-    }
+    //private boolean gameOver() {
+    //
+    //    // if player has run out of time
+    //    // if whitePlayer.timer == 0 or something
+    //
+    //    // if both players have NO valid moves.
+    //    if (!whitePlayer.hasValidMovesAvailable()
+    //            && !blackPlayer.hasValidMovesAvailable()){
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
     public GridView getGridView() {
         return gridView;

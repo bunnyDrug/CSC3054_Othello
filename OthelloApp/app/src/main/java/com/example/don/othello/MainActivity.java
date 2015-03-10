@@ -9,7 +9,7 @@ import com.example.don.othello.Game.OthelloSystem;
 
 public class MainActivity extends ActionBarActivity {
 
-    private OthelloSystem othelloSystem;
+    OthelloSystem othelloSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +18,10 @@ public class MainActivity extends ActionBarActivity {
         //TODO: remember to change this back to the main activity after testing
         setContentView(R.layout.activity_main);
 
-        // creates the game system that manages the entire game.
-        othelloSystem = new OthelloSystem("Spoon", "Cereal", false, this);
-
+        // creates the game system that manages the game.
+        // TODO: remove hard coded values
+        othelloSystem = new OthelloSystem(this, true);
+        othelloSystem.startGame("Top", "Bottom");
     }
 
     @Override

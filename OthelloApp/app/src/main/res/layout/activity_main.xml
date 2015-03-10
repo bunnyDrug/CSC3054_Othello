@@ -37,19 +37,21 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textview_player1"
+                    android:id="@+id/white_player_name"
                     android:text="@string/label_player_one"
                     android:textSize="24sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/white_player_score"
                     android:text="Points:100"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/white_player_timer"
                     android:text="Time Remaining 25:00"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
@@ -98,19 +100,21 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textview_player2"
+                android:id="@+id/black_player_name"
                 android:text="@string/label_player_two"
                 android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/black_player_score"
                 android:text="Points:100"
                 android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/black_player_timer"
                 android:text="Time Remaining 25:00"
                 android:textSize="18sp"
                 android:layout_width="match_parent"
