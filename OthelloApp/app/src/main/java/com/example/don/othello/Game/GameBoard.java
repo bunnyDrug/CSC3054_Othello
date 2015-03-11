@@ -69,14 +69,15 @@ class GameBoard {
         getPiece(pos);
         switch (colour) {
             case BLACK:
-
+                    //to get the positions that have black pieces
                 break;
             case WHITE:
-
+                    //to get the positions that have white pieces
                 break;
             default:
                 break;
 
+            //need an if statement to check the surrounding  pieces
 
 
 

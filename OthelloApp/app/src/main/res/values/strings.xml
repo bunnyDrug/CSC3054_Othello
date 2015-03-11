@@ -1,8 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Othello</string>
 
+    <string name="app_name">Othello</string>
     <string name="game_settings">Game Settings</string>
     <string name="accessibility_settings">Accessibility Settings</string>
     <string name="label_player_one">PLAYER 1</string>
     <string name="label_player_two">PLAYER 2</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

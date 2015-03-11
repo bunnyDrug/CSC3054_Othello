@@ -5,9 +5,11 @@ package com.example.don.othello.Game;
  */
 public class Rules {
 
+
     private Rules() {
 
     }
+
 
     public static boolean validPiecePlacement() {
 
