@@ -15,7 +15,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //TODO: remember to change this back to the main activity after testing
         setContentView(R.layout.activity_main);
 
         // creates the game system that manages the game.

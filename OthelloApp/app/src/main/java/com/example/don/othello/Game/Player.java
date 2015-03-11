@@ -73,15 +73,19 @@ public class Player {
      * resumed after it is paused.
      */
     public void startTimer() {
-        countDownTimer = new CountDownTimer(playerTimeLimit, TICK_INTERVAL) {
-            public void onTick(long millisUntilFinished) {
-                textViewTimer.setText("Time left: " + millisUntilFinished / 1000 + " seconds");
-                playerTimeLimit = millisUntilFinished;
-            }
-            public void onFinish() {
-                textViewTimer.setText("Game over");
-            }
-        }.start();
+        if (playerTimeLimit > 0) {
+            countDownTimer = new CountDownTimer(playerTimeLimit, TICK_INTERVAL) {
+                public void onTick(long millisUntilFinished) {
+                    textViewTimer.setText("Time left: " + millisUntilFinished / 1000 + " seconds");
+                    playerTimeLimit = millisUntilFinished;
+                }
+
+                public void onFinish() {
+                    textViewTimer.setText("Game over");
+                    playerTimeLimit = 0;
+                }
+            }.start();
+        }
     }
 
     /**
@@ -95,6 +99,9 @@ public class Player {
         }
     }
 
+    /**
+     * Sets the text on the screen to show the player name.
+     */
     public void printName() {
         textViewName.setText(name);
     }

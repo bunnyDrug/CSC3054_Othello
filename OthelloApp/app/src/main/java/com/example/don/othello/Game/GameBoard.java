@@ -1,6 +1,5 @@
 package com.example.don.othello.Game;
 
-import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
 /**
@@ -11,6 +10,14 @@ import com.example.don.othello.R;
 class GameBoard {
 
     private int[] board = new int[64];
+
+    private final int[] leftBoardEdge = new int[8];
+    private final int[] rightBoardEdge = new int[8];
+    private final int[] topBoardEdge = new int[8];
+    private final int[] bottomBoardEdge = new int[8];
+
+
+
     PieceColour colour;
 
 
@@ -21,6 +28,7 @@ class GameBoard {
      */
     public GameBoard() {
         initStartingPieces();
+        defineBoardEdges();
     }
 
     /**
@@ -41,12 +49,43 @@ class GameBoard {
     }
 
     /**
-     * Returns the board array which holds the location of all pieces in
-     * the game.
-     * @return an integer array which holds the location of all pieces in play
+     * creates four arrays used to check if a disk is at the edge of the board
+     * magic numbers could be at the very least placed into constants later
+     * TODO: tidy this up
      */
-    public int[] getBoard() {
-        return board;
+    private void defineBoardEdges() {
+        defineLeftBoardEdge();
+        defineRightBoardEdge();
+        defineTopBoardEdge();
+        defineBottomBoardEdge();
+    }
+
+    private void defineLeftBoardEdge() {
+        int row = board.length / 8;
+        for (int i = 0; i < row; i++) {
+            leftBoardEdge[i] = row * (i);
+        }
+    }
+
+    private void defineRightBoardEdge() {
+        int columns = board.length / 8 - 1;
+        for (int i = 0; i < columns +1; i++) {
+            rightBoardEdge[i] = leftBoardEdge[i] + columns;
+        }
+    }
+
+    private void defineTopBoardEdge() {
+        int columns = board.length / 8;
+        for (int i = 0; i < columns; i++) {
+            topBoardEdge[i] = i;
+        }
+    }
+
+    private void defineBottomBoardEdge() {
+        int columns = board.length / 8;
+        for (int i = 0; i < columns; i++) {
+            bottomBoardEdge[i] = topBoardEdge[i] + 56;
+        }
     }
 
     /**
@@ -62,30 +101,53 @@ class GameBoard {
         board[positionTapped] = piece;
     }
 
-    public void flipColour(GameBoard p, int pos) {
-        //need to get int vaules -8 to 8 to check around the piece and change the colour
-        GameBoard next = null;
-        int offset =0;
-        getPiece(pos);
-        switch (colour) {
-            case BLACK:
-                    //to get the positions that have black pieces
-                break;
-            case WHITE:
-                    //to get the positions that have white pieces
-                break;
-            default:
-                break;
+    /**
+     * Returns the board array which holds the location of all pieces in
+     * the game.
+     * @return an integer array which holds the location of all pieces in play
+     */
+    public int[] getBoard() {
+        return board;
+    }
 
-            //need an if statement to check the surrounding  pieces
+    /**
+     * returns the positions in the array that make up the left
+     * edge of the board
+     * @return an array holding the positions that make up the visual left edge
+     * of the game board.
+     */
+    public int[] getLeftBoardEdge() {
+        return leftBoardEdge;
+    }
 
+    /**
+     * returns the positions in the array that make up the right
+     * edge of the board
+     * @return an array holding the positions that make up the visual right edge
+     * of the game board.
+     */
+    public int[] getRightBoardEdge() {
+        return rightBoardEdge;
+    }
 
+    /**
+     * returns the positions in the array that make up the bottom
+     * edge of the board
+     * @return an array holding the positions that make up the visual bottom
+     * edge of the game board.
+     */
+    public int[] getBottomBoardEdge() {
+        return bottomBoardEdge;
+    }
 
-
-        }
-
-
-
+    /**
+     * returns the positions in the array that make up the top
+     * edge of the board
+     * @return an array holding the positions that make up the visual top edge
+     * of the game board.
+     */
+    public int[] getTopBoardEdge() {
+        return topBoardEdge;
     }
 
     /**
@@ -97,3 +159,34 @@ class GameBoard {
         return board[positionTapped];
     }
 }
+
+
+    // public void flipColour(GameBoard p, int pos) {
+    //     //need to get int vaules -8 to 8 to check around the piece and change the colour
+    //     GameBoard next = null;
+    //     int offset =0;
+    //     getPiece(pos);
+    //     switch (colour) {
+    //         case BLACK:
+    //                 //to get the positions that have black pieces
+    //             break;
+    //         case WHITE:
+    //                 //to get the positions that have white pieces
+    //             break;
+    //         default:
+    //             break;
+
+    //         //need an if statement to check the surrounding  pieces
+
+
+
+
+    //     }
+
+
+
+    // public void flipColour() {
+
+    // }
+
+
