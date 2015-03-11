@@ -1,5 +1,6 @@
 package com.example.don.othello.Game;
 
+import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
 /**
@@ -61,7 +62,28 @@ class GameBoard {
         board[positionTapped] = piece;
     }
 
-    public void flipColour() {
+    public void flipColour(GameBoard p, int pos) {
+        //need to get int vaules -8 to 8 to check around the piece and change the colour
+        GameBoard next = null;
+        int offset =0;
+        getPiece(pos);
+        switch (colour) {
+            case BLACK:
+
+                break;
+            case WHITE:
+
+                break;
+            default:
+                break;
+
+
+
+
+
+        }
+
+
 
     }
 
