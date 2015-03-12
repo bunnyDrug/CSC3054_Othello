@@ -1,5 +1,7 @@
 package com.example.don.othello.Game;
 
+import android.util.Log;
+
 import com.example.don.othello.R;
 
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.List;
  * The rules class - this handles all the processing for game rules.
  * Created by don on 11/03/2015.
  */
-public final class Rules {
+final class Rules {
     private final static int NORTH = -8; // from current position
     private final static int EAST = + 1;
     private final static int SOUTH = + 8;
@@ -21,6 +23,10 @@ public final class Rules {
 
     private final static int SOUTH_EAST = SOUTH + EAST;
     private final static int SOUTH_WEST = SOUTH + WEST;
+
+
+    private static ArrayList<Integer> directionFound = new ArrayList<>();
+
 
     private Rules() {
 
@@ -44,12 +50,17 @@ public final class Rules {
                 gameBoard.getTopBoardEdge(),
                 gameBoard.getBottomBoardEdge());
 
+
         return isTappedTileEmpty(position, gameBoard)
 
-               &&
+                &&
 
-               nextToOppositeColourDisk(position, currentDisk,
-                       tilesToCheck, gameBoard);
+                nextToOppositeColourDisk(position, currentDisk,
+                        tilesToCheck, gameBoard)
+
+                &&
+
+                validPlacement(convertIntegers(directionFound),currentDisk,position,gameBoard);
     }
 
     /**
@@ -64,23 +75,23 @@ public final class Rules {
                                                     GameBoard gameBoard) {
         boolean validMove = false;
 
-            // for every tile
-            for (int tile : tilesToCheck) {
+        // for every tile
+        for (int tile : tilesToCheck) {
 
-                // if any of the tiles are not placement counters
+            // if any of the tiles are not placement counters
+            if (gameBoard.getPiece(positionTapped + tile)
+                    != R.drawable.placement_counter) {
+
+                // if any of the tiles surrounding are not the same
+                // colour as the current disk
                 if (gameBoard.getPiece(positionTapped + tile)
-                        != R.drawable.placement_counter) {
-
-                    // if any of the tiles surrounding are not the same
-                    // colour as the current disk
-                    if (gameBoard.getPiece(positionTapped + tile)
-                            != currentDisk){
-                        validMove = true;
-                        break;
-                    }
+                        != currentDisk){
+                    directionFound.add(tile);
+                    validMove = true;
                 }
             }
-
+        }
+        directionFound.trimToSize();
         return validMove;
     }
 
@@ -126,6 +137,129 @@ public final class Rules {
 
 
     /**
+     * checks if a counter can be placed in the tile - ie it needs to be able to
+     * flip at least one opposing counter.
+     * @param directionsFound
+     * @param currentDisk
+     * @param position
+     * @param gameBoard
+     * @return
+     */
+    private static boolean validPlacement(int[] directionsFound, int currentDisk,int position, GameBoard gameBoard) {
+
+        ArrayList<Integer> tilesToFlip = new ArrayList<>();
+
+        boolean result = false;
+
+        Log.d("Results", "****TAPPED POSITION**** " + position);
+
+        // for all directions
+        mainLoop:
+        for (int direction: directionsFound) {
+
+            boolean ew = false;
+            if ((direction == EAST) || (direction == WEST)) {
+                Log.d("Rules", "check east or west");
+                ew = true;
+            }
+            boolean ns = false;
+            if ((direction == NORTH) || (direction == SOUTH)) {
+                ns = true;
+                Log.d("Rules", "check north or south");
+            }
+
+            Log.d("Rules", "checking direction " + direction);
+            int newPosition = position;
+
+            // if adjacent tile is at the edge
+            if (reachedEdge((newPosition = newPosition + direction), gameBoard) && !ew && !ns) {
+                // check the tile after it - ensure not out of bounds.
+                if ((newPosition = newPosition + direction) < 0 || (newPosition) > 64) {
+                    Log.d("Results", "Next counter in direction " + direction + " would be over edge - skip");
+                }
+            }
+
+            else {
+                do {
+                    // in other words you have reached the edge of a diagonal check
+                    if ((reachedEdge(newPosition, gameBoard)) && (direction != EAST) && (direction != WEST) && (direction != NORTH) && (direction != SOUTH)) {
+                            Log.d("Rules:", "Reached edge of board - skipping");
+                            //result = false;
+                            break;
+                    }
+                    if (direction == EAST) {
+                        if (atEdge(gameBoard.getRightBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
+                            Log.d("Rules:", "Reached the end of the board checking EAST - skipping");
+                            //result = false;
+                            break;
+                        }
+                    }
+                    if (direction == WEST) {
+                        if (atEdge(gameBoard.getLeftBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
+                            Log.d("Rules:", "Reached the end of the board checking WEST - skipping");
+                            //result = false;
+                            break;
+                        }
+                    }
+                    if (direction == NORTH) {
+                        if (atEdge(gameBoard.getTopBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
+                            Log.d("Rules:", "Reached the end of the board checking NORTH - skipping");
+                            //result = false;
+                            break;
+                        }
+                    }
+                    if (direction == SOUTH) {
+                        if (atEdge(gameBoard.getBottomBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
+                            Log.d("Rules:", "Reached the end of the board checking SOUTH - skipping");
+                            //result = false;
+                            break;
+                        }
+                    }
+                    if (gameBoard.getPiece(newPosition) == R.drawable.placement_counter) {
+                        Log.d("Results", "Counter in tile " + newPosition + " is a blank tile - skip");
+                        break;
+                    }
+                    if ((gameBoard.getPiece(newPosition) == currentDisk)){
+                        Log.d("Rules:", "found a matching tile in the direction " + direction + " at position " + newPosition);
+                        result = true;
+                            // backtrack to position tapped.
+                            while (newPosition != position) {
+                                newPosition = newPosition - direction;
+                                gameBoard.placePiece(newPosition, currentDisk);
+                            }
+                        break;
+                    }
+                    // advance the tile by the direction we are looking.
+                    else {
+                        Log.d("Rules:", "Current position = " + newPosition + " increase newPosition by " + direction);
+                        newPosition = newPosition + direction;
+                        Log.d("Rules:", "New position = " + newPosition);
+                    }
+                } while (true);
+            }
+        }
+
+        // clear the directionFoundArrayList for use again during the next turn
+        directionFound.clear();
+        return result;
+    }
+
+    private static boolean reachedEdge(int position, GameBoard gameBoard) {
+        return  atEdge(gameBoard.getTopBoardEdge(), position) ||
+                atEdge(gameBoard.getBottomBoardEdge(), position) ||
+                atEdge(gameBoard.getRightBoardEdge(), position) ||
+                atEdge(gameBoard.getLeftBoardEdge(), position);
+    }
+    //  try to place white disk
+    //  if next position == black
+    //        next position = position + direction
+    //        loop until nextPosition != white || reach edge {
+    //        if next position == white
+    //              next position = position + direction
+    //        }
+
+
+    /**
      * Creates an array of tile positions around the tapped position on the grid
      * that are used for checking various things.
      * @param positionTapped
@@ -140,6 +274,7 @@ public final class Rules {
                                                       int[] eastBoardEdge,
                                                       int[] northBoardEdge,
                                                       int[] southBoardEdge) {
+
         ArrayList<Integer> positionsToCheck = new ArrayList<>();
 
         positionsToCheck.add(NORTH);
@@ -184,8 +319,8 @@ public final class Rules {
     }
 
     /**
-     * converts a ListArray<Integer> into an array of int
-     * Taken from <a href="http://stackoverflow.com/questions/718554/how-to-convert-an-arraylist-containing-integers-to-primitive-int-array">here</a>
+     * converts a ListArray<Integer> into an array of int,
+     * taken from <a href="http://stackoverflow.com/questions/718554/how-to-convert-an-arraylist-containing-integers-to-primitive-int-array">here</a>
      *
      * @param integers the ListArray you wished converted to integer
      * @return an array of ints
@@ -200,4 +335,6 @@ public final class Rules {
         }
         return ret;
     }
+
+
 }
