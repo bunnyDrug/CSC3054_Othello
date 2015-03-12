@@ -10,7 +10,7 @@ import android.widget.TextView;
  * each player holds its own score and time remaining (until game over)
  */
 
-public class Player {
+class Player {
 
     // 1 second
     private final long TICK_INTERVAL = 1000;
@@ -23,7 +23,7 @@ public class Player {
     private String name;
     private TextView textViewName;
 
-    int score;
+    private int score;
     private TextView textViewScore;
 
     private TextView textViewTimer;
