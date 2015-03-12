@@ -1,5 +1,6 @@
 package com.example.don.othello.Game;
 
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.TextView;
@@ -20,8 +21,11 @@ class Player {
     // TODO: read this in from a settings page - remove hard coded value
     private long playerTimeLimit = 30000;
 
+
     private String name;
     private TextView textViewName;
+
+
 
     private int score;
     private TextView textViewScore;
@@ -106,11 +110,25 @@ class Player {
         textViewName.setText(name);
     }
 
-    public void updateScore(int score) {
+    public void setColour() { textViewName.setTextColor(Color.RED);}
+
+    public void setScore(int score) {
         this.score = score;
     }
 
     public void printScore() {
-        textViewScore.setText(score);
+        textViewScore.setText(score + "");
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean hasRunOutOfTime() {
+        return playerTimeLimit == 0;
     }
 }

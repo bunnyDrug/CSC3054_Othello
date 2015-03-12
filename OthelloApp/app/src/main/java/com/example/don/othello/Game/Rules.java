@@ -60,7 +60,7 @@ final class Rules {
 
                 &&
 
-                validPlacement(convertIntegers(directionFound),currentDisk,position,gameBoard);
+                validPlacement(convertIntegers(directionFound),currentDisk,position,gameBoard, false);
     }
 
     /**
@@ -145,7 +145,7 @@ final class Rules {
      * @param gameBoard
      * @return
      */
-    private static boolean validPlacement(int[] directionsFound, int currentDisk,int position, GameBoard gameBoard) {
+    private static boolean validPlacement(int[] directionsFound, int currentDisk,int position, GameBoard gameBoard, boolean moveCheck) {
 
         ArrayList<Integer> tilesToFlip = new ArrayList<>();
 
@@ -183,9 +183,9 @@ final class Rules {
                 do {
                     // in other words you have reached the edge of a diagonal check
                     if ((reachedEdge(newPosition, gameBoard)) && (direction != EAST) && (direction != WEST) && (direction != NORTH) && (direction != SOUTH)) {
-                            Log.d("Rules:", "Reached edge of board - skipping");
-                            //result = false;
-                            break;
+                        Log.d("Rules:", "Reached edge of board - skipping");
+                        //result = false;
+                        break;
                     }
                     if (direction == EAST) {
                         if (atEdge(gameBoard.getRightBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
@@ -222,11 +222,13 @@ final class Rules {
                     if ((gameBoard.getPiece(newPosition) == currentDisk)){
                         Log.d("Rules:", "found a matching tile in the direction " + direction + " at position " + newPosition);
                         result = true;
-                            // backtrack to position tapped.
+                        // backtrack to position tapped.
+                        if (!moveCheck) {
                             while (newPosition != position) {
                                 newPosition = newPosition - direction;
                                 gameBoard.placePiece(newPosition, currentDisk);
                             }
+                        }
                         break;
                     }
                     // advance the tile by the direction we are looking.
@@ -337,4 +339,30 @@ final class Rules {
     }
 
 
+    public static boolean canPlayerMakeAMove(GameBoard gameBoard, int diskColour) {
+        boolean result = false;
+
+        int[] boardPositions= new int[64];
+
+        for (int i = 0; i < boardPositions.length; i ++) {
+            boardPositions[i] = i;
+        }
+
+        for (int position: boardPositions) {
+
+            int[] tilesToCheck = getTilesAroundTappedPosition(
+                    position,
+                    gameBoard.getLeftBoardEdge(),
+                    gameBoard.getRightBoardEdge(),
+                    gameBoard.getTopBoardEdge(),
+                    gameBoard.getBottomBoardEdge());
+
+            if (isTappedTileEmpty(position, gameBoard) &&
+                    nextToOppositeColourDisk(position, diskColour, tilesToCheck, gameBoard) &&
+                    validPlacement(convertIntegers(directionFound),diskColour,position,gameBoard,true)) {
+                result = true;
+            }
+        }
+        return result;
+    }
 }

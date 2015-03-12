@@ -153,6 +153,17 @@ class GameBoard {
     public int getPiece(int positionTapped) {
         return board[positionTapped];
     }
+
+    public int countPieces(int pieceColour) {
+
+        int numberOfPieces = 0;
+        for (int piece: board) {
+            if (piece == pieceColour) {
+                numberOfPieces ++;
+            }
+        }
+        return numberOfPieces;
+    }
 }
 
 

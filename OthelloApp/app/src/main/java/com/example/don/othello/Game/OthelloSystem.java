@@ -1,6 +1,8 @@
 package com.example.don.othello.Game;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -37,6 +39,9 @@ public class OthelloSystem extends ActionBarActivity{
     // need this to access the xml layout for activity_main.xml
     private Activity activity;
 
+    private Player loser;
+    private Player winner;
+
     /**
      * System constructor
      * @param activity the activity from the MainActivity class.
@@ -58,7 +63,6 @@ public class OthelloSystem extends ActionBarActivity{
         updateBoard(gameBoard.getBoard());
         setBoardColour();
 
-        // click listener
         setOnClickListener();
     }
 
@@ -170,14 +174,27 @@ public class OthelloSystem extends ActionBarActivity{
                 //displayToast("" + position);
 
                 turn(position);
+
+                if (gameOver()) {
+                    new AlertDialog.Builder(activity)
+                            .setTitle(winner.getName() + " is the winner!")
+                            .setMessage("Congratulations " + winner.getName() +
+                                    ". Your final score was: "
+                                    + winner.getScore())
+                            .setPositiveButton("Awesome!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setIcon(android.R.drawable.star_big_on)
+                            .show();
+                }
             }
         });
     }
 
 
-    // THIS SHOULD NOT STAY LIKE THIS - THE TURN METHOD IS ONLY FOR DECIDING
-    // THE TURN OF A USER - AT ITS CURRENT SITS IT IS DOING TOO MUCH.
-    // TODO: FIX THIS MESS AND BREAK UP INTO SMALLER METHODS
+
     private void turn(int tileTapped){
 
         if (currentPlayerTurn == blackPlayer) {
@@ -198,6 +215,7 @@ public class OthelloSystem extends ActionBarActivity{
             if (validMovePossible(tileTapped,  whiteDisk)) {
                 gameBoard.placePiece(tileTapped, whiteDisk);
                 currentPlayerTurn = blackPlayer;
+
                 if (isTimedGame) {
                     whitePlayer.pauseTimer();
                     blackPlayer.startTimer();
@@ -206,10 +224,10 @@ public class OthelloSystem extends ActionBarActivity{
 
         }
         updateBoard(gameBoard.getBoard());
-    }
-
-    public void displayValidMoves() {
-
+        blackPlayer.setScore(gameBoard.countPieces(blackDisk));
+        whitePlayer.setScore(gameBoard.countPieces(whiteDisk));
+        blackPlayer.printScore();
+        whitePlayer.printScore();
     }
 
     /**
@@ -219,18 +237,33 @@ public class OthelloSystem extends ActionBarActivity{
      * @return boolean
      *
      */
-    //TODO: split this up into smaller methods.
     private boolean gameOver() {
 
-        // if player has run out of time
-        // if whitePlayer.timer == 0 or something
+        boolean gameOver = false;
 
-        // if both players have NO valid moves.
-        //if (!whitePlayer.hasValidMovesAvailable()
-        //        && !blackPlayer.hasValidMovesAvailable()){
-        //    return true;
-        //}
-        return false;
+        if (whitePlayer.hasRunOutOfTime()) {
+            gameOver = true;
+            loser = whitePlayer;
+            winner = blackPlayer;
+        }
+        if (blackPlayer.hasRunOutOfTime()) {
+            gameOver = true;
+            loser = blackPlayer;
+            winner = whitePlayer;
+        }
+
+        if (!Rules.canPlayerMakeAMove(gameBoard, whiteDisk) &&
+                !Rules.canPlayerMakeAMove(gameBoard, blackDisk)) {
+            gameOver = true;
+            if (whitePlayer.getScore() > blackPlayer.getScore()) {
+                loser = blackPlayer;
+                winner = whitePlayer;
+            } else {
+                loser = whitePlayer;
+                winner = blackPlayer;
+            }
+        }
+        return gameOver;
     }
 
     /**
@@ -243,21 +276,16 @@ public class OthelloSystem extends ActionBarActivity{
     private boolean validMovePossible(int positionTapped, int diskColour){
 
         boolean validMove = false;
-        //return calculateCurrentValidMoves();
 
-        if (Rules.validDiskPlacement(positionTapped, gameBoard, diskColour)) {
-            validMove = true;
-        } else {
-            displayToast("Invalid move, please try again");
+
+        if (Rules.canPlayerMakeAMove(gameBoard, diskColour)) {
+            if (Rules.validDiskPlacement(positionTapped, gameBoard, diskColour)) {
+                validMove = true;
+            } else {
+                displayToast("Invalid move, please try again");
+            }
         }
 
-
-
-
-        //todo: validation should happen in this method not in the turn method
-
-
-        // if there is a black or white disk in the tile return false
         return validMove;
     }
 
