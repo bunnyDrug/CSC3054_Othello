@@ -16,11 +16,6 @@ class GameBoard {
     private final int[] topBoardEdge = new int[8];
     private final int[] bottomBoardEdge = new int[8];
 
-
-
-    PieceColour colour;
-
-
     /**
      * Creates a new array to hold the disks/counters in play. The new board
      * is initialised with othello starting positions - two white and two black
