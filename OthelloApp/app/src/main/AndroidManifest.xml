@@ -21,6 +21,10 @@
             android:name=".Game.Menu"
             android:label="@string/title_activity_menu" >
         </activity>
+        <activity
+            android:name=".Game.MenuPage"
+            android:label="@string/title_activity_menu_page" >
+        </activity>
     </application>
 
 </manifest>
