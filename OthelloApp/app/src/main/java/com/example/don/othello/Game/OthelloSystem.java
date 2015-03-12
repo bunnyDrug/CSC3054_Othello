@@ -198,28 +198,54 @@ public class OthelloSystem extends ActionBarActivity{
     private void turn(int tileTapped){
 
         if (currentPlayerTurn == blackPlayer) {
+            if (Rules.canPlayerMakeAMove(gameBoard, blackDisk)) {
+                if (validMovePossible(tileTapped, blackDisk)) {
+                    gameBoard.placePiece(tileTapped, blackDisk);
+                    currentPlayerTurn = whitePlayer;
 
-            if (validMovePossible(tileTapped, blackDisk)) {
-
-                gameBoard.placePiece(tileTapped, blackDisk);
-                currentPlayerTurn = whitePlayer;
-
-                if (isTimedGame) {
-                    whitePlayer.startTimer();
-                    blackPlayer.pauseTimer();
+                    if (isTimedGame) {
+                        whitePlayer.startTimer();
+                        blackPlayer.pauseTimer();
+                    }
                 }
+            } else {
+                new AlertDialog.Builder(activity)
+                        .setTitle("Cannot Move")
+                        .setMessage(blackPlayer.getName() + " has no moves")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                            }
+                        })
+                        .setIcon(android.R.drawable.stat_sys_warning)
+                        .show();
             }
         }
         else if (currentPlayerTurn == whitePlayer) {
 
-            if (validMovePossible(tileTapped,  whiteDisk)) {
-                gameBoard.placePiece(tileTapped, whiteDisk);
-                currentPlayerTurn = blackPlayer;
+            if (Rules.canPlayerMakeAMove(gameBoard, whiteDisk)) {
 
-                if (isTimedGame) {
-                    whitePlayer.pauseTimer();
-                    blackPlayer.startTimer();
+                if (validMovePossible(tileTapped, whiteDisk)) {
+                    gameBoard.placePiece(tileTapped, whiteDisk);
+                    currentPlayerTurn = blackPlayer;
+
+                    if (isTimedGame) {
+                        whitePlayer.pauseTimer();
+                        blackPlayer.startTimer();
+                    }
                 }
+            }
+            else {
+                new AlertDialog.Builder(activity)
+                        .setTitle("Cannot Move")
+                        .setMessage(whitePlayer.getName() + " has no moves")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                            }
+                        })
+                        .setIcon(android.R.drawable.stat_sys_warning)
+                        .show();
             }
 
         }
@@ -277,14 +303,12 @@ public class OthelloSystem extends ActionBarActivity{
 
         boolean validMove = false;
 
-
-        if (Rules.canPlayerMakeAMove(gameBoard, diskColour)) {
             if (Rules.validDiskPlacement(positionTapped, gameBoard, diskColour)) {
                 validMove = true;
             } else {
                 displayToast("Invalid move, please try again");
             }
-        }
+
 
         return validMove;
     }
