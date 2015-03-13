@@ -18,5 +18,6 @@
     ,in either horizontal, vertical or diagonal directions. this is then followed by the flipping of the sandwiched discs</string>
     <string name="rule3"></string>
     <string name="rule4"></string>
+    <string name="title_activity_othello">Othello</string>
 
 </resources>

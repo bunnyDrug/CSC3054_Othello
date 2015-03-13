@@ -1,33 +1,29 @@
-package com.example.don.othello;
+package com.example.don.othello.SpalshScreen;
 
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 
+import com.example.don.othello.R;
 
-import com.example.don.othello.Game.OthelloSystem;
-
-public class MainActivity extends ActionBarActivity {
-
-    OthelloSystem othelloSystem;
+public class Othello extends ActionBarActivity {
+ImageButton enter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main);
-
-        // creates the game system that manages the game.
-        // TODO: remove hard coded values
-        othelloSystem = new OthelloSystem(this, false);
-        othelloSystem.startGame("Top", "Bottom");
+        setContentView(R.layout.activity_othello);
+        enter.findViewById(R.id.enterBtn);
+                
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_othello, menu);
         return true;
     }
 
@@ -39,9 +35,10 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.game_settings) {
+        if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

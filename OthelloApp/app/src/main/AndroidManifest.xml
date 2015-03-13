@@ -37,6 +37,10 @@
             android:name=".Game.RulesPage"
             android:label="@string/title_activity_rules_page" >
         </activity>
+        <activity
+            android:name=".SpalshScreen.Othello"
+            android:label="@string/title_activity_othello" >
+        </activity>
     </application>
 
 </manifest>
