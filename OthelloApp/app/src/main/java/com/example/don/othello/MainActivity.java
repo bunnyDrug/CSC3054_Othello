@@ -20,8 +20,17 @@ public class MainActivity extends ActionBarActivity {
 
         // creates the game system that manages the game.
         // TODO: remove hard coded values
+
+        String topPlayer = "";
+        String bottomPlayer = "";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            topPlayer = extras.getString("topPlayer");
+            bottomPlayer = extras.getString("bottomPlayer");
+        }
+
         othelloSystem = new OthelloSystem(this, false);
-        othelloSystem.startGame("Top", "Bottom");
+        othelloSystem.startGame(topPlayer, bottomPlayer);
     }
 
     @Override

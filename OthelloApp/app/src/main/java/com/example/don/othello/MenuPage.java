@@ -23,7 +23,15 @@ public class MenuPage extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
+
+                // get the edit texts from the menu page
+                EditText topEditText = (EditText) findViewById(R.id.player1Edit);
+                EditText bottomEditText = (EditText) findViewById(R.id.player2Edit);
+                // add them into two extras used to pass stuff between activities
+                intent.putExtra("topPlayer", topEditText.getText().toString());
+                intent.putExtra("bottomPlayer", bottomEditText.getText().toString());
                 startActivityForResult(intent, 0);
+
             }
 
 
