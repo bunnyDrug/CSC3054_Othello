@@ -19,5 +19,9 @@
     <string name="rule3"></string>
     <string name="rule4"></string>
     <string name="title_activity_othello">Othello</string>
+    <string name="label_blackTimer">Timer</string>
+    <string name="label_white_timer">Timer</string>
+    <string name="label_white_score">Score</string>
+    <string name="label_black_score">Score</string>
 
 </resources>

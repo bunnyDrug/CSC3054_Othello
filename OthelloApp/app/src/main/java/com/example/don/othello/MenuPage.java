@@ -1,4 +1,4 @@
-package com.example.don.othello.Game;
+package com.example.don.othello;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,9 +7,6 @@ import android.view.View.OnClickListener;
 import android.view.MenuItem;
 import android.widget.*;
 import android.content.Intent;
-
-import com.example.don.othello.MainActivity;
-import com.example.don.othello.R;
 
 public class MenuPage extends ActionBarActivity {
     ImageButton btnstart;

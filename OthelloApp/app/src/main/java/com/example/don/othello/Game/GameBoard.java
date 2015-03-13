@@ -165,34 +165,3 @@ class GameBoard {
         return numberOfPieces;
     }
 }
-
-
-    // public void flipColour(GameBoard p, int pos) {
-    //     //need to get int vaules -8 to 8 to check around the piece and change the colour
-    //     GameBoard next = null;
-    //     int offset =0;
-    //     getPiece(pos);
-    //     switch (colour) {
-    //         case BLACK:
-    //                 //to get the positions that have black pieces
-    //             break;
-    //         case WHITE:
-    //                 //to get the positions that have white pieces
-    //             break;
-    //         default:
-    //             break;
-
-    //         //need an if statement to check the surrounding  pieces
-
-
-
-
-    //     }
-
-
-
-    // public void flipColour() {
-
-    // }
-
-

@@ -1,18 +1,17 @@
-package com.example.don.othello.Game;
+package com.example.don.othello;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
 
 import com.example.don.othello.Frags.FragRule1;
 import com.example.don.othello.Frags.FragRule2;
 import com.example.don.othello.Frags.FragRule3;
-import com.example.don.othello.R;
 
 public class RulesPage extends ActionBarActivity {
 Button btnRule1,btnRule2,btnRule3;

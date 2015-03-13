@@ -25,7 +25,7 @@
         <!-- android:label="@string/title_activity_menu" > -->
         <!-- </activity> -->
         <activity
-            android:name=".Game.MenuPage"
+            android:name=".MenuPage"
             android:label="@string/title_activity_menu_page" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Game.RulesPage"
+            android:name=".RulesPage"
             android:label="@string/title_activity_rules_page" >
         </activity>
         <activity

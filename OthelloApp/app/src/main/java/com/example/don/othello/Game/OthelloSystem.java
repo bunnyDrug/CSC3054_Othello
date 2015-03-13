@@ -173,7 +173,6 @@ public class OthelloSystem extends ActionBarActivity{
                     (AdapterView<?> parent, View v, int position, long id) {
                 //displayToast("" + position);
 
-                turn(position);
 
                 if (gameOver()) {
                     new AlertDialog.Builder(activity)
@@ -188,6 +187,8 @@ public class OthelloSystem extends ActionBarActivity{
                             })
                             .setIcon(android.R.drawable.star_big_on)
                             .show();
+                } else {
+                    turn(position);
                 }
             }
         });
@@ -210,8 +211,8 @@ public class OthelloSystem extends ActionBarActivity{
                 }
             } else {
                 new AlertDialog.Builder(activity)
-                        .setTitle("Cannot Move")
-                        .setMessage(blackPlayer.getName() + " has no moves")
+                        .setTitle(blackPlayer.getName() + " Cannot Move")
+                        .setMessage(blackPlayer.getName() + " has no moves. You turn is forfeit. Please pass the device to " + whitePlayer.getName())
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
@@ -219,6 +220,12 @@ public class OthelloSystem extends ActionBarActivity{
                         })
                         .setIcon(android.R.drawable.stat_sys_warning)
                         .show();
+                currentPlayerTurn = whitePlayer;
+
+                if (isTimedGame) {
+                    whitePlayer.startTimer();
+                    blackPlayer.pauseTimer();
+                }
             }
         }
         else if (currentPlayerTurn == whitePlayer) {
@@ -237,8 +244,8 @@ public class OthelloSystem extends ActionBarActivity{
             }
             else {
                 new AlertDialog.Builder(activity)
-                        .setTitle("Cannot Move")
-                        .setMessage(whitePlayer.getName() + " has no moves")
+                        .setTitle(whitePlayer.getName() + " Cannot Move")
+                        .setMessage(whitePlayer.getName() + " has no moves. You turn is forfeit. Please pass the device to " + blackPlayer.getName())
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
@@ -246,8 +253,13 @@ public class OthelloSystem extends ActionBarActivity{
                         })
                         .setIcon(android.R.drawable.stat_sys_warning)
                         .show();
-            }
+                currentPlayerTurn = blackPlayer;
 
+                if (isTimedGame) {
+                    whitePlayer.pauseTimer();
+                    blackPlayer.startTimer();
+                }
+            }
         }
         updateBoard(gameBoard.getBoard());
         blackPlayer.setScore(gameBoard.countPieces(blackDisk));
@@ -303,11 +315,11 @@ public class OthelloSystem extends ActionBarActivity{
 
         boolean validMove = false;
 
-            if (Rules.validDiskPlacement(positionTapped, gameBoard, diskColour)) {
-                validMove = true;
-            } else {
-                displayToast("Invalid move, please try again");
-            }
+        if (Rules.validDiskPlacement(positionTapped, gameBoard, diskColour)) {
+            validMove = true;
+        } else {
+            displayToast("Invalid move, please try again");
+        }
 
 
         return validMove;
