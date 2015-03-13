@@ -19,7 +19,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <!--not sure if it is being used-->
+        <!-- not sure if it is being used -->
         <!-- <activity -->
         <!-- android:name=".Game.Menu" -->
         <!-- android:label="@string/title_activity_menu" > -->
@@ -40,6 +40,10 @@
         <activity
             android:name=".SpalshScreen.Othello"
             android:label="@string/title_activity_othello" >
+        </activity>
+        <activity
+            android:name=".Scores"
+            android:label="@string/title_activity_scores" >
         </activity>
     </application>
 

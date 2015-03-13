@@ -23,5 +23,6 @@
     <string name="label_white_timer">Timer</string>
     <string name="label_white_score">Score</string>
     <string name="label_black_score">Score</string>
+    <string name="title_activity_scores">Scores</string>
 
 </resources>

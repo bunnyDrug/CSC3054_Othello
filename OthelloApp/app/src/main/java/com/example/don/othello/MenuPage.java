@@ -58,7 +58,7 @@ public class MenuPage extends ActionBarActivity {
                     item.setChecked(false);
                 else
                     item.setChecked(true);
-                Intent intentRule = new Intent(MenuPage.this, RulesPage.class);
+                Intent intentRule = new Intent(this,RulesPage.class);
                 startActivityForResult(intentRule,0);
                 return true;
 //           case R.id.menu_settings:
