@@ -1,9 +1,14 @@
 package com.example.don.othello;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.don.othello.DataBase.DatabaseOperations;
+import com.example.don.othello.DataBase.TableData;
 
 
 public class Scores extends ActionBarActivity {
@@ -35,5 +40,13 @@ public class Scores extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    // to receive data from the database
+    public Cursor GetScores (DatabaseOperations dop){
+        SQLiteDatabase SQ = dop.getReadableDatabase();
+        String [] columns ={TableData.TableInfo.COLUMN_NAME_PLAYERNAME, TableData.TableInfo.COLUMN_NAME_PLAYERSCORE};
+        Cursor cr = SQ.query(TableData.TableInfo.TABLE_NAME,columns,null,null,null,null, "playerScore ASC");
+        return cr;
+
     }
 }

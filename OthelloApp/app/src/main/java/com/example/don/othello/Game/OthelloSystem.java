@@ -2,6 +2,7 @@ package com.example.don.othello.Game;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -11,6 +12,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.don.othello.DataBase.DatabaseOperations;
 import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
@@ -21,6 +23,8 @@ import com.example.don.othello.R;
  */
 
 public class OthelloSystem extends ActionBarActivity{
+    //database variable
+    Context ctx = this;
 
     // new grid view
     private GridView gridView;
@@ -187,6 +191,14 @@ public class OthelloSystem extends ActionBarActivity{
                             })
                             .setIcon(android.R.drawable.star_big_on)
                             .show();
+                    //to set the winner into the database
+                    String na= winner.getName().toString();
+                    Integer sc =winner.getScore();
+
+                    DatabaseOperations DB = new DatabaseOperations(ctx);
+                    DB.putInformation(DB,na,sc);
+                    Toast.makeText(getBaseContext(),"Added to scores",Toast.LENGTH_LONG).show();
+                    finish();
                 } else {
                     turn(position);
                 }

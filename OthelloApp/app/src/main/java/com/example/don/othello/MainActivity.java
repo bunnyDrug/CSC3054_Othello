@@ -31,6 +31,8 @@ public class MainActivity extends ActionBarActivity {
 
         othelloSystem = new OthelloSystem(this, false);
         othelloSystem.startGame(topPlayer, bottomPlayer);
+
+
     }
 
     @Override

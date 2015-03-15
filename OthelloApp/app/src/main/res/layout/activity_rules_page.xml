@@ -24,19 +24,19 @@
             android:layout_height="416dp"
 
             android:id="@+id/fragOne">
-            android:id
+
             </fragment>
         <fragment
             android:layout_width="363dp"
             android:layout_height="416dp"
             android:id="@+id/fragTwo">
-            android:id
+
         </fragment>
         <fragment
             android:layout_width="363dp"
             android:layout_height="416dp"
             android:id="@+id/fragThree">
-            android:id
+
         </fragment>
 
 
@@ -56,7 +56,7 @@
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout2">
 
-        <group>
+
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="Rule 3"
             android:id="@+id/btnRuleThree" />
-        </group>
+
     </LinearLayout>
 
 </RelativeLayout>

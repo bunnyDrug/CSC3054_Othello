@@ -8,8 +8,12 @@ import android.view.MenuItem;
 import android.widget.*;
 import android.content.Intent;
 
+import com.example.don.othello.DataBase.DatabaseOperations;
+
 public class MenuPage extends ActionBarActivity {
     ImageButton btnstart;
+    private DatabaseOperations DatabaseOperations = null;
+
     // for the start of the game
     Button btnDots;// for the menu/*not made yet*/
 
@@ -17,6 +21,11 @@ public class MenuPage extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
+
+        DatabaseOperations = new DatabaseOperations(this);
+
+        DatabaseOperations.CreateDatabase();
+
 
         btnstart = (ImageButton) findViewById(R.id.startButton);
         btnstart.setOnClickListener(new OnClickListener() {
@@ -31,6 +40,8 @@ public class MenuPage extends ActionBarActivity {
                 intent.putExtra("topPlayer", topEditText.getText().toString());
                 intent.putExtra("bottomPlayer", bottomEditText.getText().toString());
                 startActivityForResult(intent, 0);
+
+
 
             }
 
@@ -59,7 +70,7 @@ public class MenuPage extends ActionBarActivity {
                 else
                     item.setChecked(true);
                 Intent intentRule = new Intent(this,RulesPage.class);
-                startActivityForResult(intentRule,0);
+                startActivity(intentRule);
                 return true;
 //           case R.id.menu_settings:
 //               if(item.isChecked())
