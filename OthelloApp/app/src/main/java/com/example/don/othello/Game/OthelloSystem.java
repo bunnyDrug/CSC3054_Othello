@@ -12,7 +12,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.don.othello.DataBase.DatabaseOperations;
+
 import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
@@ -23,8 +23,7 @@ import com.example.don.othello.R;
  */
 
 public class OthelloSystem extends ActionBarActivity{
-    //database variable
-    Context ctx = this;
+
 
     // new grid view
     private GridView gridView;

@@ -8,12 +8,12 @@ import android.view.MenuItem;
 import android.widget.*;
 import android.content.Intent;
 
-import com.example.don.othello.DataBase.DatabaseOperations;
-
+//import com.example.don.othello.DataBase.DatabaseOperations;
+//
 public class MenuPage extends ActionBarActivity {
     ImageButton btnstart;
-    private DatabaseOperations DatabaseOperations = null;
-
+//    private DatabaseOperations DatabaseOperations = null;
+//
     // for the start of the game
     Button btnDots;// for the menu/*not made yet*/
 
@@ -22,9 +22,9 @@ public class MenuPage extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
 
-        DatabaseOperations = new DatabaseOperations(this);
-
-        DatabaseOperations.CreateDatabase();
+//        DatabaseOperations = new DatabaseOperations(this);
+//
+//        DatabaseOperations.CreateDatabase();
 
 
         btnstart = (ImageButton) findViewById(R.id.startButton);
