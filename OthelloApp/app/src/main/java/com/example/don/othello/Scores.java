@@ -1,52 +1,71 @@
-package com.example.don.othello;
-
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.example.don.othello.DataBase.DatabaseOperations;
-import com.example.don.othello.DataBase.TableData;
-
-
-public class Scores extends ActionBarActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scores);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_scores, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    // to receive data from the database
-    public Cursor GetScores (DatabaseOperations dop){
-        SQLiteDatabase SQ = dop.getReadableDatabase();
-        String [] columns ={TableData.TableInfo.COLUMN_NAME_PLAYERNAME, TableData.TableInfo.COLUMN_NAME_PLAYERSCORE};
-        Cursor cr = SQ.query(TableData.TableInfo.TABLE_NAME,columns,null,null,null,null, "playerScore ASC");
-        return cr;
-
-    }
-}
+//package com.example.don.othello;
+//
+//import java.util.List;
+//import java.util.Random;
+//
+//import android.app.ListActivity;
+//import android.os.Bundle;
+//import android.view.Menu;
+//import android.view.MenuItem;
+//import android.view.View;
+//import android.widget.ArrayAdapter;
+//import android.widget.Button;
+//
+//import com.example.don.othello.DataBase.Score;
+//import com.example.don.othello.DataBase.ScoreDataSource;
+//
+//import java.util.List;
+//
+//
+//public class Scores extends ListActivity {
+//    private ScoreDataSource dataSource;
+//    Button btnView;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_scores);
+//
+//        dataSource = new ScoreDataSource(this);
+//
+//        dataSource.open();
+//        List<Score> values = dataSource.getAllScores();
+//        // to show in list view
+//        ArrayAdapter<Score>adapter = new ArrayAdapter<Score>(this,android.R.layout.simple_list_item_1,values);
+//        setListAdapter(adapter);
+//      btnView.findViewById(R.id.btnView);
+//
+//    }
+//    public void onClick(View view){
+//
+//        ArrayAdapter<Score> adapter = (ArrayAdapter<Score>) getListAdapter();
+//        Score score =null;
+//        switch (view.getId()){
+//            case R.id.add:
+//                String[] players = new String[]{"Don","joe","Tam"};
+//                int[] scores = new int[]{50,35,30};
+//
+//                int nextInt = new Random().nextInt(3);
+//
+//                dataSource.createScore(players[nextInt],scores[nextInt]);
+//                adapter.add(score);
+//                break;
+//            case R.id.delete:
+//
+//
+//        }
+//
+//
+//    }
+//
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_scores, menu);
+//        return true;
+//    }
+//
+//
+//}
+//
