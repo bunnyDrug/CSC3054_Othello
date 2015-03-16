@@ -192,13 +192,13 @@ public class OthelloSystem extends ActionBarActivity{
                             .setIcon(android.R.drawable.star_big_on)
                             .show();
                     //to set the winner into the database
-//                    String na= winner.getName().toString();
-//                    Integer sc =winner.getScore();
-//
-//                    DatabaseOperations DB = new DatabaseOperations(ctx);
-//                    DB.putInformation(DB,na,sc);
-//                    Toast.makeText(getBaseContext(),"Added to scores",Toast.LENGTH_LONG).show();
-//                    finish();
+                    String na= winner.getName().toString();
+                    Integer sc =winner.getScore();
+
+                    DatabaseOperations DB = new DatabaseOperations(ctx);
+                    DB.putInformation(DB,na,sc);
+                    Toast.makeText(getBaseContext(),"Added to scores",Toast.LENGTH_LONG).show();
+                    finish();
                 } else {
                     turn(position);
                 }
