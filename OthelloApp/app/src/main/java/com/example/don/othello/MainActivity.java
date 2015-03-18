@@ -1,5 +1,6 @@
 package com.example.don.othello;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -15,13 +16,29 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //TODO: remember to change this back to the main activity after testing
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game);
 
         // creates the game system that manages the game.
         // TODO: remove hard coded values
-        othelloSystem = new OthelloSystem(this, true);
-        othelloSystem.startGame("Top", "Bottom");
+
+        String topPlayer = "";
+        String bottomPlayer = "";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            topPlayer = extras.getString("topPlayer");
+            bottomPlayer = extras.getString("bottomPlayer");
+        }
+
+        new AlertDialog.Builder(this).setTitle("Game start")
+                         .setMessage("The game will begin as soon as the " +
+                                 "bottom player makes their move")
+                         .setIcon(android.R.drawable.ic_lock_idle_alarm)
+                         .show();
+
+        othelloSystem = new OthelloSystem(this, false);
+        othelloSystem.startGame(topPlayer, bottomPlayer);
+
+
     }
 
     @Override

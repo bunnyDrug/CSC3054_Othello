@@ -46,14 +46,14 @@
                     android:textStyle="bold" />
                 <TextView
                     android:id="@+id/white_player_score"
-                    android:text="Points:100"
+                    android:text="@string/label_white_score"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/white_player_timer"
-                    android:text="Time Remaining 25:00"
+                    android:text="@string/label_white_timer"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -110,14 +110,14 @@
 
             <TextView
                 android:id="@+id/black_player_score"
-                android:text="Points:100"
+                android:text="@string/label_black_score"
                 android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/black_player_timer"
-                android:text="Time Remaining 25:00"
+                android:text="@string/label_blackTimer"
                 android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

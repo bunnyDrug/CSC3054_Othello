@@ -1,6 +1,8 @@
 package com.example.don.othello.Game;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -20,9 +22,12 @@ import com.example.don.othello.R;
 
 public class OthelloSystem extends ActionBarActivity{
 
+
     // new grid view
     private GridView gridView;
     private GameBoard gameBoard;
+    private int blackDisk = R.drawable.black_disk;
+    private int whiteDisk = R.drawable.white_disk;
 
     // player variables
     private Player whitePlayer;
@@ -32,8 +37,11 @@ public class OthelloSystem extends ActionBarActivity{
     private boolean isTimedGame;
 
     // taken from MainActivity
-    // need this to access the xml layout for activity_main.xml
+    // need this to access the xml layout for activity_game.xml
     private Activity activity;
+
+    private Player loser;
+    private Player winner;
 
     /**
      * System constructor
@@ -45,14 +53,19 @@ public class OthelloSystem extends ActionBarActivity{
     }
 
     public void startGame(String whitePlayerName, String blackPlayerName) {
+
+        // player related methods
         createPlayers(whitePlayerName, blackPlayerName);
         printNamesToScreen();
+        setFirstTurn(blackPlayer);
+
+        // board setup
         createGameBoard();
         updateBoard(gameBoard.getBoard());
         setBoardColour();
+
         setOnClickListener();
     }
-
 
     /**
      * Creates two player objects required to play the game whitePlayer and
@@ -60,16 +73,25 @@ public class OthelloSystem extends ActionBarActivity{
      * handle its own scores and time limit.
      * Prints the player names to the display
      * The logic for these values is done in the System class.
-     * @param timer
-     * @param whitePlayerName
-     * @param blackPlayerName
+     * @param whitePlayerName the name for the white player
+     * @param blackPlayerName the name for the black player
      */
     private void createPlayers(String whitePlayerName, String blackPlayerName) {
         createWhitePlayer(whitePlayerName);
         createBlackPlayer(blackPlayerName);
-        currentPlayerTurn = blackPlayer;
     }
 
+    /**
+     * Sets the first turn to the black player.
+     * @param player
+     */
+    private void setFirstTurn(Player player) {
+        currentPlayerTurn = player;
+    }
+
+    /**
+     * Sets the relevant text views to display the player's chosen names.
+     */
     private void printNamesToScreen() {
         whitePlayer.printName();
         blackPlayer.printName();
@@ -84,8 +106,10 @@ public class OthelloSystem extends ActionBarActivity{
                 (TextView) activity.findViewById(R.id.black_player_timer);
 
         blackPlayer = new Player
-                (blackPlayerName, textViewBlackPlayerName, 0, textViewBlackPlayerScore, textViewBlackPlayerTimer);
+                (blackPlayerName, textViewBlackPlayerName,
+                        0, textViewBlackPlayerScore, textViewBlackPlayerTimer);
     }
+
 
     private void createWhitePlayer(String whitePlayerName) {
         TextView textViewWhitePlayerName =
@@ -96,14 +120,43 @@ public class OthelloSystem extends ActionBarActivity{
                 (TextView) activity.findViewById(R.id.white_player_timer);
 
         whitePlayer = new Player
-                (whitePlayerName, textViewWhitePlayerName, 0, textViewWhitePlayerScore, textViewWhitePlayerTimer);
+                (whitePlayerName, textViewWhitePlayerName,
+                        0, textViewWhitePlayerScore, textViewWhitePlayerTimer);
     }
 
     /**
-     * Creates the gameBoard object that stores the current game pieces
+     * Creates the gameBoard object that stores the current game pieces.
      */
     private void createGameBoard() {
         gameBoard = new GameBoard();
+    }
+
+    /**
+     * Creates a new grid view (8x8) and displays it on the screen.
+     * The grid features the starting positions of the game ready to go.
+     * <br>
+     * Pieces are displayed via images which are decided by the array parameter
+     * @param boardLayout a populated board array. The array should hold the
+     *                    current positions of all the counters on the board.
+     */
+    private void updateBoard(int[] boardLayout) {
+
+        // find the gridview and assign it to a gridView Object
+        gridView = (GridView) this.activity.findViewById(R.id.gridView1);
+
+        // new class
+        gridView.setAdapter(new ImageAdapter(activity, boardLayout));
+    }
+
+    /**
+     * this needs to change, maybe keep a themes class where final values
+     * are stored
+     * Not sure how themes work at this stage.
+     * TODO: implement themes
+     */
+    private void setBoardColour() {
+        // colour the grind with the 100 shade orange
+        gridView.setBackgroundColor(Color.parseColor("#FFE0B2"));
     }
 
     /**
@@ -119,83 +172,109 @@ public class OthelloSystem extends ActionBarActivity{
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick
                     (AdapterView<?> parent, View v, int position, long id) {
-                //Toast.makeText(activity.getBaseContext(), "" + position, Toast.LENGTH_SHORT).show();
+                //displayToast("" + position);
 
-                turn(position);
+
+                if (gameOver()) {
+                    new AlertDialog.Builder(activity)
+                            .setTitle(winner.getName() + " is the winner!")
+                            .setMessage("Congratulations " + winner.getName() +
+                                    ". Your final score was: "
+                                    + winner.getScore())
+                            .setPositiveButton("Awesome!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setIcon(android.R.drawable.star_big_on)
+                            .show();
+                    //to set the winner into the database
+//                    String na= winner.getName().toString();
+//                    Integer sc =winner.getScore();
+//
+//                    DatabaseOperations DB = new DatabaseOperations(ctx);
+//                    DB.putInformation(DB,na,sc);
+//                    Toast.makeText(getBaseContext(),"Added to scores",Toast.LENGTH_LONG).show();
+//                    finish();
+                } else {
+                    turn(position);
+                }
             }
         });
     }
 
-    /**
-     * this needs to change, maybe keep a themes class where final values
-     * are stored
-     * Not sure how themes work at this stage.
-     * TODO: implement themes
-     */
-    private void setBoardColour() {
-        // colour the grind with the 100 shade orange
-        gridView.setBackgroundColor(Color.parseColor("#FFE0B2"));
-    }
 
-    /**
-     * Creates a new grid view (8x8) and displays it on the screen.
-     * The grid features the starting positions of the game ready to go.
-     * <br>
-     * Pieces are displayed via images which are decided by the array parameter
-     * @param boardLayout
-     */
-    private void updateBoard(int[] boardLayout) {
 
-        // find the gridview and assign it to a gridView Object
-        gridView = (GridView) this.activity.findViewById(R.id.gridView1);
-
-        // new class
-        gridView.setAdapter(new ImageAdapter(activity, boardLayout));
-    }
-
-    // THIS SHOULD NOT STAY LIKE THIS - THE TURN METHOD IS ONLY FOR DECIDING
-    // THE TURN OF A USER - AT ITS CURRENT SITS IT IS DOING TOO MUCH.
-    // TODO: FIX THIS MESS AND BREAK UP INTO SMALLER METHODS
     private void turn(int tileTapped){
 
-        if (validMovePossible(tileTapped)) {
-            if (currentPlayerTurn == blackPlayer) {
-                gameBoard.placePiece(tileTapped, R.drawable.black_disk);
+        if (currentPlayerTurn == blackPlayer) {
+            if (Rules.canPlayerMakeAMove(gameBoard, blackDisk)) {
+                if (validMovePossible(tileTapped, blackDisk)) {
+                    gameBoard.placePiece(tileTapped, blackDisk);
+                    currentPlayerTurn = whitePlayer;
+
+                    if (isTimedGame) {
+                        whitePlayer.startTimer();
+                        blackPlayer.pauseTimer();
+                    }
+                }
+            } else {
+                new AlertDialog.Builder(activity)
+                        .setTitle(blackPlayer.getName() + " Cannot Move")
+                        .setMessage(blackPlayer.getName() + " has no moves. You turn is forfeit. Please pass the device to " + whitePlayer.getName())
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                            }
+                        })
+                        .setIcon(android.R.drawable.stat_sys_warning)
+                        .show();
                 currentPlayerTurn = whitePlayer;
+
                 if (isTimedGame) {
                     whitePlayer.startTimer();
                     blackPlayer.pauseTimer();
                 }
-            } else {
-                gameBoard.placePiece(tileTapped, R.drawable.white_disk);
+            }
+        }
+        else if (currentPlayerTurn == whitePlayer) {
+
+            if (Rules.canPlayerMakeAMove(gameBoard, whiteDisk)) {
+
+                if (validMovePossible(tileTapped, whiteDisk)) {
+                    gameBoard.placePiece(tileTapped, whiteDisk);
+                    currentPlayerTurn = blackPlayer;
+
+                    if (isTimedGame) {
+                        whitePlayer.pauseTimer();
+                        blackPlayer.startTimer();
+                    }
+                }
+            }
+            else {
+                new AlertDialog.Builder(activity)
+                        .setTitle(whitePlayer.getName() + " Cannot Move")
+                        .setMessage(whitePlayer.getName() + " has no moves. You turn is forfeit. Please pass the device to " + blackPlayer.getName())
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                            }
+                        })
+                        .setIcon(android.R.drawable.stat_sys_warning)
+                        .show();
                 currentPlayerTurn = blackPlayer;
+
                 if (isTimedGame) {
                     whitePlayer.pauseTimer();
                     blackPlayer.startTimer();
                 }
             }
-            updateBoard(gameBoard.getBoard());
         }
-        else {
-            displayToast("Pick another tile, this one is occupied");
-        }
-    }
-
-    /**
-     * Discovers all the valid moves that a player may take in his or her
-     * current turn. A players boardPieces is only allowed to be placed in any
-     * of the legal spaces for that turn.
-     *
-     * A possible overlay of movies that are valid would be nice
-     * @return boolean
-     */
-    private boolean calculateCurrentValidMoves() {
-
-        return true;
-    }
-
-    public void displayValidMoves() {
-
+        updateBoard(gameBoard.getBoard());
+        blackPlayer.setScore(gameBoard.countPieces(blackDisk));
+        whitePlayer.setScore(gameBoard.countPieces(whiteDisk));
+        blackPlayer.printScore();
+        whitePlayer.printScore();
     }
 
     /**
@@ -205,47 +284,59 @@ public class OthelloSystem extends ActionBarActivity{
      * @return boolean
      *
      */
-    //TODO: split this up into smaller methods.
-    //private boolean gameOver() {
-    //
-    //    // if player has run out of time
-    //    // if whitePlayer.timer == 0 or something
-    //
-    //    // if both players have NO valid moves.
-    //    if (!whitePlayer.hasValidMovesAvailable()
-    //            && !blackPlayer.hasValidMovesAvailable()){
-    //        return true;
-    //    }
-    //    return false;
-    //}
+    private boolean gameOver() {
 
-    public GridView getGridView() {
-        return gridView;
+        boolean gameOver = false;
+
+        if (whitePlayer.hasRunOutOfTime()) {
+            gameOver = true;
+            loser = whitePlayer;
+            winner = blackPlayer;
+        }
+        if (blackPlayer.hasRunOutOfTime()) {
+            gameOver = true;
+            loser = blackPlayer;
+            winner = whitePlayer;
+        }
+
+        if (!Rules.canPlayerMakeAMove(gameBoard, whiteDisk) &&
+                !Rules.canPlayerMakeAMove(gameBoard, blackDisk)) {
+            gameOver = true;
+            if (whitePlayer.getScore() > blackPlayer.getScore()) {
+                loser = blackPlayer;
+                winner = whitePlayer;
+            } else {
+                loser = whitePlayer;
+                winner = blackPlayer;
+            }
+        }
+        return gameOver;
     }
 
     /**
      * checks if the position tapped is valid and allows the game to progress
      * without error
-     *
-     * TODO: define rules for validity
      * in its current state it only checks for an occupied tile
-     * @param tileTapped
+     * @param positionTapped
      * @return
      */
-    private boolean validMovePossible(int tileTapped) {
-        //return calculateCurrentValidMoves();
+    private boolean validMovePossible(int positionTapped, int diskColour){
 
-        //TODO: split these up into either smaller methods or a static class
-        //***************************************************
-        // Othello RULES
+        boolean validMove = false;
+
+        if (Rules.validDiskPlacement(positionTapped, gameBoard, diskColour)) {
+            validMove = true;
+        } else {
+            displayToast("Invalid move, please try again");
+        }
 
 
-        // if there is a black or white disk in the tile return false
-        return gameBoard.getPiece(tileTapped) == R.drawable.placement_counter;
+        return validMove;
     }
 
-    private void displayToast(String message) {
-        Toast.makeText(activity.getBaseContext(), message, Toast.LENGTH_SHORT).show();
+    private void displayToast(String messageToDisplay) {
+        Toast.makeText(activity.getBaseContext(), messageToDisplay,
+                Toast.LENGTH_SHORT).show();
     }
 }
 

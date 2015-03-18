@@ -5,10 +5,10 @@
             <!-- inherit from the material theme -->
                 <!-- Main theme colors -->
                 <!--   your app branding color for the app bar -->
-                <item name="colorPrimary">@color/.500_orange</item>
+                <item name="colorPrimary">@color/colour_500_orange</item>
                 <!--   darker variant for the status bar and contextual app bars -->
-                <item name="colorPrimaryDark">@color/.700_orange</item>
+                <item name="colorPrimaryDark">@color/colour_700_orange</item>
                 <!--   theme UI controls like checkboxes and text fields -->
-                <item name="colorAccent">@color/accent_blue</item>
+                <item name="colorAccent">@color/colour_accent_blue</item>
             </style>
 </resources>

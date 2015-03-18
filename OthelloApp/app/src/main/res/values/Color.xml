@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name=".500_orange">#FF9800</color>
-    <color name=".100_orange">#FFE0B2</color>
-    <color name=".700_orange">#F57C00</color>
-    <color name="accent_blue">#2196F3</color>
+    <color name="colour_500_orange">#FF9800</color>
+    <color name="colour_100_orange">#FFE0B2</color>
+    <color name="colour_700_orange">#F57C00</color>
+    <color name="colour_accent_blue">#2196F3</color>
 </resources>
