@@ -22,25 +22,24 @@
         <fragment
             android:layout_width="363dp"
             android:layout_height="416dp"
-
-            android:id="@+id/fragOne">
-
+            android:id="@+id/fragOne"
+            android:name="com.example.don.othello.Frags.FragRule1"
+            tools:layout="@layout/frag_one_layout">
             </fragment>
         <fragment
             android:layout_width="363dp"
             android:layout_height="416dp"
-            android:id="@+id/fragTwo">
-
+            android:id="@+id/fragTwo"
+            android:name="com.example.don.othello.Frags.FragRule2"
+            tools:layout="@layout/frag_two_layout">
         </fragment>
         <fragment
             android:layout_width="363dp"
             android:layout_height="416dp"
-            android:id="@+id/fragThree">
-
+            android:id="@+id/fragThree"
+            android:name="com.example.don.othello.Frags.FragRule3"
+            tools:layout="@layout/frag_three_layout">
         </fragment>
-
-
-
 
 
     </LinearLayout>
@@ -55,7 +54,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout2">
-
 
         <Button
             style="?android:attr/buttonStyleSmall"

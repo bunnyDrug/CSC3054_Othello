@@ -12,7 +12,7 @@ import com.example.don.othello.R;
  * Created by Chris on 12/03/2015.
  */
 public class FragRule2 extends Fragment {
-    public View OnCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_two_layout, container, false);
         return v;

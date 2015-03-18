@@ -110,14 +110,24 @@ class Player {
         textViewName.setText(name);
     }
 
-    public void setColour() { textViewName.setTextColor(Color.RED);}
+    public void setTurnColour() {
+        //accent colour
+        //TODO: refactor this
+        textViewName.setTextColor(Color.parseColor("#2196F3"));
+    }
+
+    public void setNotTurnColour() {
+        //TODO: refactor this
+        // lighter colour
+        textViewName.setTextColor(Color.parseColor("#FFE0B2"));
+    }
 
     public void setScore(int score) {
         this.score = score;
     }
 
     public void printScore() {
-        textViewScore.setText(score + "");
+        textViewScore.setText("Current Score: " + score);
     }
 
     public int getScore() {

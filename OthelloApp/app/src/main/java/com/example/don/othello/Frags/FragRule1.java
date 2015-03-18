@@ -15,9 +15,10 @@ import com.example.don.othello.R;
  */
 public class FragRule1 extends Fragment {
 
-    public View OnCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.frag_one_layout,container,false);
         return v;
     }
 }
+

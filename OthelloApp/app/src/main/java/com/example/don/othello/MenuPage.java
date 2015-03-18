@@ -1,19 +1,25 @@
 package com.example.don.othello;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.*;
-import android.view.View.OnClickListener;
-import android.view.MenuItem;
-import android.widget.*;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 //import com.example.don.othello.DataBase.DatabaseOperations;
 //
 public class MenuPage extends ActionBarActivity {
-    ImageButton btnstart;
 //    private DatabaseOperations DatabaseOperations = null;
 //
+
+    Button btnStart;
+
     // for the start of the game
     Button btnDots;// for the menu/*not made yet*/
 
@@ -27,22 +33,27 @@ public class MenuPage extends ActionBarActivity {
 //        DatabaseOperations.CreateDatabase();
 
 
-        btnstart = (ImageButton) findViewById(R.id.startButton);
-        btnstart.setOnClickListener(new OnClickListener() {
+        btnStart = (Button) findViewById(R.id.startButton);
+        btnStart.setOnClickListener(new OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
 
-                // get the edit texts from the menu page
+                // get the input fields from the menu page
                 EditText topEditText = (EditText) findViewById(R.id.player1Edit);
                 EditText bottomEditText = (EditText) findViewById(R.id.player2Edit);
-                // add them into two extras used to pass stuff between activities
-                intent.putExtra("topPlayer", topEditText.getText().toString());
-                intent.putExtra("bottomPlayer", bottomEditText.getText().toString());
+
+
+                if(TextUtils.isEmpty(topEditText.getText()) || (TextUtils.isEmpty(bottomEditText.getText()))){
+                    Toast.makeText(getBaseContext(), "Please enter your name", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    intent.putExtra("topPlayer", topEditText.getText().toString());
+                    intent.putExtra("bottomPlayer", bottomEditText.getText().toString());
+                }
+
                 startActivityForResult(intent, 0);
-
-
-
             }
 
 
@@ -57,12 +68,21 @@ public class MenuPage extends ActionBarActivity {
         return true;
     }
 
+    //@Override
+    //public boolean onOptionsItemSelected(MenuItem item) {
+    //    // Handle action bar item clicks here. The action bar will
+    //    // automatically handle clicks on the Home/Up button, so long
+    //    // as you specify a parent activity in AndroidManifest.xml.
+    //
+    //
+    //}
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-
+        // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_Rules:
                 if (item.isChecked())
@@ -71,22 +91,12 @@ public class MenuPage extends ActionBarActivity {
                     item.setChecked(true);
                 Intent intentRule = new Intent(this,RulesPage.class);
                 startActivity(intentRule);
-                return true;
-//           case R.id.menu_settings:
-//               if(item.isChecked())
-//                   item.setChecked(false);
-//               else
-//                   item.setChecked(true);
-//               Intent intentSetting = new Intent(MenuPage.this,RulesPage.class);
-//               return true;
 
-//           case R.id.menu_scores:
-//               if(item.isChecked())
-//                   item.setChecked(false);
-//               else
-//                   item.setChecked(true);
-//               Intent intentScore = new Intent(MenuPage.this,RulesPage.class);
-//               return true;
+                return true;
+            case R.id.menu_scores:
+                Toast.makeText(this, "Tapped scores",
+                        Toast.LENGTH_SHORT).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

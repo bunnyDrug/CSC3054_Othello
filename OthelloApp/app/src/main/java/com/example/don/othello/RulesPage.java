@@ -20,26 +20,42 @@ Button btnRule1,btnRule2,btnRule3;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules_page);
 
-        btnRule1.findViewById(R.id.btnRuleOne);
-        btnRule2.findViewById(R.id.btnRuleTwo);
-        btnRule3.findViewById(R.id.btnRuleThree);
+        btnRule1 = (Button) findViewById(R.id.btnRuleOne);
+        btnRule2 = (Button) findViewById(R.id.btnRuleTwo);
+        btnRule3 = (Button) findViewById(R.id.btnRuleThree);
 
-        btnRule1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager FM =getFragmentManager();
-                FragmentTransaction FT = FM.beginTransaction();
-                FragRule1 F1 = new FragRule1();
-                FT.add(R.id.fragOne,F1);
-                FT.addToBackStack("F1");
-                FT.commit();
-            }
-        });
+
+        FragRule1 F1 = new FragRule1();
+
+
+        //
+        //btnRule1.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //
+        //
+        //
+        //        FragmentManager FM =getFragmentManager();
+        //        FM.beginTransaction()
+        //                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+        //                .show(F1)
+        //        //FT.add(R.id.fragOne,F1);
+        //        //FT.addToBackStack("F1");
+        //                .commit();
+        //
+        //
+        //        //FragmentManager fm = getFragmentManager();
+        //        //fm.beginTransaction()
+        //        //        .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+        //        //        .show(somefrag)
+        //        //        .commit();
+        //    }
+        //});
 
         btnRule2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager FM =getFragmentManager();
+                FragmentManager FM = getFragmentManager();
                 FragmentTransaction FT = FM.beginTransaction();
                 FragRule2 F2 = new FragRule2();
                 FT.add(R.id.fragTwo,F2);
@@ -59,6 +75,8 @@ Button btnRule1,btnRule2,btnRule3;
                 FT.commit();
             }
         });
+
+
     }
 
 
