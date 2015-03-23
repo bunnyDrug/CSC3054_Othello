@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+
+import com.example.don.othello.GameDataBase.DBAdapter;
+import com.example.don.othello.HighScores;
 import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
@@ -23,7 +26,8 @@ import com.example.don.othello.R;
  */
 
 public class OthelloSystem extends ActionBarActivity{
-
+    // database variables
+    DBAdapter myDb;
 
     // new grid view
     private GridView gridView;
@@ -178,29 +182,30 @@ public class OthelloSystem extends ActionBarActivity{
 
 
                 if (gameOver()) {
+
                     new AlertDialog.Builder(activity)
                             .setTitle(winner.getName() + " is the winner!")
                             .setMessage("Congratulations " + winner.getName() +
                                     ". Your final score was: "
                                     + winner.getScore())
+
                             .setPositiveButton("Awesome!", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // continue with delete
+
                                 }
                             })
                             .setIcon(android.R.drawable.star_big_on)
                             .show();
-                    //to set the winner into the database
-//                    String na= winner.getName().toString();
-//                    Integer sc =winner.getScore();
-//
-//                    DatabaseOperations DB = new DatabaseOperations(ctx);
-//                    DB.putInformation(DB,na,sc);
-//                    Toast.makeText(getBaseContext(),"Added to scores",Toast.LENGTH_LONG).show();
-//                    finish();
+
+
+
                 } else {
                     turn(position);
                 }
+                //need to figure a way to get this called at the end of a game
+                //insertWinner();
+
             }
         });
     }
@@ -311,7 +316,9 @@ public class OthelloSystem extends ActionBarActivity{
                 loser = whitePlayer;
                 winner = blackPlayer;
             }
+
         }
+
         return gameOver;
     }
 
@@ -340,5 +347,29 @@ public class OthelloSystem extends ActionBarActivity{
         Toast.makeText(activity.getBaseContext(), messageToDisplay,
                 Toast.LENGTH_SHORT).show();
     }
+
+    // controls database below
+    public void insertWinner(){
+        gameOver();
+        //open database connection
+        openDB();
+        String name = winner.getName().toString();
+        int score = winner.getScore();
+        //to insert into database
+        myDb.insertRow(name,score);
+        closeDB();
+    }
+
+
+    //to open the database
+    private void openDB(){
+        myDb = new DBAdapter(this);
+        myDb.open();
+    }
+    private void closeDB(){
+        myDb.close();
+    }
+
+
 }
 

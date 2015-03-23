@@ -74,6 +74,13 @@
             android:maxLength="15"
             android:gravity="right"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scores"
+            android:id="@+id/btnTest" />
+
+
     </LinearLayout>
 
 </LinearLayout>

@@ -27,23 +27,48 @@
         <activity
             android:name=".MenuPage"
             android:label="@string/title_activity_menu_page" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".RulesPage"
+            android:label="@string/title_activity_rules_page" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".SpalshScreen.Othello"
+            android:label="@string/title_activity_othello" >
+
+        </activity>
+        <activity
+            android:name=".Test"
+            android:label="@string/title_activity_test" >
+        </activity>
+        <activity
+            android:name=".HighScores"
+            android:label="@string/title_activity_high_scores" >
+        </activity>
+        <activity
+            android:name=".SpalshScreen.SplashScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Othello"
+            android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".RulesPage"
-            android:label="@string/title_activity_rules_page" >
-        </activity>
-        <activity
-            android:name=".SpalshScreen.Othello"
-            android:label="@string/title_activity_othello" >
-        </activity>
-        <activity
-            android:name=".Scores"
-            android:label="@string/title_activity_scores" >
         </activity>
     </application>
 

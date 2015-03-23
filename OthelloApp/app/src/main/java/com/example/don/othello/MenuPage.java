@@ -8,23 +8,33 @@ import android.view.MenuItem;
 import android.widget.*;
 import android.content.Intent;
 
+import com.example.don.othello.GameDataBase.DBAdapter;
+
 //import com.example.don.othello.DataBase.DatabaseOperations;
 //
 public class MenuPage extends ActionBarActivity {
     ImageButton btnstart;
-//    private DatabaseOperations DatabaseOperations = null;
-//
+    DBAdapter myDB;
     // for the start of the game
-    Button btnDots;// for the menu/*not made yet*/
+    Button btnTest;// for the menu/*not made yet*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
+        //keeps breaking on the open of the db
+        openDB();
+        preloadValues();
+        //this button is a test, to be removed later
+        btnTest = (Button) findViewById(R.id.btnTest);
+        btnTest.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent test = new Intent(v.getContext(),HighScores.class);
+                startActivityForResult(test, 0);
 
-//        DatabaseOperations = new DatabaseOperations(this);
-//
-//        DatabaseOperations.CreateDatabase();
+            }
+        } );
 
 
         btnstart = (ImageButton) findViewById(R.id.startButton);
@@ -64,6 +74,7 @@ public class MenuPage extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch (item.getItemId()) {
+
             case R.id.menu_Rules:
                 if (item.isChecked())
                     item.setChecked(false);
@@ -80,15 +91,26 @@ public class MenuPage extends ActionBarActivity {
 //               Intent intentSetting = new Intent(MenuPage.this,RulesPage.class);
 //               return true;
 
-//           case R.id.menu_scores:
-//               if(item.isChecked())
-//                   item.setChecked(false);
-//               else
-//                   item.setChecked(true);
-//               Intent intentScore = new Intent(MenuPage.this,RulesPage.class);
-//               return true;
+           case R.id.menu_scores:
+               Intent intent = new Intent(this, HighScores.class);
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+    }
+
+    //database controls
+    protected void onRestart(){
+        super.onRestart();
+    }
+    private void openDB(){
+        myDB = new DBAdapter(this);
+        myDB.open();
+    }
+    private void preloadValues(){
+        myDB.insertRow("Don",30);
+        myDB.insertRow("james",20);
+
+
     }
 }

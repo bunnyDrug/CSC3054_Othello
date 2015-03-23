@@ -1,43 +1,25 @@
-package com.example.don.othello.SpalshScreen;
+package com.example.don.othello;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 
-import com.example.don.othello.MenuPage;
 import com.example.don.othello.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class Othello extends ActionBarActivity {
-
+public class Test extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_othello);
-        final Intent intent = new Intent(this, MenuPage.class);
-
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                startActivity(intent);
-            }
-        };
-        Timer splash = new Timer();
-        splash.schedule(task,7000);
-
+        setContentView(R.layout.activity_test);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_othello, menu);
+        getMenuInflater().inflate(R.menu.menu_test, menu);
         return true;
     }
 
