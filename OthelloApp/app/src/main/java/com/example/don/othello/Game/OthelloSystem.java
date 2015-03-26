@@ -2,7 +2,6 @@ package com.example.don.othello.Game;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -12,10 +11,13 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 
 
 import com.example.don.othello.GameDataBase.DBAdapter;
 import com.example.don.othello.HighScores;
+=======
+>>>>>>> origin/master
 import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
@@ -43,7 +45,7 @@ public class OthelloSystem extends ActionBarActivity{
     private boolean isTimedGame;
 
     // taken from MainActivity
-    // need this to access the xml layout for activity_main.xml
+    // need this to access the xml layout for activity_game.xml
     private Activity activity;
 
     private Player loser;

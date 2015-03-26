@@ -9,7 +9,7 @@
     <string name="title_activity_menu">Menu</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_menu_page">MenuPage</string>
+    <string name="title_activity_menu_page">Main Menu</string>
     <string name="title_activity_rules_page">RulesPage</string>
     <string name="rule1">An othello game always starts of in this position shown, with two discs of each colour
     intersecting each other diagonally. The top right disc is always the black one from either players sitting view. </string>
@@ -19,16 +19,20 @@
     <string name="rule3"></string>
     <string name="rule4"></string>
     <string name="title_activity_othello">Othello</string>
-    <string name="label_blackTimer">Timer</string>
-    <string name="label_white_timer">Timer</string>
-    <string name="label_white_score">Score</string>
-    <string name="label_black_score">Score</string>
+    <string name="label_blackTimer"></string>
+    <string name="label_white_timer"></string>
+    <string name="label_white_score">Current Score: 2</string>
+    <string name="label_black_score">Current Score: 2</string>
     <string name="title_activity_scores">Scores</string>
+<<<<<<< HEAD
     <string name="title_activity_test">Test</string>
     <string name="title_activity_high_scores">HighScores</string>
 
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+=======
+    <string name="txt_main_menu">Welcome to Othello</string>
+>>>>>>> origin/master
 
 </resources>

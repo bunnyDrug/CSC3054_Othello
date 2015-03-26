@@ -1,78 +1,82 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
+    android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.don.othello.Game.Menu"
     android:layout_weight="1"
     android:orientation="vertical"
-    android:baselineAligned="false"
-    android:backgroundTint="@color/.500_orange">
+    android:layout_gravity="center_vertical"
+    android:baselineAligned="false">
 
 
+    <TextView
+        android:padding="@dimen/abc_text_size_display_2_material"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/txt_main_menu"
+        android:id="@+id/textView4"
+        android:textSize="32sp"
+        android:textColor="@color/colour_500_orange"/>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height = "0.5dp"
-        android:layout_weight="0.5"
         android:orientation="horizontal"
-        android:backgroundTint="@color/.100_orange"
-        android:background="@color/.100_orange"
-        >
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Player1 Name:"/>
-
+            android:text="Player1:"
+            android:textColor="@color/colour_700_orange"
+            android:textSize="18sp"
+            />
 
         <EditText
             android:id="@+id/player1Edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLength="15"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textColor="@color/colour_accent_blue"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation = "horizontal"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:padding="5dp"
+        android:layout_margin="10dp">
+
+
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:layout_gravity="center_vertical"
+            android:text="Player2:"
+            android:textColor="@color/colour_700_orange"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/player2Edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:maxLength="15"
-             />
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textColor="@color/colour_accent_blue"
+            />
 
 
         <!--image button of the plus sign to create new game-->
 
-
-    </LinearLayout>
-
-    <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/startButton"
-        android:layout_gravity="center_horizontal"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="visible"
-        android:src="@drawable/button" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height = "0.5dp"
-        android:layout_weight="0.46"
-        android:orientation="horizontal"
-        android:backgroundTint="@color/.100_orange"
-        android:background="@color/.100_orange">
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="Player2 Name:"/>
-
-        <EditText
-            android:id="@+id/player2Edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLength="15"
-            android:gravity="right"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -82,5 +86,15 @@
 
 
     </LinearLayout>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Game"
+            android:id="@+id/startButton"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colour_accent_blue"
+        />
+
 
 </LinearLayout>
