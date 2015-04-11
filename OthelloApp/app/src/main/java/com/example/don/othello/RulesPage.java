@@ -2,6 +2,7 @@ package com.example.don.othello;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -21,60 +22,61 @@ Button btnRule1,btnRule2,btnRule3;
         setContentView(R.layout.activity_rules_page);
 
         btnRule1 = (Button) findViewById(R.id.btnRuleOne);
-        btnRule2 = (Button) findViewById(R.id.btnRuleTwo);
-        btnRule3 = (Button) findViewById(R.id.btnRuleThree);
+       // btnRule2 = (Button) findViewById(R.id.btnRuleTwo);
+       // btnRule3 = (Button) findViewById(R.id.btnRuleThree);
 
 
-        FragRule1 F1 = new FragRule1();
+        //FragRule1 F1 = new FragRule1();
+
+                    btnRule1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(RulesPage.this, RuleTwo.class);
+                        startActivity(intent);
+                }
+            });
+
+        //Attempt of fragment objects to make the rules, got confusing so that i just made two other activities for the rules
+
+//        btnRule1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                FragmentManager FM = getFragmentManager();
+////                FragmentTransaction FT = FM.beginTransaction();
+////                FragRule1 F1 = new FragRule1();
+////                FT.add(R.id.fragOne,F1);
+////                FT.addToBackStack("F1");
+////                FT.commit();
+//
+//
+//            }
+//        });
 
 
-        //
-        //btnRule1.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //
-        //
-        //
-        //        FragmentManager FM =getFragmentManager();
-        //        FM.beginTransaction()
-        //                .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-        //                .show(F1)
-        //        //FT.add(R.id.fragOne,F1);
-        //        //FT.addToBackStack("F1");
-        //                .commit();
-        //
-        //
-        //        //FragmentManager fm = getFragmentManager();
-        //        //fm.beginTransaction()
-        //        //        .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-        //        //        .show(somefrag)
-        //        //        .commit();
-        //    }
-        //});
-
-        btnRule2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager FM = getFragmentManager();
-                FragmentTransaction FT = FM.beginTransaction();
-                FragRule2 F2 = new FragRule2();
-                FT.add(R.id.fragTwo,F2);
-                FT.addToBackStack("F2");
-                FT.commit();
-            }
-        });
-
-        btnRule3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager FM =getFragmentManager();
-                FragmentTransaction FT = FM.beginTransaction();
-                FragRule3 F3 = new FragRule3();
-                FT.add(R.id.fragThree,F3);
-                FT.addToBackStack("F3");
-                FT.commit();
-            }
-        });
+//        btnRule2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                FragmentManager FM = getFragmentManager();
+//                FragmentTransaction FT = FM.beginTransaction();
+//                FragRule2 F2 = new FragRule2();
+//                FT.add(R.id.fragTwo,F2);
+//                FT.addToBackStack("F2");
+//                FT.commit();
+//            }
+//        });
+//
+//        btnRule3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FragmentManager FM =getFragmentManager();
+//                FragmentTransaction FT = FM.beginTransaction();
+//                FragRule3 F3 = new FragRule3();
+//                FT.add(R.id.fragThree,F3);
+//                FT.addToBackStack("F3");
+//                FT.commit();
+//            }
+//        });
 
 
     }

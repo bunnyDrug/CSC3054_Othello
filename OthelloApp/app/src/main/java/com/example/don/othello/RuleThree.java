@@ -1,49 +1,39 @@
 package com.example.don.othello;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import android.widget.TextView;
-
-
-import com.example.don.othello.GameDataBase.DBHelper;
-import com.example.don.othello.GameDataBase.score;
+import android.widget.Button;
 
 
-
-
-public class HighScores extends ActionBarActivity {
-    //variables
-    DBHelper DB;
-    TextView display;
-
+public class RuleThree extends ActionBarActivity {
+        Button pre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_high_scores);
+        setContentView(R.layout.activity_rule_three);
+        pre.findViewById(R.id.btnPre3);
+
+        pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RuleThree.this, RuleTwo.class);
+                startActivity(intent);
+            }
+        });
 
 
-        display.findViewById(R.id.textScores);
-        //database controls
-
-
-        //rawinsert();
-       printDatabase();
 
     }
-    public void viewButtonClicked(View view){
-        String dbString = DB.databaseToString();
-        display.setText(dbString);
-        printDatabase ();
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_high_scores, menu);
+        getMenuInflater().inflate(R.menu.menu_rule_three, menu);
         return true;
     }
 
@@ -61,18 +51,4 @@ public class HighScores extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-public void printDatabase (){
-    String dbString = DB.databaseToString();
-    display.setText(dbString);
-}
-//    public void rawinsert(){
-//        score player1 = new score("jon",30);
-//        score player2 = new score("jayjay",40);
-//        DB.add(player1);
-//        DB.add(player2);
-//    }
-
-
 }

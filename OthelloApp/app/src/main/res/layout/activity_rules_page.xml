@@ -20,26 +20,14 @@
 
 
         <fragment
-            android:layout_width="363dp"
+            android:layout_width="399dp"
             android:layout_height="416dp"
             android:id="@+id/fragOne"
             android:name="com.example.don.othello.Frags.FragRule1"
             tools:layout="@layout/frag_one_layout">
             </fragment>
-        <fragment
-            android:layout_width="363dp"
-            android:layout_height="416dp"
-            android:id="@+id/fragTwo"
-            android:name="com.example.don.othello.Frags.FragRule2"
-            tools:layout="@layout/frag_two_layout">
-        </fragment>
-        <fragment
-            android:layout_width="363dp"
-            android:layout_height="416dp"
-            android:id="@+id/fragThree"
-            android:name="com.example.don.othello.Frags.FragRule3"
-            tools:layout="@layout/frag_three_layout">
-        </fragment>
+
+
 
 
     </LinearLayout>
@@ -59,22 +47,22 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rule 1"
+            android:text="Next"
             android:id="@+id/btnRuleOne" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rule 2"
-            android:id="@+id/btnRuleTwo" />
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Rule 2"-->
+            <!--android:id="@+id/btnRuleTwo" />-->
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rule 3"
-            android:id="@+id/btnRuleThree" />
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Rule 3"-->
+            <!--android:id="@+id/btnRuleThree" />-->
 
     </LinearLayout>
 

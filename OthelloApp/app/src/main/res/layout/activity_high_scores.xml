@@ -7,8 +7,42 @@
     tools:context="com.example.don.othello.HighScores">
 
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listViewScores" />
+
+
+
+
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="View Scores"-->
+        <!--android:id="@+id/btnViewScores"-->
+        <!--android:onClick="viewButtonClicked" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Post To Facebook"-->
+        <!--android:id="@+id/btnPostToFb"-->
+
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_marginBottom="42dp" />-->
+
+    <!--<TableLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/btnViewScores"-->
+        <!--android:layout_toRightOf="@+id/textScores"-->
+        <!--android:layout_toEndOf="@+id/textScores"-->
+        <!--android:layout_marginTop="43dp">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textScores" />-->
+        <!--</TableLayout>-->
+
+
 </RelativeLayout>

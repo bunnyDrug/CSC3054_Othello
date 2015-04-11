@@ -11,13 +11,14 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
 
 
-import com.example.don.othello.GameDataBase.DBAdapter;
+
+//import com.example.don.othello.GameDataBase.DBAdapter;
+import com.example.don.othello.GameDataBase.DBHelper;
+import com.example.don.othello.GameDataBase.score;
 import com.example.don.othello.HighScores;
-=======
->>>>>>> origin/master
+
 import com.example.don.othello.ImageAdapter;
 import com.example.don.othello.R;
 
@@ -29,7 +30,8 @@ import com.example.don.othello.R;
 
 public class OthelloSystem extends ActionBarActivity{
     // database variables
-    DBAdapter myDb;
+    //DBAdapter myDb;
+    DBHelper db;
 
     // new grid view
     private GridView gridView;
@@ -194,6 +196,11 @@ public class OthelloSystem extends ActionBarActivity{
                             .setPositiveButton("Awesome!", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // continue with delete
+                                    String pla = winner.getName();
+                                    //int sco = winner.getScore();
+                                    score add = new score(pla);
+
+                                    db.add(add);
 
                                 }
                             })
@@ -205,8 +212,6 @@ public class OthelloSystem extends ActionBarActivity{
                 } else {
                     turn(position);
                 }
-                //need to figure a way to get this called at the end of a game
-                //insertWinner();
 
             }
         });
@@ -320,6 +325,8 @@ public class OthelloSystem extends ActionBarActivity{
             }
 
         }
+        //try to database add method here
+
 
         return gameOver;
     }
@@ -348,28 +355,6 @@ public class OthelloSystem extends ActionBarActivity{
     private void displayToast(String messageToDisplay) {
         Toast.makeText(activity.getBaseContext(), messageToDisplay,
                 Toast.LENGTH_SHORT).show();
-    }
-
-    // controls database below
-    public void insertWinner(){
-        gameOver();
-        //open database connection
-        openDB();
-        String name = winner.getName().toString();
-        int score = winner.getScore();
-        //to insert into database
-        myDb.insertRow(name,score);
-        closeDB();
-    }
-
-
-    //to open the database
-    private void openDB(){
-        myDb = new DBAdapter(this);
-        myDb.open();
-    }
-    private void closeDB(){
-        myDb.close();
     }
 
 

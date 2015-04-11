@@ -12,42 +12,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.don.othello.GameDataBase.DBAdapter;
+import com.example.don.othello.GameDataBase.DBHelper;
+import com.example.don.othello.GameDataBase.score;
+import com.facebook.FacebookSdk;
 
-//import com.example.don.othello.DataBase.DatabaseOperations;
-//
+
 public class MenuPage extends ActionBarActivity {
-<<<<<<< HEAD
-    ImageButton btnstart;
-    DBAdapter myDB;
-=======
-//    private DatabaseOperations DatabaseOperations = null;
-//
+    DBHelper DB;
 
     Button btnStart;
 
->>>>>>> origin/master
+
     // for the start of the game
-    Button btnTest;// for the menu/*not made yet*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
-        //keeps breaking on the open of the db
-        openDB();
-        preloadValues();
-        //this button is a test, to be removed later
-        btnTest = (Button) findViewById(R.id.btnTest);
-        btnTest.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent test = new Intent(v.getContext(),HighScores.class);
-                startActivityForResult(test, 0);
+        //this is needed to setup facebook
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        //this is what creates the database
+        DB = new DBHelper(this,null,null,1);
 
-            }
-        } );
-
+        //printDatabase();
 
         btnStart = (Button) findViewById(R.id.startButton);
         btnStart.setOnClickListener(new OnClickListener() {
@@ -110,11 +98,11 @@ public class MenuPage extends ActionBarActivity {
                 startActivity(intentRule);
 
                 return true;
-            case R.id.menu_scores:
-                Toast.makeText(this, "Tapped scores",
-                        Toast.LENGTH_SHORT).show();
-                return true;
-<<<<<<< HEAD
+//            case R.id.menu_scores:
+//                Toast.makeText(this, "Tapped scores",
+//                        Toast.LENGTH_SHORT).show();
+//                return true;
+
 //           case R.id.menu_settings:
 //               if(item.isChecked())
 //                   item.setChecked(false);
@@ -124,27 +112,14 @@ public class MenuPage extends ActionBarActivity {
 //               return true;
 
            case R.id.menu_scores:
-               Intent intent = new Intent(this, HighScores.class);
-=======
->>>>>>> origin/master
+
+               Intent intent = new Intent(MenuPage.this, ViewScores.class);
+               startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }
 
     }
 
-    //database controls
-    protected void onRestart(){
-        super.onRestart();
-    }
-    private void openDB(){
-        myDB = new DBAdapter(this);
-        myDB.open();
-    }
-    private void preloadValues(){
-        myDB.insertRow("Don",30);
-        myDB.insertRow("james",20);
 
-
-    }
 }

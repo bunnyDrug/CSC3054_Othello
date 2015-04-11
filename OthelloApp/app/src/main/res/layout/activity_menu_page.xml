@@ -78,11 +78,7 @@
         <!--image button of the plus sign to create new game-->
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="scores"
-            android:id="@+id/btnTest" />
+
 
 
     </LinearLayout>
