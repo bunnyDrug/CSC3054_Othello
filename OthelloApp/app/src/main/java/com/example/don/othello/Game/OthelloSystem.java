@@ -196,10 +196,11 @@ public class OthelloSystem extends ActionBarActivity{
                             .setPositiveButton("Awesome!", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     // continue with delete
-                                    String pla = winner.getName();
-                                    //int sco = winner.getScore();
-                                    score add = new score(pla);
 
+                                    //this is to add the player who won to the database
+                                    String pla = winner.getName();
+                                    int sco = winner.getScore();
+                                    score add = new score(pla,sco);
                                     db.add(add);
 
                                 }
@@ -325,7 +326,7 @@ public class OthelloSystem extends ActionBarActivity{
             }
 
         }
-        //try to database add method here
+
 
 
         return gameOver;

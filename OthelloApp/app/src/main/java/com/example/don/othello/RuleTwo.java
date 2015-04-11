@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.view.View.OnClickListener;
 
 
 public class RuleTwo extends ActionBarActivity {
@@ -17,10 +18,10 @@ public class RuleTwo extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rule_two);
 
-        btnnex.findViewById(R.id.btnNex);
-        btnpre.findViewById(R.id.btnPre);
+        btnnex =(Button)findViewById(R.id.btnNex);
+        btnpre=(Button)findViewById(R.id.btnPre);
 
-        btnnex.setOnClickListener(new View.OnClickListener() {
+        btnnex.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RuleTwo.this, RuleThree.class);
@@ -28,7 +29,7 @@ public class RuleTwo extends ActionBarActivity {
             }
         });
 
-        btnpre.setOnClickListener(new View.OnClickListener() {
+        btnpre.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RuleTwo.this, RulesPage.class);

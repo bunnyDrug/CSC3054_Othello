@@ -8,7 +8,7 @@ public class score {
     int _score ;
     int _id;
     //empty constructor
-    public score(){}
+   // public score(){}
 
     //constructor
     public score(String player, int score ){

@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.view.View.OnClickListener;
 
 import com.example.don.othello.Frags.FragRule1;
 import com.example.don.othello.Frags.FragRule2;
@@ -28,7 +29,7 @@ Button btnRule1,btnRule2,btnRule3;
 
         //FragRule1 F1 = new FragRule1();
 
-                    btnRule1.setOnClickListener(new View.OnClickListener() {
+                    btnRule1.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(RulesPage.this, RuleTwo.class);
@@ -36,7 +37,8 @@ Button btnRule1,btnRule2,btnRule3;
                 }
             });
 
-        //Attempt of fragment objects to make the rules, got confusing so that i just made two other activities for the rules
+        //Attempt of fragment objects to make the rules,
+        // got confusing so that i just made two other activities for the rules
 
 //        btnRule1.setOnClickListener(new View.OnClickListener() {
 //            @Override

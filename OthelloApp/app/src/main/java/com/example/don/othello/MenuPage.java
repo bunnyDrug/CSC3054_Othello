@@ -32,6 +32,7 @@ public class MenuPage extends ActionBarActivity {
         setContentView(R.layout.activity_menu_page);
         //this is needed to setup facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
+
         //this is what creates the database
         DB = new DBHelper(this,null,null,1);
 
