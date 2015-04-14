@@ -16,8 +16,6 @@ class Player {
     // 1 second
     private final long TICK_INTERVAL = 1000;
 
-    private boolean validMovesAvailable = true;
-
     // TODO: read this in from a settings page - remove hard coded value
     private long playerTimeLimit = 30000;
 
