@@ -3,7 +3,7 @@ package com.example.don.othello.GameDataBase;
 /**
  * Created by Chris on 27/03/2015.
  */
-public class score {
+public class Score {
     String _player;
     int _score ;
     int _id;
@@ -11,7 +11,7 @@ public class score {
    // public score(){}
 
     //constructor
-    public score(String player, int score ){
+    public Score(String player, int score){
         this._player = player;
         this._score = score;
     }

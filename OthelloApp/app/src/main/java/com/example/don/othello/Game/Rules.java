@@ -151,7 +151,7 @@ final class Rules {
 
         boolean result = false;
 
-        Log.d("Results", "****TAPPED POSITION**** " + position);
+        // Log.d("Results", "****TAPPED POSITION**** " + position);
 
         // for all directions
         mainLoop:
@@ -159,23 +159,23 @@ final class Rules {
 
             boolean ew = false;
             if ((direction == EAST) || (direction == WEST)) {
-                Log.d("Rules", "check east or west");
+                // Log.d("Rules", "check east or west");
                 ew = true;
             }
             boolean ns = false;
             if ((direction == NORTH) || (direction == SOUTH)) {
                 ns = true;
-                Log.d("Rules", "check north or south");
+                // Log.d("Rules", "check north or south");
             }
 
-            Log.d("Rules", "checking direction " + direction);
+            // Log.d("Rules", "checking direction " + direction);
             int newPosition = position;
 
             // if adjacent tile is at the edge
             if (reachedEdge((newPosition = newPosition + direction), gameBoard) && !ew && !ns) {
                 // check the tile after it - ensure not out of bounds.
                 if ((newPosition = newPosition + direction) < 0 || (newPosition) > 64) {
-                    Log.d("Results", "Next counter in direction " + direction + " would be over edge - skip");
+                    // Log.d("Results", "Next counter in direction " + direction + " would be over edge - skip");
                 }
             }
 
@@ -183,44 +183,44 @@ final class Rules {
                 do {
                     // in other words you have reached the edge of a diagonal check
                     if ((reachedEdge(newPosition, gameBoard)) && (direction != EAST) && (direction != WEST) && (direction != NORTH) && (direction != SOUTH)) {
-                        Log.d("Rules:", "Reached edge of board - skipping");
+                        // Log.d("Rules:", "Reached edge of board - skipping");
                         //result = false;
                         break;
                     }
                     if (direction == EAST) {
                         if (atEdge(gameBoard.getRightBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
-                            Log.d("Rules:", "Reached the end of the board checking EAST - skipping");
+                            // Log.d("Rules:", "Reached the end of the board checking EAST - skipping");
                             //result = false;
                             break;
                         }
                     }
                     if (direction == WEST) {
                         if (atEdge(gameBoard.getLeftBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
-                            Log.d("Rules:", "Reached the end of the board checking WEST - skipping");
+                            // Log.d("Rules:", "Reached the end of the board checking WEST - skipping");
                             //result = false;
                             break;
                         }
                     }
                     if (direction == NORTH) {
                         if (atEdge(gameBoard.getTopBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
-                            Log.d("Rules:", "Reached the end of the board checking NORTH - skipping");
+                            // Log.d("Rules:", "Reached the end of the board checking NORTH - skipping");
                             //result = false;
                             break;
                         }
                     }
                     if (direction == SOUTH) {
                         if (atEdge(gameBoard.getBottomBoardEdge(),newPosition) && (gameBoard.getPiece(newPosition) != currentDisk)){
-                            Log.d("Rules:", "Reached the end of the board checking SOUTH - skipping");
+                            // Log.d("Rules:", "Reached the end of the board checking SOUTH - skipping");
                             //result = false;
                             break;
                         }
                     }
                     if (gameBoard.getPiece(newPosition) == R.drawable.placement_counter) {
-                        Log.d("Results", "Counter in tile " + newPosition + " is a blank tile - skip");
+                        // Log.d("Results", "Counter in tile " + newPosition + " is a blank tile - skip");
                         break;
                     }
                     if ((gameBoard.getPiece(newPosition) == currentDisk)){
-                        Log.d("Rules:", "found a matching tile in the direction " + direction + " at position " + newPosition);
+                        // Log.d("Rules:", "found a matching tile in the direction " + direction + " at position " + newPosition);
                         result = true;
                         // backtrack to position tapped.
                         if (!moveCheck) {
@@ -233,9 +233,9 @@ final class Rules {
                     }
                     // advance the tile by the direction we are looking.
                     else {
-                        Log.d("Rules:", "Current position = " + newPosition + " increase newPosition by " + direction);
+                        // Log.d("Rules:", "Current position = " + newPosition + " increase newPosition by " + direction);
                         newPosition = newPosition + direction;
-                        Log.d("Rules:", "New position = " + newPosition);
+                        // Log.d("Rules:", "New position = " + newPosition);
                     }
                 } while (true);
             }
