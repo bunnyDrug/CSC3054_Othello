@@ -11,15 +11,9 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
-
-//import com.example.don.othello.GameDataBase.DBAdapter;
 import com.example.don.othello.GameDataBase.DBHelper;
-import com.example.don.othello.GameDataBase.score;
-import com.example.don.othello.HighScores;
-
 import com.example.don.othello.ImageAdapter;
+import com.example.don.othello.MenuPage;
 import com.example.don.othello.R;
 
 /**
@@ -29,9 +23,6 @@ import com.example.don.othello.R;
  */
 
 public class OthelloSystem extends ActionBarActivity{
-    // database variables
-    //DBAdapter myDb;
-    DBHelper db;
 
     // new grid view
     private GridView gridView;
@@ -46,16 +37,20 @@ public class OthelloSystem extends ActionBarActivity{
 
     private boolean isTimedGame;
 
-    // taken from MainActivity
+    // taken from GameActivity
     // need this to access the xml layout for activity_game.xml
     private Activity activity;
 
     private Player loser;
     private Player winner;
 
+    // database
+    private DBHelper database = MenuPage.getDatabase();
+    private boolean scoresAdded = false;
+
     /**
      * System constructor
-     * @param activity the activity from the MainActivity class.
+     * @param activity the activity from the GameActivity class.
      */
     public OthelloSystem (Activity activity, boolean isTimedGame) {
         this.activity = activity;
@@ -182,8 +177,6 @@ public class OthelloSystem extends ActionBarActivity{
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick
                     (AdapterView<?> parent, View v, int position, long id) {
-                //displayToast("" + position);
-
 
                 if (gameOver()) {
 
@@ -195,30 +188,24 @@ public class OthelloSystem extends ActionBarActivity{
 
                             .setPositiveButton("Awesome!", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // continue with delete
 
-                                    //this is to add the player who won to the database
-                                    String pla = winner.getName();
-                                    int sco = winner.getScore();
-                                    score add = new score(pla,sco);
-                                    db.add(add);
+                                    if (!scoresAdded) {
+                                        // add player scores into the database.
+                                        database.add(winner.getName(), winner.getScore(), database.getWritableDatabase());
+                                        database.add(loser.getName(), loser.getScore(), database.getWritableDatabase());
+                                        scoresAdded = true;
+                                    }
 
                                 }
                             })
                             .setIcon(android.R.drawable.star_big_on)
                             .show();
-
-
-
                 } else {
                     turn(position);
                 }
-
             }
         });
     }
-
-
 
     private void turn(int tileTapped){
 
@@ -327,8 +314,6 @@ public class OthelloSystem extends ActionBarActivity{
 
         }
 
-
-
         return gameOver;
     }
 
@@ -336,8 +321,10 @@ public class OthelloSystem extends ActionBarActivity{
      * checks if the position tapped is valid and allows the game to progress
      * without error
      * in its current state it only checks for an occupied tile
-     * @param positionTapped
-     * @return
+     * @param positionTapped an integer on the grid that the user wishes to
+     *                       interact with
+     * @return true if a user is able to place a token in the tapped position
+     * (adhering to the rules of the game)
      */
     private boolean validMovePossible(int positionTapped, int diskColour){
 
