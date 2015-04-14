@@ -9,14 +9,6 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MenuPage"
-            android:label="@string/title_activity_menu_page" >
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
             android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
@@ -26,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".GameActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
@@ -44,14 +36,6 @@
         <activity
             android:name=".SpalshScreen.Othello"
             android:label="@string/title_activity_othello" >
-        </activity>
-        <activity
-            android:name=".Test"
-            android:label="@string/title_activity_test" >
-        </activity>
-        <activity
-            android:name=".HighScores"
-            android:label="@string/title_activity_high_scores" >
         </activity>
         <activity
             android:name=".SpalshScreen.SplashScreen"
