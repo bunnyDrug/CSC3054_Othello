@@ -3,11 +3,10 @@ package com.example.don.othello.GameDataBase;
 /**
  * Created by Chris on 27/03/2015.
  */
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.Cursor;
-import android.content.Context;
 import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
@@ -18,13 +17,13 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Othello.db";
 
-    public static final String TABLE_NAME = "OthelloScores";
-    public static final String Column_id = "_id";
-    public static final String Column_Player = "player_name";
-    public static final String Column_PlayerScore = "player_score";
+    private static final String TABLE_NAME = "OthelloScores";
+    private static final String Column_id = "_id";
+    private static final String Column_Player = "player_name";
+    private static final String Column_PlayerScore = "player_score";
 
-    public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -42,39 +41,38 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    //add new row to database
-    public void add(score player ){
-        ContentValues values = new ContentValues();
-        values.put(Column_Player, player.get_player());
-        values.put(Column_PlayerScore,player.get_score());
 
-        SQLiteDatabase db = getWritableDatabase();
-        db.insert(TABLE_NAME,null,values);
-        db.close();
-
+    public void deleteTalbe(SQLiteDatabase db){
+        db.delete(TABLE_NAME,null,null);
     }
 
+    //add new row to database
+    public void add(String playerName, int score, SQLiteDatabase db){
+        ContentValues values = new ContentValues();
+        values.put(Column_Player, playerName);
+        values.put(Column_PlayerScore, score);
 
-    //delete from the database
-    public void delete(String player){
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE " + Column_Player + "=\"" + player + "\";");
+        db.insert(TABLE_NAME,null,values);
+        db.close();
     }
 
     //print out the database as a string
-    public String databaseToString(){
+    public String databaseToString(SQLiteDatabase db){
         String dbString= "";
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE 1";
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + Column_PlayerScore + " DESC LIMIT 5";
+
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
 
         while(!c.isAfterLast()){
-            if(c.getString(c.getColumnIndex("player_name"))!=null){
-                dbString += c.getString(c.getColumnIndex("player_name"));
-                dbString += "\n";
-            }
+            dbString += "Name: " + c.getString(c.getColumnIndex(Column_Player));
+            dbString += " Score: " + c.getString(c.getColumnIndex(Column_PlayerScore));
+            dbString += "\n";
+            c.moveToNext();
         }
+
+
+        c.close();
         db.close();
         return dbString;
     }
