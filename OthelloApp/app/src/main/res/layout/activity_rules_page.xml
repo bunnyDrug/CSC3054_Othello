@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.don.othello.RulesPage"
+    tools:context="com.CSC.othello3054.game.RulesPage"
     >
 
 
@@ -23,7 +23,7 @@
             android:layout_width="399dp"
             android:layout_height="416dp"
             android:id="@+id/fragOne"
-            android:name="com.example.don.othello.Frags.FragRule1"
+            android:name="com.CSC.othello3054.game.Frags.FragRule1"
             tools:layout="@layout/frag_one_layout">
             </fragment>
 

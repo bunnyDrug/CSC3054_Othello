@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.example.don.othello"
+        applicationId "com.CSC.othello3054.game"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1

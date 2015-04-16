@@ -4,7 +4,7 @@
     android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.don.othello.Game.Menu"
+    tools:context="com.CSC.othello3054.game.Game.Menu"
     android:layout_weight="1"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
@@ -91,6 +91,5 @@
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colour_accent_blue"
         />
-
 
 </LinearLayout>

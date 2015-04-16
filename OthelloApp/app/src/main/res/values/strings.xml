@@ -16,7 +16,6 @@
     ,in either horizontal, vertical or diagonal directions. this is then followed by the flipping of the sandwiched discs</string>
     <string name="rule3">The game continues on until the players either run out of spaces on the board or there are no
     valid moves left. the winner is decided by the number of points or pieces he/she has.</string>
-    <string name="rule4"></string>
     <string name="title_activity_othello">Othello</string>
     <string name="label_blackTimer"></string>
     <string name="label_white_timer"></string>
@@ -28,13 +27,15 @@
     <string name="title_activity_high_scores">HighScores</string>
 
     <string name="title_activity_splash_screen">SplashScreen</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="txt_main_menu">Welcome to Othello</string>
     <string name="title_activity_rule_two">RuleTwo</string>
     <string name="title_activity_rule_three">RuleThree</string>
+
     <string name="title_activity_view_scores">High Scores</string>
+
+    <string name="facebook_app_id">642126629251885</string>
+    <string name="TopScores">Top 5 scores</string>
 
 
 </resources>
