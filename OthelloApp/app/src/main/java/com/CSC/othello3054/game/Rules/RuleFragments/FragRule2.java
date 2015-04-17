@@ -1,4 +1,4 @@
-package com.CSC.othello3054.game.Frags;
+package com.CSC.othello3054.game.Rules.RuleFragments;
 
 import android.app.Fragment;
 import android.os.Bundle;

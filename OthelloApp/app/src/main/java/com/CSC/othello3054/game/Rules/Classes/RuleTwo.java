@@ -1,4 +1,4 @@
-package com.CSC.othello3054.game;
+package com.CSC.othello3054.game.Rules.Classes;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,31 +7,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.CSC.othello3054.game.R;
+
 
 public class RuleTwo extends ActionBarActivity {
 
-    Button btnpre,btnnex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rule_two);
 
-        btnnex =(Button)findViewById(R.id.btnNex);
-        btnpre=(Button)findViewById(R.id.btnPre);
+        Button btnNext =(Button)findViewById(R.id.btnNex);
 
-        btnnex.setOnClickListener(new OnClickListener() {
+        btnNext.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RuleTwo.this, RuleThree.class);
-                startActivity(intent);
-            }
-        });
-
-        btnpre.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RuleTwo.this, RulesPage.class);
                 startActivity(intent);
             }
         });

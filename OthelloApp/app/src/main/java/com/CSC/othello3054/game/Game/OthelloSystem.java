@@ -12,8 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
-import com.CSC.othello3054.game.ImageAdapter;
-import com.CSC.othello3054.game.MenuPage;
+import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
 
 /**
@@ -45,7 +44,7 @@ public class OthelloSystem extends ActionBarActivity{
     private Player winner;
 
     // database
-    private DBHelper database = MenuPage.getDatabase();
+    private DBHelper database = MainMenu.getDatabase();
     private boolean scoresAdded = false;
 
     /**

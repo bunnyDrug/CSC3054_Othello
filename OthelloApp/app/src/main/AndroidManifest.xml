@@ -15,7 +15,7 @@
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
         <activity
-            android:name="com.CSC.othello3054.game.MenuPage"
+            android:name=".MainMenu"
             android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
@@ -25,13 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.GameActivity"
+            android:name=".OthelloGame"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name="com.CSC.othello3054.game.RulesPage"
+            android:name=".Rules.Classes.RuleOne"
             android:label="@string/title_activity_rules_page" >
         </activity>
         <activity
@@ -52,15 +52,15 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.RuleTwo"
+            android:name=".Rules.Classes.RuleTwo"
             android:label="@string/title_activity_rule_two" >
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.RuleThree"
+            android:name=".Rules.Classes.RuleThree"
             android:label="@string/title_activity_rule_three" >
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.ViewScores"
+            android:name=".HighScores"
             android:label="@string/title_activity_view_scores"
             >
         </activity>

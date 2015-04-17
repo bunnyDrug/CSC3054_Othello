@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.CSC.othello3054.game.Game.OthelloSystem;
 
-public class GameActivity extends ActionBarActivity {
+public class OthelloGame extends ActionBarActivity {
 
     OthelloSystem othelloSystem;
 
@@ -16,8 +16,7 @@ public class GameActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_game);
 
-        // creates the game system that manages the game.
-        // TODO: remove hard coded values
+
 
         String topPlayer = "";
         String bottomPlayer = "";
@@ -33,6 +32,7 @@ public class GameActivity extends ActionBarActivity {
                          .setIcon(android.R.drawable.ic_lock_idle_alarm)
                          .show();
 
+        // creates the system that runs the game.
         othelloSystem = new OthelloSystem(this, false);
         othelloSystem.startGame(topPlayer, bottomPlayer);
     }

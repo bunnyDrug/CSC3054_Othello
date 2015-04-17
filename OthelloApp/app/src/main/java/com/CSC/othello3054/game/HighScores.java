@@ -1,10 +1,8 @@
 package com.CSC.othello3054.game;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
 import android.widget.TextView;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
@@ -12,10 +10,10 @@ import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
-public class ViewScores extends ActionBarActivity {
+public class HighScores extends ActionBarActivity {
 
     TextView txtViewTextScores;
-    DBHelper dbHelper = MenuPage.getDatabase();
+    DBHelper dbHelper = MainMenu.getDatabase();
 
 
     @Override
@@ -53,16 +51,6 @@ public class ViewScores extends ActionBarActivity {
             scores = dbHelper.databaseToString(dbHelper.getReadableDatabase());
         }
         return scores;
-    }
-
-    public void share (View view)
-    {
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        String shareBody = "Ive just completed True Movies! You should try!";
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(sharingIntent, "Share via"));
     }
 }
 

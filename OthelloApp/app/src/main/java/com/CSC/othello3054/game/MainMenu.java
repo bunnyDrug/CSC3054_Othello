@@ -10,14 +10,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
+import com.CSC.othello3054.game.Rules.Classes.RuleOne;
 
 import java.util.Random;
 
 
-public class MenuPage extends ActionBarActivity {
+public class MainMenu extends ActionBarActivity {
 
     private static DBHelper databaseHelper;
 
@@ -31,6 +33,13 @@ public class MenuPage extends ActionBarActivity {
 
         // run the click listener for the start game button.
         bntStartGame();
+
+
+        NumberPicker numberPicker = new NumberPicker(this);
+        numberPicker.setMaxValue(60);
+        numberPicker.setMinValue(10);
+
+
     }
 
     /**
@@ -64,7 +73,7 @@ public class MenuPage extends ActionBarActivity {
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), GameActivity.class);
+                Intent intent = new Intent(v.getContext(), OthelloGame.class);
 
                 // get the input fields from the menu page
                 EditText topEditText = (EditText) findViewById(R.id.player1Edit);
@@ -110,13 +119,13 @@ public class MenuPage extends ActionBarActivity {
                     item.setChecked(false);
                 else
                     item.setChecked(true);
-                Intent intentRule = new Intent(this,RulesPage.class);
+                Intent intentRule = new Intent(this,RuleOne.class);
                 startActivity(intentRule);
                 return true;
 
             case R.id.menu_scores:
 
-                Intent intent = new Intent(MenuPage.this, ViewScores.class);
+                Intent intent = new Intent(MainMenu.this, HighScores.class);
                 startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);

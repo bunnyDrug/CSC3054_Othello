@@ -1,6 +1,6 @@
 package com.CSC.othello3054.game.SpalshScreen;
 
-import com.CSC.othello3054.game.MenuPage;
+import com.CSC.othello3054.game.MainMenu;
 
 
 
@@ -20,7 +20,7 @@ public class SplashScreen extends Activity {
 
         setContentView(R.layout.activity_splash_screen);
 
-        final Intent intent = new Intent(this, MenuPage.class);
+        final Intent intent = new Intent(this, MainMenu.class);
 
         TimerTask task = new TimerTask() {
             @Override

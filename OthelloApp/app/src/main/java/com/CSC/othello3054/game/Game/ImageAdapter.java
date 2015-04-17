@@ -1,4 +1,4 @@
-package com.CSC.othello3054.game;
+package com.CSC.othello3054.game.Game;
 
 import android.content.Context;
 import android.view.View;

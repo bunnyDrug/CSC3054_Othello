@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import com.CSC.othello3054.game.MenuPage;
+import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
 
 import java.util.Timer;
@@ -17,7 +17,7 @@ public class Othello extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_othello);
-        final Intent intent = new Intent(this, MenuPage.class);
+        final Intent intent = new Intent(this, MainMenu.class);
 
         TimerTask task = new TimerTask() {
             @Override
