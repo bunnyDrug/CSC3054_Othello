@@ -45,8 +45,6 @@ class GameBoard {
 
     /**
      * creates four arrays used to check if a disk is at the edge of the board
-     * magic numbers could be at the very least placed into constants later
-     * TODO: tidy this up
      */
     private void defineBoardEdges() {
         defineLeftBoardEdge();
@@ -154,6 +152,11 @@ class GameBoard {
         return board[positionTapped];
     }
 
+    /**
+     * Returns the total number of pieces for a given colour.
+     * @param pieceColour the piece colour you wish to count
+     * @return int: total pieces matching that colour.
+     */
     public int countPieces(int pieceColour) {
 
         int numberOfPieces = 0;
