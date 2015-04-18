@@ -23,6 +23,7 @@ import com.CSC.othello3054.game.R;
 
 public class OthelloSystem extends ActionBarActivity{
 
+    public static final String ORANGE_100 = "#FFE0B2";
     // new grid view
     private GridView gridView;
     private GameBoard gameBoard;
@@ -35,6 +36,7 @@ public class OthelloSystem extends ActionBarActivity{
     private Player currentPlayerTurn;
 
     private boolean isTimedGame;
+    private int timerValue;
 
     // taken from GameActivity
     // need this to access the xml layout for activity_game.xml
@@ -51,9 +53,19 @@ public class OthelloSystem extends ActionBarActivity{
      * System constructor
      * @param activity the activity from the GameActivity class.
      */
-    public OthelloSystem (Activity activity, boolean isTimedGame) {
+    public OthelloSystem (Activity activity, int timerValueSelected) {
+
+        // take the value and make a decision in here
+
+
         this.activity = activity;
-        this.isTimedGame = isTimedGame;
+
+        if (timerValueSelected > 0) {
+            isTimedGame = true;
+            timerValue = timerValueSelected;
+        } else {
+            isTimedGame = false;
+        }
     }
 
     public void startGame(String whitePlayerName, String blackPlayerName) {
@@ -62,6 +74,14 @@ public class OthelloSystem extends ActionBarActivity{
         createPlayers(whitePlayerName, blackPlayerName);
         printNamesToScreen();
         setFirstTurn(blackPlayer);
+        currentPlayerTurn.setTurnColour();
+
+        // if it's a timed game, then the timer needs set
+        if (isTimedGame) {
+            Long x = (long) timerValue * 10000;
+            whitePlayer.setGameTimer(x);
+            blackPlayer.setGameTimer(x);
+        }
 
         // board setup
         createGameBoard();
@@ -160,7 +180,7 @@ public class OthelloSystem extends ActionBarActivity{
      */
     private void setBoardColour() {
         // colour the grind with the 100 shade orange
-        gridView.setBackgroundColor(Color.parseColor("#FFE0B2"));
+        gridView.setBackgroundColor(Color.parseColor(ORANGE_100));
     }
 
     /**
@@ -208,11 +228,17 @@ public class OthelloSystem extends ActionBarActivity{
 
     private void turn(int tileTapped){
 
+
         if (currentPlayerTurn == blackPlayer) {
+
             if (Rules.canPlayerMakeAMove(gameBoard, blackDisk)) {
                 if (validMovePossible(tileTapped, blackDisk)) {
                     gameBoard.placePiece(tileTapped, blackDisk);
+
+                    currentPlayerTurn.setNotTurnColour();
                     currentPlayerTurn = whitePlayer;
+                    currentPlayerTurn.setTurnColour();
+
 
                     if (isTimedGame) {
                         whitePlayer.startTimer();
@@ -230,7 +256,11 @@ public class OthelloSystem extends ActionBarActivity{
                         })
                         .setIcon(android.R.drawable.stat_sys_warning)
                         .show();
+
+                currentPlayerTurn.setNotTurnColour();
                 currentPlayerTurn = whitePlayer;
+                currentPlayerTurn.setTurnColour();
+
 
                 if (isTimedGame) {
                     whitePlayer.startTimer();
@@ -244,7 +274,11 @@ public class OthelloSystem extends ActionBarActivity{
 
                 if (validMovePossible(tileTapped, whiteDisk)) {
                     gameBoard.placePiece(tileTapped, whiteDisk);
+
+                    currentPlayerTurn.setNotTurnColour();
                     currentPlayerTurn = blackPlayer;
+                    currentPlayerTurn.setTurnColour();
+
 
                     if (isTimedGame) {
                         whitePlayer.pauseTimer();
@@ -263,7 +297,11 @@ public class OthelloSystem extends ActionBarActivity{
                         })
                         .setIcon(android.R.drawable.stat_sys_warning)
                         .show();
+
+                currentPlayerTurn.setNotTurnColour();
                 currentPlayerTurn = blackPlayer;
+                currentPlayerTurn.setTurnColour();
+
 
                 if (isTimedGame) {
                     whitePlayer.pauseTimer();
@@ -313,7 +351,18 @@ public class OthelloSystem extends ActionBarActivity{
 
         }
 
+        if (gameOver) {
+            stopGameTimers();
+        }
+
         return gameOver;
+    }
+
+    private void stopGameTimers() {
+        if (isTimedGame) {
+            winner.pauseTimer();
+            loser.pauseTimer();
+        }
     }
 
     /**

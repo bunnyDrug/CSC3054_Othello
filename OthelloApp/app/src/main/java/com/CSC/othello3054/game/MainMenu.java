@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
@@ -22,6 +24,8 @@ import java.util.Random;
 public class MainMenu extends ActionBarActivity {
 
     private static DBHelper databaseHelper;
+    Spinner mySpinner;
+    int spinnerSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +35,43 @@ public class MainMenu extends ActionBarActivity {
         // create the database used in the while application.
         initDatabase(false, false);
 
+        initTimerSpinner();
+        startSpinnerListener();
+
+
         // run the click listener for the start game button.
         bntStartGame();
 
+    }
 
-        NumberPicker numberPicker = new NumberPicker(this);
-        numberPicker.setMaxValue(60);
-        numberPicker.setMinValue(10);
+    private void initTimerSpinner() {
+        mySpinner = (Spinner) findViewById(R.id.spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        R.array.timer_values_array, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
+        // Apply the adapter to the spinner
+        mySpinner.setAdapter(adapter);
 
+    }
 
+    private void startSpinnerListener() {
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    spinnerSelection = Integer.valueOf(mySpinner.getSelectedItem().toString().substring(0,1));
+                } else {
+                    spinnerSelection = position;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     /**
@@ -85,6 +117,7 @@ public class MainMenu extends ActionBarActivity {
                 } else {
                     intent.putExtra("topPlayer", topEditText.getText().toString());
                     intent.putExtra("bottomPlayer", bottomEditText.getText().toString());
+                    intent.putExtra("spinnerSelection", spinnerSelection);
                 }
                 startActivityForResult(intent, 0);
             }

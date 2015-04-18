@@ -16,13 +16,13 @@
         in either horizontal, vertical or diagonal directions. This is then followed by the flipping of the sandwiched discs.
         If a player has no moves available to them. Their turn is forfeit until they have an available move.</string>
     <string name="rule3">The game continues on until the players either run out of spaces on the board or there are no
-    valid moves left. The winner is decided by the number of points or pieces he/she has.</string>
+    valid moves left. The winner is decided by the number of points or pieces he/she has.
+        If a player runs out of time, they automatically lose, regardless of accumulated points</string>
 
     <string name="title_activity_othello">Othello</string>
-    <string name="label_blackTimer"></string>
-    <string name="label_white_timer"></string>
-    <string name="label_white_score">Current Score: 2</string>
-    <string name="label_black_score">Current Score: 2</string>
+
+    <string name="label_timer">No timer set/started</string>
+    <string name="label_score">Current Score: 2</string>
     <string name="title_activity_scores">Scores</string>
 
     <string name="title_activity_test">Test</string>

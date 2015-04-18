@@ -12,22 +12,24 @@
 
 
     <TextView
-        android:padding="@dimen/abc_text_size_display_2_material"
+        android:layout_gravity="center"
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/txt_main_menu"
         android:id="@+id/textView4"
-        android:textSize="32sp"
-        android:textColor="@color/colour_500_orange"/>
+        android:textSize="36sp"
+        android:textColor="@color/colour_500_orange"
+        android:padding="28dp"
+        />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,13 +85,22 @@
 
     </LinearLayout>
 
+
+    <Spinner
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        />
+
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start Game"
             android:id="@+id/startButton"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/colour_accent_blue"
         />
 
 </LinearLayout>

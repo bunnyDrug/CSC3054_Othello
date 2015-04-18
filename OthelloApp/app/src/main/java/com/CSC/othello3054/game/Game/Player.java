@@ -117,7 +117,7 @@ class Player {
     public void setNotTurnColour() {
         //TODO: refactor this
         // lighter colour
-        textViewName.setTextColor(Color.parseColor("#FFE0B2"));
+        textViewName.setTextColor(Color.parseColor("#ff757575"));
     }
 
     public void setScore(int score) {
