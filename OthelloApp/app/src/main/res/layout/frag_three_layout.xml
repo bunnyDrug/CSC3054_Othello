@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="363dp" android:layout_height="416dp"
-    android:orientation="vertical"
-    android:weightSum="1">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView5" />
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="335dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/rule3"
         android:id="@+id/rule3"
-        android:layout_weight="0.48" />
+        android:gravity="center"
+        android:padding="20sp"
+        />
 </LinearLayout>

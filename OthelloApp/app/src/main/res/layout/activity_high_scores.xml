@@ -7,13 +7,12 @@
     tools:context=".MainActivity"
     android:layout_weight="1"
     android:orientation="vertical"
-    android:baselineAligned="false"
-    >
+    android:baselineAligned="false">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Top 5 scores"
+        android:text="@string/TopScores"
         android:layout_gravity="center"
         android:textSize="42sp"
         android:textColor="@color/colour_accent_blue"/>
@@ -22,18 +21,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textScores"
-        android:text="Name James the second Score 49"
+        android:text="@string/title_activity_high_scores"
         android:layout_gravity="center"
-        android:layout_weight="1"
         android:textSize="20sp"/>
 
-
-    <Button
+    <com.facebook.share.widget.ShareButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Post to Facebook"
-        android:textAllCaps="false"
-        android:layout_gravity="bottom|center"/>
-
+        android:id="@+id/share_view"
+        android:text="@string/com_facebook_share_button_text"
+        android:layout_gravity="center"
+        />
 
     </LinearLayout>

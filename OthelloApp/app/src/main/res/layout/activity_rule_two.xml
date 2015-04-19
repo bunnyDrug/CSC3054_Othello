@@ -1,46 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.don.othello.RuleTwo">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/rule2"
-        android:id="@+id/textView2"
-        android:layout_weight="0.17" />
+    tools:context="com.CSC.othello3054.game.Rules.Classes.RuleTwo"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="186dp"
-        android:layout_height="212dp"
-        android:id="@+id/imageView4"
-        android:layout_gravity="center_vertical"
-        android:src="@drawable/start_of_first_move"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="46dp" />
+    <fragment
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:id="@+id/fragOne"
+        android:name="com.CSC.othello3054.game.Rules.RuleFragments.FragRule2"
+        tools:layout="@layout/frag_two_layout"
+        android:layout_weight="1">
+    </fragment>
 
     <Button
+        android:layout_margin="10dp"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Previous"
-        android:id="@+id/btnPre"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="Continue"
         android:id="@+id/btnNex"
-        android:layout_alignParentBottom="true"
-         />
+        android:layout_gravity="center" />
 
-</RelativeLayout>
+</LinearLayout>
