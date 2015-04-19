@@ -18,8 +18,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue"
-        android:id="@+id/btnNex"
-        android:layout_gravity="center" />
+        android:text="@string/btnContinue"
+        android:id="@+id/btnRuleTwoNext"
+        android:layout_gravity="center"
+        android:textAllCaps="false"/>
 
 </LinearLayout>

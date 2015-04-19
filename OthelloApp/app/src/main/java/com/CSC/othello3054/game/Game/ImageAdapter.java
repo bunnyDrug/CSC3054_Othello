@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 /**
  * Created by don on 08/03/2015.
+ *
  * Modified from the google grid view tutorial.
  * Ref: http://developer.android.com/guide/topics/ui/layout/gridview.html#top
  */
@@ -45,7 +46,6 @@ public class ImageAdapter extends BaseAdapter {
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            //imageView.setPadding(8, 8, 8, 8);
         } else {
             imageView = (ImageView) convertView;
         }
