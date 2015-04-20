@@ -2,26 +2,27 @@ package com.CSC.othello3054.game.ThemeControls;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.CSC.othello3054.game.R;
 
 public class themeUtil {
 
-    private static int cTheme;
+    public static int cTheme;
     public final static int WHITE = 1;
     public final static int BLACK = 2;
     public final static int Original = 0;
 
-
-    public static void changeToTheme(Activity activity, int theme)
-    {
-        cTheme = theme;
+    public static void changeToTheme(Activity activity, int Theme){
+        cTheme = Theme;
         activity.finish();
-        activity.startActivity(new Intent(activity, activity.getClass()));
+        activity.startActivity(new Intent(activity,activity.getClass()));
     }
 
-    public static void onActivityCreateSetTheme(Activity activity)
+
+    public static void onCreateSetTheme(Activity activity)
     {
+
         switch (cTheme)
         {
             default:
@@ -36,6 +37,9 @@ public class themeUtil {
                 activity.setTheme(R.style.BlackTheme);
                 break;
 //            // to add more themes add cases
+
+
+
         }
     }
 }
