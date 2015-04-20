@@ -1,4 +1,4 @@
-package com.CSC.othello3054.game.GameDatabase;
+package com.CSC.othello3054.game.Database;
 
 /**
  * Created by Chris on 27/03/2015.

@@ -11,7 +11,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.CSC.othello3054.game.GameDatabase.DBHelper;
+import com.CSC.othello3054.game.Database.DBHelper;
 import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
 

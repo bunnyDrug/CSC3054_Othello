@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.CSC.othello3054.game.GameDatabase.DBHelper;
+import com.CSC.othello3054.game.Database.DBHelper;
 import com.CSC.othello3054.game.Rules.Classes.RuleOne;
 
 import java.util.Random;
