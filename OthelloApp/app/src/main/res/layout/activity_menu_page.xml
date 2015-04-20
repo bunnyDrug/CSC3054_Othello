@@ -9,9 +9,8 @@
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
     android:baselineAligned="false">
-<!--Linear layout used to maintain consistent layout throughout many devices-->
 
-    <!--Title - using 500 theme colour -->
+
     <TextView
         android:layout_gravity="center"
         android:gravity="center"
@@ -24,7 +23,6 @@
         android:padding="28dp"
         />
 
-    <!--Horizontal layout to organise input fields -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -33,18 +31,14 @@
         android:layout_margin="10dp"
         >
 
-        <!--Player 1 label -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menuPlayerOne"
+            android:text="Player1:"
             android:textColor="@color/colour_700_orange"
             android:textSize="18sp"
             />
 
-        <!--Player 1 name input - note the weight of 1, this allows it to
-        span the screen to maintain a professional layout. This repeats itself
-        in player 2-->
         <EditText
             android:id="@+id/player1Edit"
             android:layout_width="0dp"
@@ -53,27 +47,25 @@
             android:layout_weight="1"
             android:singleLine="true"
             android:textColor="@color/colour_accent_blue"
-            android:inputType="textCapWords"/>
+            />
     </LinearLayout>
 
-    <!-- another horizontal layout to organise the layout for player 2-->
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:orientation = "horizontal"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
         android:padding="5dp"
         android:layout_margin="10dp">
 
-        <!--Player 2 label -->
-        <TextView
+
+    <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/menuPlayer2"
+            android:text="Player2:"
             android:textColor="@color/colour_700_orange"
             android:textSize="18sp"/>
 
-        <!-- Player 2 input -->
         <EditText
             android:id="@+id/player2Edit"
             android:layout_width="0dp"
@@ -82,10 +74,18 @@
             android:layout_weight="1"
             android:singleLine="true"
             android:textColor="@color/colour_accent_blue"
-            android:inputType="textCapWords"/>
+            />
+
+
+        <!--image button of the plus sign to create new game-->
+
+
+
+
+
     </LinearLayout>
 
-    <!--Spinner used to select timer values -->
+
     <Spinner
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
@@ -95,13 +95,12 @@
         android:gravity="center"
         />
 
-    <!-- start game button - note caps false to override material design look-->
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnStartGame"
+            android:text="Start Game"
             android:id="@+id/startButton"
             android:layout_gravity="center_horizontal"
-            android:textAllCaps="false"
         />
+
 </LinearLayout>

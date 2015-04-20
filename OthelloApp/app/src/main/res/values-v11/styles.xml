@@ -1,5 +1,5 @@
 <resources>
-    <!-- Don Davies: Support for older version of Android -->
+
     <style name="FullscreenTheme" parent="android:Theme.Holo">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>

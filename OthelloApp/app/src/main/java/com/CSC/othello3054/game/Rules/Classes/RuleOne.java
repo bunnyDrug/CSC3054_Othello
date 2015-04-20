@@ -14,11 +14,11 @@ Button btnRule1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rule_one);
+        setContentView(R.layout.activity_rules_page);
 
-        btnRule1 = (Button) findViewById(R.id.btnRuleOneNext);
+        btnRule1 = (Button) findViewById(R.id.btnRuleOne);
 
-                    // move to the next activity (Rule two)
+
                     btnRule1.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {

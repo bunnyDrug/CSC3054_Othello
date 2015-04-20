@@ -7,9 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by don on 11/03/2015.
- *
  * The rules class - this handles all the processing for game rules.
+ * Created by don on 11/03/2015.
  */
 final class Rules {
     private final static int NORTH = -8; // from current position
@@ -27,20 +26,16 @@ final class Rules {
     private static ArrayList<Integer> directionFound = new ArrayList<>();
 
 
-    // don't allow instance of Rules
     private Rules() {
 
     }
 
     /**
-     * Assumes that a player has a move to make -
-     * (ensure you have run canPlayerMakeAMove() first<br>
-     * Runs all validation checks on a player tapped tile to ensure the
-     * placement is correct
-     * @param position the position you want checked
-     * @param gameBoard Gameboard: the board we are playing on.
-     * @param currentDisk int: the current players disk.
-     * @return boolean true if the move is valid and a counter can be placed here
+     * Runs all validation checks on a tile to ensure the placement is correct
+     * @param position
+     * @param gameBoard
+     * @param currentDisk
+     * @return
      */
     public static boolean validDiskPlacement(
             int position, GameBoard gameBoard, int currentDisk) {
@@ -108,7 +103,7 @@ final class Rules {
     }
 
     /**
-     * checks if the position tapped is at the edge of the board
+     * checks if the position tapped is at the top edge of the board
      * @param edgeArray and int array that contains values of tiles at the
      *                       top of the screen
      * @param positionTapped the position tapped by the user on the grid
@@ -126,6 +121,20 @@ final class Rules {
     }
 
     /**
+     * Discovers all the valid moves that a player may take in his or her
+     * current turn. A players boardPieces is only allowed to be placed in any
+     * of the legal spaces for that turn.
+     *
+     * A possible overlay of movies that are valid would be nice
+     * @return boolean
+     */
+    private static boolean calculateCurrentValidMoves() {
+
+        return true;
+    }
+
+
+    /**
      * checks if a counter can be placed in the tile - ie it needs to be able to
      * flip at least one opposing counter.
      * @param directionsFound
@@ -136,23 +145,24 @@ final class Rules {
      */
     private static boolean validPlacement(int[] directionsFound, int currentDisk,int position, GameBoard gameBoard, boolean moveCheck) {
 
-        // LOG.D used for debugging - uncomment if you wish.
+        ArrayList<Integer> tilesToFlip = new ArrayList<>();
 
         boolean result = false;
 
         // Log.d("Results", "****TAPPED POSITION**** " + position);
 
         // for all directions
+        mainLoop:
         for (int direction: directionsFound) {
 
-            boolean eastWest = false;
+            boolean ew = false;
             if ((direction == EAST) || (direction == WEST)) {
                 // Log.d("Rules", "check east or west");
-                eastWest = true;
+                ew = true;
             }
-            boolean northSouth = false;
+            boolean ns = false;
             if ((direction == NORTH) || (direction == SOUTH)) {
-                northSouth = true;
+                ns = true;
                 // Log.d("Rules", "check north or south");
             }
 
@@ -160,7 +170,7 @@ final class Rules {
             int newPosition = position;
 
             // if adjacent tile is at the edge
-            if (reachedEdge((newPosition = newPosition + direction), gameBoard) && !eastWest && !northSouth) {
+            if (reachedEdge((newPosition = newPosition + direction), gameBoard) && !ew && !ns) {
                 // check the tile after it - ensure not out of bounds.
                 if ((newPosition = newPosition + direction) < 0 || (newPosition) > 64) {
                     // Log.d("Results", "Next counter in direction " + direction + " would be over edge - skip");
@@ -210,8 +220,7 @@ final class Rules {
                     if ((gameBoard.getPiece(newPosition) == currentDisk)){
                         // Log.d("Rules:", "found a matching tile in the direction " + direction + " at position " + newPosition);
                         result = true;
-
-                        // backtrack to position tapped. - checking for valid moves on all disks on the board.
+                        // backtrack to position tapped.
                         if (!moveCheck) {
                             while (newPosition != position) {
                                 newPosition = newPosition - direction;
@@ -235,19 +244,20 @@ final class Rules {
         return result;
     }
 
-    /**
-     * have we reached a board edge?
-     * @param position the position you want checked
-     * @param gameBoard the board to check the position of
-     * @return boolean: true if you reached any edge of the board (top, left,
-     * right or bottom).
-     */
     private static boolean reachedEdge(int position, GameBoard gameBoard) {
         return  atEdge(gameBoard.getTopBoardEdge(), position) ||
                 atEdge(gameBoard.getBottomBoardEdge(), position) ||
                 atEdge(gameBoard.getRightBoardEdge(), position) ||
                 atEdge(gameBoard.getLeftBoardEdge(), position);
     }
+    //  try to place white disk
+    //  if next position == black
+    //        next position = position + direction
+    //        loop until nextPosition != white || reach edge {
+    //        if next position == white
+    //              next position = position + direction
+    //        }
+
 
     /**
      * Creates an array of tile positions around the tapped position on the grid
@@ -326,17 +336,7 @@ final class Rules {
         return ret;
     }
 
-    /**
-     * Discovers all the valid moves that a player may take in his or her
-     * current turn. If a player has no moves available to them, a false will be
-     * returned.
-     * @param gameBoard Gameboard: the board we are playing on.
-     * @param diskColour int: the colour of disk to check for validity - ie, can
-     *                   black make any valid moves this turn?
-     * @return boolean: true for yes - at least 1 valid move is possible
-     * somewhere on the board<br>
-     *     false if no moves are possible for that players colour.
-     */
+
     public static boolean canPlayerMakeAMove(GameBoard gameBoard, int diskColour) {
         boolean result = false;
 
@@ -357,7 +357,7 @@ final class Rules {
 
             if (isTappedTileEmpty(position, gameBoard) &&
                     nextToOppositeColourDisk(position, diskColour, tilesToCheck, gameBoard) &&
-                    validPlacement(convertIntegers(directionFound), diskColour, position, gameBoard, true)) {
+                    validPlacement(convertIntegers(directionFound),diskColour,position,gameBoard,true)) {
                 result = true;
             }
         }

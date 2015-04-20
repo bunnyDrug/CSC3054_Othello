@@ -9,12 +9,17 @@
     android:orientation="vertical"
     android:baselineAligned="false">
 
+    <!--Player 1 top 25% of the screen-->
+
+    <!--Board lives in here 50%-->
+
+    <!--Player 2 bottom 25% of screen-->
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--Player 1 top 25% of the screen-->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -25,8 +30,7 @@
                 android:layout_width="90dp"
                 android:layout_height="fill_parent"
                 android:id="@+id/imageView"
-                android:src="@drawable/white_player"
-                android:contentDescription="@string/player1ImageViewContentDescription"/>
+                android:src="@drawable/white_player"/>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -57,7 +61,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--Board lives in here 50%-->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
@@ -76,7 +79,6 @@
     </LinearLayout>
 
 
-    <!--Player 2 bottom 25% of screen-->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -122,4 +124,5 @@
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

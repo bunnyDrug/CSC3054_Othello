@@ -1,6 +1,4 @@
 <resources>
-    <!--Don Davies:  Material style xml -->
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
