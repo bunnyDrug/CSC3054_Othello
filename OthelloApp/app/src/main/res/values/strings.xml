@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Page names-->
     <string name="app_name">Othello</string>
+    <string name="title_activity_othello">Othello</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_rules_page">Rules Part One</string>
+    <string name="title_activity_rule_two">Rules Part Two</string>
+    <string name="title_activity_rule_three">Rule Part Three</string>
+    <string name="title_activity_high_scores">High Scores</string>
+
+
+    <!-- Main menu strings string -->
+    <string name="txt_main_menu">Welcome to Othello</string>
+    <string name="btnStartGame">Start Game</string>
+    <string name="menuPlayerOne">Player1:</string>
+    <string name="menuPlayer2">Player2:</string>
+
+    <!-- Scores Page title string -->
+    <string name="TopScores">Top 5 scores</string>
+
+    <!-- Game Rules Strings -->
+    <string name="btnContinue">Continue</string>
+    <string name="rule1">An Othello game always starts off in this position
+        shown; with two discs of each colour intersecting each other diagonally.
+        The top right disc is always black from either players sitting view.
+    </string>
+    <string name="rule2">First move always goes to black, in order to make a
+        legal move the player must place their colour on one of the empty
+        squares on the board. The disc must directly sandwich one or more
+        opposing colours, in either horizontal, vertical or diagonal directions.
+        This is then followed by the flipping of the sandwiched discs. If a
+        player has no moves available to them. Their turn is forfeit until they
+        have an available move.
+    </string>
+    <string name="rule3">The game continues on until the players either run out
+        of spaces on the board or there are no valid moves left.
+        The winner is decided by the number of points or pieces he or she has.
+        If a player runs out of time, they automatically lose, regardless
+        of accumulated points
+    </string>
+
+
+    <!-- Othello Game board strings -->
     <string name="label_player_one">PLAYER 1</string>
     <string name="label_player_two">PLAYER 2</string>
-    <string name="title_activity_menu">Menu</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_menu_page">Main Menu</string>
-
-    <string name="rule1">An Othello game always starts off in this position shown; with two discs of each colour
-    intersecting each other diagonally. The top right disc is always black from either players sitting view. </string>
-    <string name="rule2">First move always goes to black, in order to make a legal move the player must place
-    their colour on one of the empty squares on the board. The disc must directly sandwich one or more opposing colours,
-        in either horizontal, vertical or diagonal directions. This is then followed by the flipping of the sandwiched discs.
-        If a player has no moves available to them. Their turn is forfeit until they have an available move.</string>
-    <string name="rule3">The game continues on until the players either run out of spaces on the board or there are no
-    valid moves left. The winner is decided by the number of points or pieces he/she has.
-        If a player runs out of time, they automatically lose, regardless of accumulated points</string>
-
-    <string name="title_activity_othello">Othello</string>
-
     <string name="label_timer">No timer set/started</string>
     <string name="label_score">Current Score: 2</string>
     <string name="title_activity_scores">Scores</string>
 
-    <string name="title_activity_test">Test</string>
-    <string name="title_activity_high_scores">HighScores</string>
-
-    <string name="title_activity_splash_screen">SplashScreen</string>
-
-    <string name="txt_main_menu">Welcome to Othello</string>
-
-    <string name="title_activity_rules_page">Rules Part One</string>
-    <string name="title_activity_rule_two">Rules Part Two</string>
-    <string name="title_activity_rule_three">Rule Part Three</string>
-
-    <string name="title_activity_view_scores">High Scores</string>
-
+    <!-- The ID number from generated for the Othello Facebook App - this is
+    required for facebook SDK access -->
     <string name="facebook_app_id">642126629251885</string>
-    <string name="TopScores">Top 5 scores</string>
-
+    <string name="player1ImageViewContentDescription">White Helmet</string>
 
 </resources>

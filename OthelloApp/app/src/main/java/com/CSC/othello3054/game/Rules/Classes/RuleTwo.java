@@ -9,16 +9,14 @@ import android.widget.Button;
 
 import com.CSC.othello3054.game.R;
 
-
 public class RuleTwo extends ActionBarActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rule_two);
 
-        Button btnNext =(Button)findViewById(R.id.btnNex);
+        Button btnNext =(Button)findViewById(R.id.btnRuleTwoNext);
 
         btnNext.setOnClickListener(new OnClickListener() {
             @Override

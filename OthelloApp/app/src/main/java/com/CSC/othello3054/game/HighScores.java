@@ -5,34 +5,49 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
-import com.CSC.othello3054.game.Database.DBHelper;
+import com.CSC.othello3054.game.GameDataBase.DBHelper;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
+/**
+ * Created by Don - 14/04/2015 (my birthday)
+ */
+
 public class HighScores extends ActionBarActivity {
 
+    // the scores text view on the page.
     TextView txtViewTextScores;
+
+    // get the app database from the main menu.
     DBHelper dbHelper = MainMenu.getDatabase();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // initialise the facebook SDK
         FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_high_scores);
+
+        // read the javadoc...
 
         printScores(getScores());
 
-        facebookShareInit();
+        initFacebookShare();
     }
 
     /**
-     * Sets up the required stuff to allow content to be shared to a users
-     * facebook timeline.
-     * The facebook link that is shared is the game repo.
+     * Builds up a content Class to allow score sharing to a users Facebook
+     * timeline.<br>
+     * If no scores are available in the database, the share button is disabled.
+     * The facebook link shared is the public facing GitHub Pages web page for
+     * the project. It offers APK and source code downloads via a user
+     * friendly presentation/interface
      */
-    private void facebookShareInit() {
+    private void initFacebookShare() {
         ShareButton shareButton = (ShareButton)findViewById(R.id.share_view);
 
         if (getScores().equals("No Scores to display")){
@@ -49,7 +64,7 @@ public class HighScores extends ActionBarActivity {
     }
 
     /**
-     * Prints the database scores to the screen.
+     * Sets the text of TextView.textScores to the provided string parameter.
      */
     public void printScores(String scores){
         txtViewTextScores = (TextView) findViewById(R.id.textScores);
@@ -64,10 +79,10 @@ public class HighScores extends ActionBarActivity {
      */
     private String getScores() {
         String scores;
-        if (dbHelper.databaseToString(dbHelper.getWritableDatabase()).equals("")) {
+        if (dbHelper.topFivePlayersToString(dbHelper.getWritableDatabase()).equals("")) {
             scores = "No Scores to display";
         } else {
-            scores = dbHelper.databaseToString(dbHelper.getReadableDatabase());
+            scores = dbHelper.topFivePlayersToString(dbHelper.getReadableDatabase());
         }
         return scores;
     }
