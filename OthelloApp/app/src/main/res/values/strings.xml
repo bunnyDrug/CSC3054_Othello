@@ -62,4 +62,23 @@
     <string name="title_activity_post_comments">PostComments</string>
     <string name="title_activity_comment">comment</string>
 
+    <!--Slide bar rule strings -->
+    <string name="BasicRules">The Basic rules of othello:
+        Rule 1: Black/bottom always goes first.
+        Rule 2: You can only place your piece beside your opponent's to sandwich it between yours.
+        Rule 3: if you can't make a move you forfeit your turn.
+        Rule 4: Game is over when either player cant make a move or run out of space ont the
+        game board.
+    </string>
+    <string name="AimOfTheGame">The aim of the game is to win by having the control of the game board
+    to do this you must sandwich your opponent's pieces with your own. doing so you will gain points/ score.
+    If your pieces get turned over you lose some of the points that you have earned. Aim to lose as little
+    points if possible for a better high score.
+    </string>
+    <string name="PlayingOthello">Once you start to play the game it becomes fairly easy to understand, but
+    there can be a lot more thinking behind it, experienced players will have strategies. Try to create some of
+    your own so that you can beat your opponent
+    </string>
+
+
 </resources>
