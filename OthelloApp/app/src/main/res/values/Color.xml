@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!-- Don Davies: Custom colours for app skin, these have been picked in
+    accordance with the Android material design guidelines.-->
+
+    <!-- SEE https://github.com/bunnyDrug/CSC3054_Othello/blob/master/Colour%20Palette.md-->
+    <!-- AND http://www.google.co.uk/design/spec/style/color.html#color-color-palette-->
 <resources>
     <color name="colour_500_orange">#FF9800</color>
     <color name="colour_100_orange">#FFE0B2</color>

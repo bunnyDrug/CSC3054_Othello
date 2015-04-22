@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!-- Don Davies: predefined array for use on menu page. -->
+    <!--Allows users to select a time limit for a game-->
 <resources>
         <string-array name="timer_values_array">
             <item>No game timer</item>

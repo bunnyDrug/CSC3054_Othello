@@ -1,4 +1,6 @@
 <resources>
+    <!--Don Davies:  Material style xml -->
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
@@ -15,8 +17,13 @@
 
     <!-- Black theme -->
     <style name="BlackTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">#000000</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorPrimary">@color/colour_accent_blue</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colour_accent_blue</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/colour_accent_blue</item>
+        <!--<item name="android:background">#000000</item>-->
+        <!--<item name="android:textColor">#FFFFFF</item>-->
     </style>
     <!-- white theme -->
     <style name="WhiteTheme" parent="Theme.AppCompat.Light.DarkActionBar">

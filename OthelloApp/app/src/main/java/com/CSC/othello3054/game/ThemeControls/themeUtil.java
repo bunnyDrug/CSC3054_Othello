@@ -19,7 +19,10 @@ public class themeUtil {
         activity.startActivity(new Intent(activity,activity.getClass()));
     }
 
-
+/*
+ *A method to switch between themes on the activity its called in,
+ *
+ */
     public static void onCreateSetTheme(Activity activity)
     {
 
