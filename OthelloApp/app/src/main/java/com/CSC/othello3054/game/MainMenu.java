@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.CSC.othello3054.game.GameDatabase.DBHelper;
+import com.CSC.othello3054.game.GameDataBase.DBHelper;
 import com.CSC.othello3054.game.Rules.Classes.RuleOne;
 
 import java.util.Random;
@@ -81,12 +81,11 @@ public class MainMenu extends ActionBarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
-                    spinnerSelection = Integer.valueOf(mySpinner.getSelectedItem().toString().substring(0, 1));
+                    spinnerSelection = Integer.valueOf(mySpinner.getSelectedItem().toString().substring(0,1));
                 } else {
                     spinnerSelection = position;
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 

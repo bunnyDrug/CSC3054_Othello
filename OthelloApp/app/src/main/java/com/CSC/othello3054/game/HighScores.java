@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
 
-import com.CSC.othello3054.game.GameDatabase.DBHelper;
+import com.CSC.othello3054.game.GameDataBase.DBHelper;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
