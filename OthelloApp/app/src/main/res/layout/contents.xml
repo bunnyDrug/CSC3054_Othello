@@ -3,10 +3,38 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:id="@+id/item_score" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Space
+            android:layout_width="100px"
+            android:layout_height="40px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colour_500_orange"
+            android:text="itemName"
+            android:textStyle="bold"
+            android:id="@+id/item_Name"/>
+
+
+        <Space
+            android:layout_width="140px"
+            android:layout_height="40px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colour_500_orange"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="itemScore"
+            android:textStyle="bold"
+            android:id="@+id/item_score" />
+
+
+    </LinearLayout>
+
 </LinearLayout>

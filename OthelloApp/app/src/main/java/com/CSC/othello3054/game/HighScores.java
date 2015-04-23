@@ -1,11 +1,18 @@
 package com.CSC.othello3054.game;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
 import com.facebook.FacebookSdk;
@@ -37,9 +44,8 @@ public class HighScores extends ActionBarActivity {
         // read the javadoc...
 
         printScores(getScores());
+        populateListView();
 
-        ScrollView scrollable_contents = (ScrollView)findViewById(R.id.scroll_contents);
-        getLayoutInflater().inflate(R.layout.contents,scrollable_contents);
 
         initFacebookShare();
     }
@@ -91,9 +97,28 @@ public class HighScores extends ActionBarActivity {
         }
         return scores;
     }
-    private void populateListview(){
-        //Cursor cursor = dbHelper.
+    /**
+     * ListView method to show all results of the database
+     * Using SimpleCursorAdapter
+     *
+     */
+
+    private void populateListView(){
+
+
+        Cursor cursor = dbHelper.getAllRows(dbHelper.getReadableDatabase());
+
+            String[] fromTheFields = new String[]{dbHelper.Column_Player, dbHelper.Column_PlayerScore};
+            int[] ToTheList = new int[]{R.id.item_Name, R.id.item_score};
+            ListView lv =(ListView)findViewById(R.id.myList);
+            ListAdapter adapter = new SimpleCursorAdapter(this,R.layout.contents, cursor, fromTheFields, ToTheList,0);
+            lv.setAdapter(adapter);
+
+
+
+        }
+
 
     }
-}
+
 

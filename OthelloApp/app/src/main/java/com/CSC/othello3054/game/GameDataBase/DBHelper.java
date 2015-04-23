@@ -10,6 +10,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
@@ -20,8 +21,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "OthelloScores";
     private static final String Column_id = "_id";
-    private static final String Column_Player = "player_name";
-    private static final String Column_PlayerScore = "player_score";
+    public static final String Column_Player = "player_name";
+    public static final String Column_PlayerScore = "player_score";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -46,11 +47,12 @@ public class DBHelper extends SQLiteOpenHelper {
     /**
      * Don:
      * Adds a new row into the database
+     *
      * @param playerName String: the name of the player you wish to add
-     * @param score int: his or her score
-     * @param db SQLiteDatabase: the database to be updated with the new record
+     * @param score      int: his or her score
+     * @param db         SQLiteDatabase: the database to be updated with the new record
      */
-    public void add(String playerName, int score, SQLiteDatabase db){
+    public void add(String playerName, int score, SQLiteDatabase db) {
         ContentValues values = new ContentValues();
         values.put(Column_Player, playerName);
         values.put(Column_PlayerScore, score);
@@ -63,18 +65,19 @@ public class DBHelper extends SQLiteOpenHelper {
      * Don:
      * Gets the top 5 players from the database and sorts them in order of best
      * score. This information is returned in a formatted String
+     *
      * @param db the database you wish to query
      * @return String: A formatted string containing the top 5 players.
      */
-    public String topFivePlayersToString(SQLiteDatabase db){
-        String dbString= "";
+    public String topFivePlayersToString(SQLiteDatabase db) {
+        String dbString = "";
         String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + Column_PlayerScore + " DESC LIMIT 5";
 
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
 
         // run for the length of the database
-        while(!c.isAfterLast()){
+        while (!c.isAfterLast()) {
             dbString += "Name: " + c.getString(c.getColumnIndex(Column_Player));
             dbString += " Score: " + c.getString(c.getColumnIndex(Column_PlayerScore));
             dbString += "\n";
@@ -87,8 +90,22 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return dbString;
     }
-//    public String getAllRows(SQLiteDatabase db){
-//
-//       return ;
-//    }
+    /*
+     * private  SQlLiteData db to pass it into the cursor method
+     * Cursor method to return all rows to be populated in the listView
+     */
+    //private ;
+
+    public Cursor getAllRows(SQLiteDatabase db) {
+
+            String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + Column_PlayerScore + " DESC ";
+            Cursor c = db.rawQuery(query, null);
+            if (c != null) {
+                c.moveToFirst();
+            }
+        return c;
+
+    }
 }
+
+
