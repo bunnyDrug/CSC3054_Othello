@@ -6,9 +6,10 @@
     <string name="title_activity_othello">Othello</string>
     <string name="title_activity_menu">Menu</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
-    <string name="title_activity_rules_page">Rules Part One</string>
-    <string name="title_activity_rule_two">Rules Part Two</string>
-    <string name="title_activity_rule_three">Rule Part Three</string>
+
+    <string name="title_activity_rules_page">Introduction</string>
+    <string name="title_activity_rule_two">Game Rules</string>
+    <string name="title_activity_rule_three">How to win?</string>
     <string name="title_activity_high_scores">High Scores</string>
 
 
@@ -80,5 +81,7 @@
     your own so that you can beat your opponent
     </string>
 
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>

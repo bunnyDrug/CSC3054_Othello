@@ -11,11 +11,15 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
-public class FragRule1 extends Fragment {
+public final class FragRule1 extends Fragment {
+
+    public FragRule1() {
+
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.frag_one_layout, container, false);
-        return v;
+        View rootView = inflater.inflate(R.layout.frag_one_layout, container, false);
+        return rootView;
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- Don Davies: predefined array for use on menu page. -->
+    <!--Allows users to select a time limit for a game-->
+<resources>
+        <string-array name="rules_array">
+            <item>No game timer</item>
+            <item>Basic Rules</item>
+            <item>Aim of the game</item>
+            <item>Playing Othello</item>
+            <item>How to win</item>
+            <item>Advanced Strategy</item>
+        </string-array>
+</resources>
