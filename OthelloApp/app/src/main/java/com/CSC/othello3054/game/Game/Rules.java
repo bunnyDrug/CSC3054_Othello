@@ -170,7 +170,7 @@ final class Rules {
             else {
                 do {
                     // in other words you have reached the edge of a diagonal check
-                    if ((reachedEdge(newPosition, gameBoard)) && (direction != EAST) && (direction != WEST) && (direction != NORTH) && (direction != SOUTH)) {
+                    if ((reachedEdge(newPosition, gameBoard)) && (direction != EAST) && (direction != WEST) && (direction != NORTH) && (direction != SOUTH) && (gameBoard.getPiece(newPosition) != currentDisk)) {
                         // Log.d("Rules:", "Reached edge of board - skipping");
                         //result = false;
                         break;
@@ -301,7 +301,7 @@ final class Rules {
             //                  -
             //                  \
             positionsToCheck.remove((Integer) EAST);
-            positionsToCheck.remove((Integer) NORTH_WEST);
+            positionsToCheck.remove((Integer) NORTH_EAST);
             positionsToCheck.remove((Integer) SOUTH_EAST);
         }
         positionsToCheck.trimToSize();
