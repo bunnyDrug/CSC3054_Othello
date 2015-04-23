@@ -10,4 +10,6 @@
     <color name="colour_700_orange">#F57C00</color>
     <color name="colour_accent_blue">#2196F3</color>
     <color name="black_overlay">#66000000</color>
+    <color name="noir">#000000</color>
+
 </resources>
