@@ -25,6 +25,15 @@
         android:text="@string/title_activity_high_scores"
         android:textSize="20sp"/>
 
+    <ScrollView
+        android:id="@+id/scroll_contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colour_accent_blue"
+        >
+
+        </ScrollView>
+
     <com.facebook.share.widget.ShareButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

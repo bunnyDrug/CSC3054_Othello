@@ -87,4 +87,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return dbString;
     }
+//    public String getAllRows(SQLiteDatabase db){
+//
+//       return ;
+//    }
 }

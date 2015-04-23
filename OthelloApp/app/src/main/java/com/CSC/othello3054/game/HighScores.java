@@ -1,8 +1,10 @@
 package com.CSC.othello3054.game;
 
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
@@ -35,6 +37,9 @@ public class HighScores extends ActionBarActivity {
         // read the javadoc...
 
         printScores(getScores());
+
+        ScrollView scrollable_contents = (ScrollView)findViewById(R.id.scroll_contents);
+        getLayoutInflater().inflate(R.layout.contents,scrollable_contents);
 
         initFacebookShare();
     }
@@ -85,6 +90,10 @@ public class HighScores extends ActionBarActivity {
             scores = dbHelper.topFivePlayersToString(dbHelper.getReadableDatabase());
         }
         return scores;
+    }
+    private void populateListview(){
+        //Cursor cursor = dbHelper.
+
     }
 }
 
