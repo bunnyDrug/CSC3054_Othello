@@ -19,6 +19,7 @@ public class OthelloGame extends ActionBarActivity {
     String topPlayer;
     String bottomPlayer;
     int timerValueSelected;
+    boolean colourblindMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class OthelloGame extends ActionBarActivity {
      * Creates and starts the system that controls and runs the game.
      */
     private void startGame() {
-        othelloSystem = new OthelloSystem(this, timerValueSelected);
+        othelloSystem = new OthelloSystem(this, timerValueSelected, colourblindMode);
         othelloSystem.startGame(topPlayer, bottomPlayer);
     }
 
@@ -68,6 +69,7 @@ public class OthelloGame extends ActionBarActivity {
             topPlayer = extras.getString("topPlayer");
             bottomPlayer = extras.getString("bottomPlayer");
             timerValueSelected = extras.getInt("spinnerSelection");
+            colourblindMode = extras.getBoolean("cbMode");
         }
     }
 }

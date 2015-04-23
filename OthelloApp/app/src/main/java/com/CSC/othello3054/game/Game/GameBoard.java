@@ -24,9 +24,13 @@ class GameBoard {
      * is initialised with othello starting positions - two white and two black
      * counters.
      * The edges of the board are also initialised here for use later.
+     * Parameters allow for the modification of counters before a game starts.
+     *
+     * @param black the image asset you wish used to display the black counters
+     * @param white the image asset you wish used to display the white counters
      */
-    public GameBoard() {
-        initStartingPieces();
+    public GameBoard(int black, int white) {
+        initStartingPieces(black, white);
         defineBoardEdges();
     }
 
@@ -34,16 +38,17 @@ class GameBoard {
      * Populates the board array with drawable resources to represent the disks
      * in play - the middle four tiles contain the starting counters for a new
      * game.
+     * @param black the image asset you wish used to display the black counters
+     * @param white the image asset you wish used to display the white counters
      */
-
-    private void initStartingPieces() {
+    private void initStartingPieces(int black, int white) {
         for (int i = 0; i < board.length; i ++) {
             board[i] = R.drawable.placement_counter;
             if (i == 27 || i == 36) {
-                board[i] = R.drawable.white_disk;
+                board[i] = white;
             }
             if (i == 28 || i == 35) {
-                board[i] = R.drawable.black_disk;
+                board[i] = black;
             }
         }
     }

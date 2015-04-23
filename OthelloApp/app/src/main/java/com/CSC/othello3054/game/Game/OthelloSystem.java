@@ -60,7 +60,7 @@ public class OthelloSystem extends ActionBarActivity{
      * @param timerValueSelected int: A user selected value deciding whether a
      *                           game should have a timer or not.
      */
-    public OthelloSystem (Activity activity, int timerValueSelected) {
+    public OthelloSystem (Activity activity, int timerValueSelected, boolean colourBlindMode) {
 
 
         // This allows for access to XML values on the layout.
@@ -74,6 +74,12 @@ public class OthelloSystem extends ActionBarActivity{
         } else {
             // disable timer
             isTimedGame = false;
+        }
+
+        // init colourblind tokens.
+        if (colourBlindMode) {
+            blackDisk = R.drawable.black_disk_cb;
+            whiteDisk = R.drawable.white_disk_cb;
         }
     }
 
@@ -197,7 +203,7 @@ public class OthelloSystem extends ActionBarActivity{
      * Creates an instance of GameBoard that stores the current game pieces.
      */
     private void createGameBoard() {
-        gameBoard = new GameBoard();
+        gameBoard = new GameBoard(blackDisk, whiteDisk);
     }
 
     /**

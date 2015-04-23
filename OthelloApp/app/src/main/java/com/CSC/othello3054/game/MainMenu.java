@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -30,10 +31,15 @@ public class MainMenu extends ActionBarActivity {
     Spinner mySpinner;
     int spinnerSelection;
 
+    // checkbox - used to set colourblind icons.
+    CheckBox cbCheckBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
+
+        cbCheckBox = (CheckBox) findViewById(R.id.cbMode);
 
         // SEE JAVADOC for details.
 
@@ -49,6 +55,8 @@ public class MainMenu extends ActionBarActivity {
         // run the click listener for the start game button.
         bntStartGame();
     }
+
+
 
     /**
      * Creates an arrayAdapter which reads in values from an XML file
@@ -147,6 +155,9 @@ public class MainMenu extends ActionBarActivity {
                     intent.putExtra("topPlayer", topEditText.getText().toString());
                     intent.putExtra("bottomPlayer", bottomEditText.getText().toString());
                     intent.putExtra("spinnerSelection", spinnerSelection);
+
+                    // if colourblind mode is enabled - put true into extras
+                    intent.putExtra("cbMode", cbCheckBox.isChecked());
                 }
                 startActivityForResult(intent, 0);
             }
