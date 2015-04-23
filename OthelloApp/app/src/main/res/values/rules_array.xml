@@ -3,10 +3,10 @@
     <!--Allows users to select a time limit for a game-->
 <resources>
         <string-array name="rules_array">
-            <item>No game timer</item>
-            <item>Basic Rules</item>
+            <item>Introduction</item>
             <item>Aim of the game</item>
             <item>Playing Othello</item>
+            <item>Basic Rules</item>
             <item>How to win</item>
             <item>Advanced Strategy</item>
         </string-array>

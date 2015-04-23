@@ -1,6 +1,5 @@
 package com.CSC.othello3054.game;
 
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

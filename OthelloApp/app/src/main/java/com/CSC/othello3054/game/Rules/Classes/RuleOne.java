@@ -2,7 +2,6 @@ package com.CSC.othello3054.game.Rules.Classes;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -15,11 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.CSC.othello3054.game.R;
+import com.CSC.othello3054.game.Rules.RuleFragments.FragRule0;
 import com.CSC.othello3054.game.Rules.RuleFragments.FragRule1;
 import com.CSC.othello3054.game.Rules.RuleFragments.FragRule2;
 import com.CSC.othello3054.game.Rules.RuleFragments.FragRule3;
 import com.CSC.othello3054.game.Rules.RuleFragments.FragRule4;
-import com.CSC.othello3054.game.Rules.RuleFragments.FragRule5;
 
 public class RuleOne extends ActionBarActivity {
 
@@ -31,15 +30,23 @@ public class RuleOne extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rule_one);
+        setContentView(R.layout.activity_how_to_play);
 
         setInitialFrag();
 
         initDrawer();
 
-        // Set the list's click listener
-        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+        setDrawerIcon();
 
+        startDrawerClickListener();
+
+    }
+
+    private void startDrawerClickListener() {
+        drawerList.setOnItemClickListener(new DrawerItemClickListener());
+    }
+
+    private void setDrawerIcon() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
@@ -93,20 +100,6 @@ public class RuleOne extends ActionBarActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void initDrawer() {
         String[] rulesMenuList = getResources().getStringArray(R.array.rules_array);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -117,7 +110,7 @@ public class RuleOne extends ActionBarActivity {
     }
 
     private void setInitialFrag() {
-        Fragment fragment1 = new FragRule1();
+        Fragment fragment1 = new FragRule0();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, fragment1)
@@ -128,6 +121,10 @@ public class RuleOne extends ActionBarActivity {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
+
+            String[] titles = getResources().getStringArray(R.array.rules_array);
+
+            setTitle(titles[position]);
         }
     }
 
@@ -136,41 +133,37 @@ public class RuleOne extends ActionBarActivity {
      */
     private void selectItem(int position) {
 
+        Fragment fragment0 = new FragRule0();
         Fragment fragment1 = new FragRule1();
         Fragment fragment2 = new FragRule2();
         Fragment fragment3 = new FragRule3();
         Fragment fragment4 = new FragRule4();
-        Fragment fragment5 = new FragRule5();
 
         FragmentManager fragmentManager = getFragmentManager();
         switch (position) {
             case 0:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment1)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .replace(R.id.content_frame, fragment0)
                         .commit();
                 break;
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment2)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .replace(R.id.content_frame, fragment1)
                         .commit();
                 break;
             case 2:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment3)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .replace(R.id.content_frame, fragment2)
                         .commit();
                 break;
             case 3:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment4)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .replace(R.id.content_frame, fragment3)
                         .commit();
                 break;
             case 4:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment5)
+                        .replace(R.id.content_frame, fragment4)
                         .commit();
                 break;
             default:

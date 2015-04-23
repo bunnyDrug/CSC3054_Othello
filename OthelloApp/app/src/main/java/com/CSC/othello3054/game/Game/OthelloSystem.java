@@ -59,7 +59,9 @@ public class OthelloSystem extends ActionBarActivity{
      * @param activity Activity: The activity from the game layout.
      * @param timerValueSelected int: A user selected value deciding whether a
      *                           game should have a timer or not.
+     * @param colourBlindMode boolean - change disks for colourblind users.
      */
+
     public OthelloSystem (Activity activity, int timerValueSelected, boolean colourBlindMode) {
 
 

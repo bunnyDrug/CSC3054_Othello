@@ -54,6 +54,7 @@ public class OthelloGame extends ActionBarActivity {
                                  "\nPlayer turns are indicated by the blue " +
                                  "coloring on your name")
                          .setIcon(android.R.drawable.ic_lock_idle_alarm)
+                         .setPositiveButton("Got it",null)
                          .show();
     }
 

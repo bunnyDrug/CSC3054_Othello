@@ -14,10 +14,14 @@
 
 
     <!-- Main menu strings string -->
-    <string name="txt_main_menu">Welcome to Othello</string>
+    <string name="txt_main_menu">Othello</string>
     <string name="btnStartGame">Start Game</string>
-    <string name="menuPlayerOne">Player1:</string>
+    <string name="menuPlayerOne">:Player1</string>
     <string name="menuPlayer2">Player2:</string>
+    <!--menu strings-->
+    <string name="menu_rules">How To Play</string>
+    <string name="menu_scores">High Scores</string>
+
 
     <!-- Scores Page title string -->
     <string name="TopScores">Top 5 scores</string>
@@ -44,7 +48,6 @@
         of accumulated points
     </string>
 
-
     <!-- Othello Game board strings -->
     <string name="label_player_one">PLAYER 1</string>
     <string name="label_player_two">PLAYER 2</string>
@@ -55,33 +58,29 @@
     <!-- The ID number from generated for the Othello Facebook App - this is
     required for facebook SDK access -->
     <string name="facebook_app_id">642126629251885</string>
-    <string name="player1ImageViewContentDescription">White Helmet</string>
-    <string name="title_activity_comments_view">CommentsView</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_post_comments">PostComments</string>
-    <string name="title_activity_comment">comment</string>
 
     <!--Slide bar rule strings -->
-    <string name="BasicRules">The Basic rules of othello:
-        Rule 1: Black/bottom always goes first.
-        Rule 2: You can only place your piece beside your opponent\'s to sandwich it between yours.
-        Rule 3: if you can\'t make a move you forfeit your turn.
-        Rule 4: Game is over when either player can\'t make a move or run out of space ont the
-        game board.
+    <string name="howToPlay">No one like being told what to do\n\nGood thing you only need a few simple rules to quickly start playing your own games of Othello\nJust Swipe right to get started</string>
+    <string name="AimOfTheGame">
+        is one of superiority\n\nOutwit your opponent and take control of the
+        game board by outnumbering your opponents pieces with your own.
     </string>
-    <string name="AimOfTheGame">The aim of the game is to win by having the control of the game board
-    to do this you must sandwich your opponent\'s pieces with your own. doing so you will gain points/ score.
-    If your pieces get turned over you lose some of the points that you have earned. Aim to lose as little
-    points if possible for a better high score.
+    <string name="PlayingOthello">Players take turns placing counters on an 8x8
+        board. The idea here is to sandwich tokens and flip them.\n\nOnce you
+        get a few games under your belt it will become fairly easy to
+        understand and you should find yourself planning strategies against your opponent. Remember openings and endgame play is equally important.
     </string>
-    <string name="PlayingOthello">Once you start to play the game it becomes fairly easy to understand, but
-    there can be a lot more thinking behind it, experienced players will have strategies. Try to create some of
-    your own so that you can beat your opponent
+    <string name="BasicRules">Black/bottom always goes first\n\n
+        You may only place your piece beside an opponent\'s piece\n\n
+        Flip as many pieces as you can by sandwiching opponents pieces between your own (in either horizontal, vertical or diagonal directions)\n\n
+        If you can\'t make a move your turn is forfeit\n\n
+    </string>
+    <string name="HowToWin">By having the most counters on the board when there are no more moves left for either player.\n\n
+        Beware: If you have opted for a timed game and run out of time - You will lose regardless of your score.
     </string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="checkboxColourBlind">COLOUR-BLIND MODE</string>
 
 </resources>
