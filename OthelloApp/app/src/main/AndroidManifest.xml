@@ -33,11 +33,11 @@
             android:label="@string/title_activity_rules_page" >
         </activity>
         <activity
-            android:name=".SpalshScreen.Othello"
+            android:name="com.CSC.othello3054.game.SplashScreen.Othello"
             android:label="@string/title_activity_othello" >
         </activity>
         <activity
-            android:name=".SpalshScreen.SplashScreen"
+            android:name="com.CSC.othello3054.game.SplashScreen.SplashScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Othello"
             android:theme="@style/FullscreenTheme" >
@@ -49,14 +49,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity
-            android:name=".Rules.Classes.RuleTwo"
-            android:label="@string/title_activity_rule_two" >
-        </activity>
-        <activity
-            android:name=".Rules.Classes.RuleThree"
-            android:label="@string/title_activity_rule_three" >
-        </activity>
+
         <activity
             android:name=".HighScores"
             android:label="@string/title_activity_high_scores" >

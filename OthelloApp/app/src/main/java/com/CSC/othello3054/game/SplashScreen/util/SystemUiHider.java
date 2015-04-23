@@ -1,4 +1,4 @@
-package com.CSC.othello3054.game.SpalshScreen.util;
+package com.CSC.othello3054.game.SplashScreen.util;
 
 import android.app.Activity;
 import android.os.Build;

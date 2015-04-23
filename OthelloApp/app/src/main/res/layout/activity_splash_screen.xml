@@ -1,41 +1,38 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="#FFE0B2"
-    tools:context="com.CSC.othello3054.game.SpalshScreen.SplashScreen">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colour_100_orange"
+    tools:context="com.CSC.othello3054.game.SplashScreen.SplashScreen">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <!--android:keepScreenOn="true"-->
     <TextView android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:textColor="#ffffff"
+        android:padding="@dimen/abc_action_bar_default_height_material"
+        android:textColor="@color/colour_700_orange"
         android:textStyle="bold"
         android:textSize="50sp"
-        android:gravity="top"
-        android:text="Othello" />
+        android:gravity="center|top"
+        android:text="@string/app_name" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true">
-<!--
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
 
-        </LinearLayout>
--->
         <ImageView
+            android:layout_margin="@dimen/abc_action_bar_default_height_material"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView6"
-            android:layout_gravity="center"
-            android:src="@drawable/splash" />
+            android:layout_gravity="bottom"
+            android:src="@drawable/splash"
+            android:contentDescription="Icon"/>
     </FrameLayout>
 
 </FrameLayout>
