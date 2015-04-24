@@ -1,8 +1,10 @@
-package com.CSC.othello3054.game.Rules.Classes;
+package com.CSC.othello3054.game.HighScores.Class;
+
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -11,16 +13,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
+import com.CSC.othello3054.game.GameDataBase.DBHelper;
+import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag0_higScores_TopScores;
+import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag1_higScores_AllScores;
+import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
-import com.CSC.othello3054.game.Rules.RuleFragments.FragRule0;
-import com.CSC.othello3054.game.Rules.RuleFragments.FragRule1;
-import com.CSC.othello3054.game.Rules.RuleFragments.FragRule2;
-import com.CSC.othello3054.game.Rules.RuleFragments.FragRule3;
-import com.CSC.othello3054.game.Rules.RuleFragments.FragRule4;
+import com.facebook.FacebookSdk;
 
-public class RuleOne extends ActionBarActivity {
+;
+
+/**
+ * Created by Don - 14/04/2015 (my birthday)
+ */
+
+public class HighScores extends ActionBarActivity {
+
+
+    // get the app database from the main menu.
+    DBHelper dbHelper = MainMenu.getDatabase();
 
     private ListView drawerList;
     private DrawerLayout drawerLayout;
@@ -28,9 +42,14 @@ public class RuleOne extends ActionBarActivity {
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_how_to_play);
+
+        // read the javadoc...
+
+        // initialise the facebook SDK
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        setContentView(R.layout.activity_scores);
 
         setInitialFrag();
 
@@ -40,6 +59,9 @@ public class RuleOne extends ActionBarActivity {
 
         startDrawerClickListener();
 
+        //populateListView();
+
+        //populateTopListView();
     }
 
     private void startDrawerClickListener() {
@@ -47,7 +69,7 @@ public class RuleOne extends ActionBarActivity {
     }
 
     private void setDrawerIcon() {
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.scores_drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 drawerLayout,         /* DrawerLayout object */
@@ -101,16 +123,16 @@ public class RuleOne extends ActionBarActivity {
 
 
     private void initDrawer() {
-        String[] rulesMenuList = getResources().getStringArray(R.array.rules_array);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerList = (ListView) findViewById(R.id.left_drawer);
+        String[] rulesMenuList = getResources().getStringArray(R.array.highScore_array);
+        drawerLayout = (DrawerLayout) findViewById(R.id.scores_drawer_layout);
+        drawerList = (ListView) findViewById(R.id.scores_left_drawer);
 
         // Set the adapter for the list view
         drawerList.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, rulesMenuList));
     }
 
     private void setInitialFrag() {
-        Fragment fragment1 = new FragRule0();
+        Fragment fragment1 = new Frag0_higScores_TopScores();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, fragment1)
@@ -122,7 +144,7 @@ public class RuleOne extends ActionBarActivity {
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
 
-            String[] titles = getResources().getStringArray(R.array.rules_array);
+            String[] titles = getResources().getStringArray(R.array.highScore_array);
 
             setTitle(titles[position]);
         }
@@ -132,12 +154,9 @@ public class RuleOne extends ActionBarActivity {
      * Swaps fragments in the main content view
      */
     private void selectItem(int position) {
+        Fragment fragment0 = new Frag0_higScores_TopScores();
+        Fragment fragment1 = new Frag1_higScores_AllScores();
 
-        Fragment fragment0 = new FragRule0();
-        Fragment fragment1 = new FragRule1();
-        Fragment fragment2 = new FragRule2();
-        Fragment fragment3 = new FragRule3();
-        Fragment fragment4 = new FragRule4();
 
         FragmentManager fragmentManager = getFragmentManager();
         switch (position) {
@@ -151,21 +170,6 @@ public class RuleOne extends ActionBarActivity {
                         .replace(R.id.content_frame, fragment1)
                         .commit();
                 break;
-            case 2:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment2)
-                        .commit();
-                break;
-            case 3:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment3)
-                        .commit();
-                break;
-            case 4:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment4)
-                        .commit();
-                break;
             default:
                 break;
         }
@@ -174,5 +178,23 @@ public class RuleOne extends ActionBarActivity {
         drawerList.setItemChecked(position, true);
         drawerLayout.closeDrawer(drawerList);
     }
+
+
+
+
+//    /**
+//     * Sets the text of TextView.textScores to the provided string parameter.
+//     */
+//    public void printScores(String scores){
+//        txtViewTextScores = (TextView) findViewById(R.id.textScores);
+//        txtViewTextScores.setText(scores);
+//    }
+
+
+
+
+
+
 }
+
 

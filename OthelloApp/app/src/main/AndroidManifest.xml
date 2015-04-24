@@ -29,7 +29,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".Rules.Classes.RuleOne"
+            android:name=".Rules.Class.Rules"
             android:label="@string/title_activity_rules_page" >
         </activity>
         <activity
@@ -47,7 +47,7 @@
         </activity>
 
         <activity
-            android:name=".HighScores"
+            android:name=".HighScores.Class.HighScores"
             android:label="@string/title_activity_high_scores" >
         </activity>
         <activity

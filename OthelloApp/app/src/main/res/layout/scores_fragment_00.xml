@@ -19,13 +19,6 @@
         <!--android:textColor="@color/colour_accent_blue"/>-->
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textScores"
-        android:text="@string/title_activity_high_scores"
-        android:textSize="20sp"/>
-
-    <TextView
         android:layout_marginTop="40dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

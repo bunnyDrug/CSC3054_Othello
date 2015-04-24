@@ -16,7 +16,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
-import com.CSC.othello3054.game.Rules.Classes.RuleOne;
+import com.CSC.othello3054.game.HighScores.Class.HighScores;
+import com.CSC.othello3054.game.Rules.Class.Rules;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.Random;
@@ -203,7 +204,7 @@ public class MainMenu extends ActionBarActivity {
                     item.setChecked(false);
                 else
                     item.setChecked(true);
-                Intent intentRule = new Intent(this,RuleOne.class);
+                Intent intentRule = new Intent(this,Rules.class);
                 startActivity(intentRule);
                 return true;
 

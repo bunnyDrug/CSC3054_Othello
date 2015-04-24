@@ -11,11 +11,11 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
-public class FragRule3 extends Fragment {
+public class frag2_rule_PlayingOthello extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.rule_fragment_03,container,false);
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.rule_fragment_02, container, false);
         return v;
- }
+    }
 }
