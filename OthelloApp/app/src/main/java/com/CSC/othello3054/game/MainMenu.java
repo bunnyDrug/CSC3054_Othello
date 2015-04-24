@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 
 import com.CSC.othello3054.game.GameDataBase.DBHelper;
 import com.CSC.othello3054.game.Rules.Classes.RuleOne;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.Random;
 
@@ -133,7 +133,7 @@ public class MainMenu extends ActionBarActivity {
      * fields.
      */
     private void bntStartGame() {
-        Button btnStart = (Button) findViewById(R.id.startButton);
+        FloatingActionButton btnStart = (FloatingActionButton) findViewById(R.id.startButton);
         btnStart.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
