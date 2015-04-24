@@ -215,14 +215,7 @@ public class MainMenu extends ActionBarActivity {
                 Intent intent = new Intent(MainMenu.this, HighScores.class);
                 startActivity(intent);
                 return true;
-            case R.id.menu_Settings:
-                if (item.isChecked())
-                    item.setChecked(false);
-                else
-                item.setChecked(true);
-                Intent intents = new Intent(MainMenu.this, Settings.class);
-                startActivity(intents);
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

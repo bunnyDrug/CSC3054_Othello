@@ -91,10 +91,14 @@ public class DBHelper extends SQLiteOpenHelper {
         return dbString;
     }
     /*
-     * private  SQlLiteData db to pass it into the cursor method
      * Cursor method to return all rows to be populated in the listView
+     * Gets a query of select all from the table Othello scores
+     *
+     * @param db the database you wish to query
+     * @return Cursor: A formatted string containing the all players.
+     *
      */
-    //private ;
+
 
     public Cursor getAllRows(SQLiteDatabase db) {
 
@@ -105,6 +109,22 @@ public class DBHelper extends SQLiteOpenHelper {
             }
         return c;
 
+    }
+
+    /*
+     *Cursor method to return the top ten scores, and put them in a list view
+     * Gets a query of select al from the table and limiting the results to the top 10
+     *
+     * @param db the database you wish to query
+     * @return String: A formatted string containing the top 10 players.
+     */
+    public Cursor topTen(SQLiteDatabase db){
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + Column_PlayerScore + " DESC LIMIT 10";
+        Cursor c = db.rawQuery(query,null);
+        if(c !=null){
+            c.moveToFirst();
+        }
+        return c;
     }
 }
 

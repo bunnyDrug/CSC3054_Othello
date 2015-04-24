@@ -19,7 +19,7 @@ public final class FragRule1 extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.frag_one_layout, container, false);
+        View rootView = inflater.inflate(R.layout.rule_fragment_01, container, false);
         return rootView;
     }
 }

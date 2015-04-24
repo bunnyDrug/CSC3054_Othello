@@ -15,7 +15,8 @@ import android.widget.TextView;
 class Player {
 
     public static final String colour_accent_blue = "#2196F3";
-    public static final String primary_dark_material_light = "#ff757575";
+    //public static final String primary_dark_material_light = "#ff757575";
+    public static final String primary_dark_material_light = "#FFE0B2";
 
     // 1 second
     private final long TICK_INTERVAL = 1000;

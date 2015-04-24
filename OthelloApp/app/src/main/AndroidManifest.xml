@@ -33,11 +33,11 @@
             android:label="@string/title_activity_rules_page" >
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.SplashScreen.Othello"
+            android:name=".SplashScreen.Othello"
             android:label="@string/title_activity_othello" >
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.SplashScreen.SplashScreen"
+            android:name=".SplashScreen.SplashScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Othello"
             android:theme="@style/FullscreenTheme" >
@@ -64,19 +64,6 @@
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProvider642126629251885"
             android:exported="true" />
-
-        <activity
-            android:name=".Settings"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
-            android:name=".Comments.CommentsView"
-            android:label="@string/title_activity_comments_view" >
-        </activity>
-        <activity
-            android:name=".Comments.PostComments"
-            android:label="@string/title_activity_post_comments" >
-        </activity>
 
     </application>
 
