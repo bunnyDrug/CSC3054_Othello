@@ -47,7 +47,7 @@ public class HighScores extends ActionBarActivity {
         setContentView(R.layout.activity_scores_startup);
 
         // read the javadoc...
-        //setInitial();
+        setInitial();
         initDrawer();
         setDrawerIcon();
         startDrawerClickListener();
@@ -57,6 +57,10 @@ public class HighScores extends ActionBarActivity {
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
     }
 
+    /**
+     * getting the array highScore_array
+     * setting it up in a list view
+     */
     private void initDrawer() {
         String[] rulesMenuList = getResources().getStringArray(R.array.highScore_array);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -65,12 +69,19 @@ public class HighScores extends ActionBarActivity {
         // Set the adapter for the list view
         drawerList.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, rulesMenuList));
     }
+    /**
+     * set the ContentView to the list value  to be seen
+     */
     private void setInitial()
     {
         setContentView(R.layout.activity_high_scores);
     }
 
-
+/**
+ * @class
+ *
+ *
+ */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
@@ -81,6 +92,12 @@ public class HighScores extends ActionBarActivity {
             setTitle(titles[position]);
         }
     }
+
+    /**
+     * to get the value of what is being selected in the drawer
+     *
+     * @param position
+     */
     private void selectItem(int position) {
 
         switch (position) {
@@ -90,6 +107,7 @@ public class HighScores extends ActionBarActivity {
                 initFacebookShare();
                 break;
             case 1:
+                setContentView(R.layout.allscores);
                 populateListView();
                 break;
             default:
@@ -183,6 +201,11 @@ public class HighScores extends ActionBarActivity {
 
     }
 
+    /**
+     * used to set the drawer icon, it calls in the drawer_layout
+     * creates the drawer toggle feature
+     * sets up its opened and closed state
+     */
     private void setDrawerIcon() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(

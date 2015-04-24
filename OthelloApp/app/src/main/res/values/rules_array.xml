@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <!-- Don Davies: predefined array for use on menu page. -->
-    <!--Allows users to select a time limit for a game-->
+    <!--Allows users to select between the following fragments for a game-->
 <resources>
         <string-array name="rules_array">
             <item>Introduction</item>

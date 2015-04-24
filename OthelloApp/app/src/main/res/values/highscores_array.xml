@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Allows users to select between the xml shows the highScore results game-->
 <resources>
     <string-array name="highScore_array">
         <item>Top Scores</item>

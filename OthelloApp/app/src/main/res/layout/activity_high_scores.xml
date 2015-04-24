@@ -1,3 +1,4 @@
+<!--Top ten game scores from the game databases xml  -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,14 +18,14 @@
         <!--android:layout_gravity="center"-->
         <!--android:textSize="42sp"-->
         <!--android:textColor="@color/colour_accent_blue"/>-->
-
+<!-- text view that would disply the top 5 scores from the game databse-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textScores"
         android:text="@string/title_activity_high_scores"
         android:textSize="20sp"/>
-
+<!--title/ header of the xml -->
     <TextView
         android:layout_marginTop="40dp"
         android:layout_width="fill_parent"
@@ -46,18 +47,18 @@
         android:gravity="end|top"
         android:textStyle="bold"/>
 
-
+<!--Facebook share button created in the style facebook demands to fit their layout -->
     <com.facebook.share.widget.ShareButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/share_view"
         android:text="@string/com_facebook_share_button_text" />
-
+<!--Linear Layout to split up the contents  -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="match_parent">
-
+<!--List view of the top ten score in the game game database -->
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
