@@ -8,3 +8,5 @@
 <li>[Material Design icon set](http://www.blog.webhostface.com/material-design-icons/ "Material Design icon set")</li>
 
 <li>[Resouce kit 2](https://www.infinum.co/the-capsized-eight/articles/android-lollipop-material-design-ui-kit-for-sketch "Resouce kit 2")</li>
+
+<li>[Material Design Spec](http://www.google.com/design/spec/material-design/introduction.html "Material Design Spec")</li>

@@ -9,6 +9,9 @@ accent color from the secondary palette.</p>
 <h2>Accent color</h2>
 <p>Use the accent color for your primary action button and components like switches or sliders.</p>
 
+
+<li>[Material Design Color Spec](http://www.google.com/design/spec/style/color.html "Material Design Color Spec")</li>
+
 <hr>
 
 <h3>Defualt: Orange and blue</h3>
