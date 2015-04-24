@@ -1,0 +1,80 @@
+﻿Merge branch 'dev' of https://github.com/bunnyDrug/CSC3054_Othello into dev
+
+Conflicts:
+	OthelloApp/app/src/main/java/com/CSC/othello3054/game/HighScores.java
+	OthelloApp/app/src/main/java/com/CSC/othello3054/game/MainMenu.java
+	OthelloApp/app/src/main/java/com/CSC/othello3054/game/Settings.java
+	OthelloApp/app/src/main/res/layout/activity_settings.xml
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch dev
+# Your branch and 'origin/dev' have diverged,
+# and have 1 and 3 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   OthelloApp/app/app.iml
+#	modified:   OthelloApp/app/build.gradle
+#	modified:   OthelloApp/app/src/main/AndroidManifest.xml
+#	deleted:    OthelloApp/app/src/main/java/com/CSC/othello3054/game/Comments/CommentDBHelper.java
+#	deleted:    OthelloApp/app/src/main/java/com/CSC/othello3054/game/Comments/CommentsView.java
+#	deleted:    OthelloApp/app/src/main/java/com/CSC/othello3054/game/Comments/PostComments.java
+#	deleted:    OthelloApp/app/src/main/java/com/CSC/othello3054/game/Comments/comment.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Game/OthelloSystem.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Game/Player.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/HighScores.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/MainMenu.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/OthelloGame.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/Classes/RuleOne.java
+#	renamed:    OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/RuleFragments/FragRule5.java -> OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/RuleFragments/FragRule0.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/RuleFragments/FragRule1.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/RuleFragments/FragRule2.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/RuleFragments/FragRule3.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Rules/RuleFragments/FragRule4.java
+#	modified:   OthelloApp/app/src/main/java/com/CSC/othello3054/game/Settings.java
+#	deleted:    OthelloApp/app/src/main/java/com/CSC/othello3054/game/ThemeControls/themeUtil.java
+#	new file:   OthelloApp/app/src/main/res/drawable-hdpi/ic_action_accept.png
+#	new file:   OthelloApp/app/src/main/res/drawable-mdpi/ic_action_accept.png
+#	new file:   OthelloApp/app/src/main/res/drawable-xhdpi/ic_action_accept.png
+#	new file:   OthelloApp/app/src/main/res/drawable-xxhdpi/ic_action_accept.png
+#	deleted:    OthelloApp/app/src/main/res/drawable/green_disk.png
+#	deleted:    OthelloApp/app/src/main/res/drawable/making_first_move.jpg
+#	deleted:    OthelloApp/app/src/main/res/drawable/start_of_first_move.jpg
+#	deleted:    OthelloApp/app/src/main/res/drawable/startoff.png
+#	deleted:    OthelloApp/app/src/main/res/layout/activity_comments_view.xml
+#	modified:   OthelloApp/app/src/main/res/layout/activity_game.xml
+#	modified:   OthelloApp/app/src/main/res/layout/activity_high_scores.xml
+#	renamed:    OthelloApp/app/src/main/res/layout/activity_rule_one.xml -> OthelloApp/app/src/main/res/layout/activity_how_to_play.xml
+#	modified:   OthelloApp/app/src/main/res/layout/activity_menu_page.xml
+#	deleted:    OthelloApp/app/src/main/res/layout/activity_post_comments.xml
+#	deleted:    OthelloApp/app/src/main/res/layout/activity_rule_three.xml
+#	deleted:    OthelloApp/app/src/main/res/layout/frag_one_layout.xml
+#	deleted:    OthelloApp/app/src/main/res/layout/frag_three_layout.xml
+#	deleted:    OthelloApp/app/src/main/res/layout/frag_two_layout.xml
+#	new file:   OthelloApp/app/src/main/res/layout/rule_fragment_00.xml
+#	new file:   OthelloApp/app/src/main/res/layout/rule_fragment_01.xml
+#	new file:   OthelloApp/app/src/main/res/layout/rule_fragment_02.xml
+#	new file:   OthelloApp/app/src/main/res/layout/rule_fragment_03.xml
+#	new file:   OthelloApp/app/src/main/res/layout/rule_fragment_04.xml
+#	deleted:    OthelloApp/app/src/main/res/menu/menu_comment.xml
+#	deleted:    OthelloApp/app/src/main/res/menu/menu_comments_view.xml
+#	modified:   OthelloApp/app/src/main/res/menu/menu_menu_page.xml
+#	deleted:    OthelloApp/app/src/main/res/menu/menu_post_comments.xml
+#	modified:   OthelloApp/app/src/main/res/values/Color.xml
+#	modified:   OthelloApp/app/src/main/res/values/rules_array.xml
+#	modified:   OthelloApp/app/src/main/res/values/strings.xml
+#	modified:   OthelloApp/app/src/main/res/values/styles.xml
+#
+# Untracked files:
+#	rgkeuz1d.bla.txt
+#
+

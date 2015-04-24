@@ -15,7 +15,7 @@ public class FragRule4 extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.frag_three_layout,container,false);
+        View v = inflater.inflate(R.layout.rule_fragment_04,container,false);
         return v;
  }
 }

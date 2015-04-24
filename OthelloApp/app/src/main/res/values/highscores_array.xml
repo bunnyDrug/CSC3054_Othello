@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="highScore_array">
+        <item>Top Scores</item>
+        <item>All scores</item>
+    </string-array>
+</resources>
