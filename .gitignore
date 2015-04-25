@@ -1,2 +1,5 @@
 
 OthelloApp/.idea/gradle.xml
+OthelloApp/app/src/main/java/com/CSC/othello3054/game/HighScores/Class/HighScores.java
+OthelloApp/app/src/main/res/layout/scores_fragment_00.xml
+OthelloApp/app/src/main/java/com/CSC/othello3054/game/HighScores/Class/HighScores.java

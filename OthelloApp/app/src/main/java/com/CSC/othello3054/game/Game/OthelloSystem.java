@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -167,6 +168,8 @@ public class OthelloSystem extends ActionBarActivity{
                 (TextView) activity.findViewById(R.id.black_player_score);
         TextView textViewBlackPlayerTimer =
                 (TextView) activity.findViewById(R.id.black_player_timer);
+        ImageView imageView
+                = (ImageView) activity.findViewById(R.id.black_player_turn);
 
         blackPlayer = new Player
                 (blackPlayerName,
@@ -174,7 +177,8 @@ public class OthelloSystem extends ActionBarActivity{
                         2,
                         textViewBlackPlayerScore,
                         textViewBlackPlayerTimer,
-                        blackDisk
+                        blackDisk,
+                        imageView
                 );
     }
 
@@ -191,13 +195,17 @@ public class OthelloSystem extends ActionBarActivity{
                 (TextView) activity.findViewById(R.id.white_player_score);
         TextView textViewWhitePlayerTimer =
                 (TextView) activity.findViewById(R.id.white_player_timer);
+        ImageView imageView
+                = (ImageView) activity.findViewById(R.id.white_player_turn);
+
 
         whitePlayer = new Player
                 (whitePlayerName,
                         textViewWhitePlayerName,
                         2, textViewWhitePlayerScore,
                         textViewWhitePlayerTimer,
-                        whiteDisk
+                        whiteDisk,
+                        imageView
                 );
     }
 

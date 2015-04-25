@@ -9,13 +9,17 @@ import android.view.ViewGroup;
 import com.CSC.othello3054.game.R;
 
 /**
- * Created by don on 22/04/2015.
+ * Created by Chris on 12/03/2015.
  */
-public class FragRule4 extends Fragment {
+public final class frag0_rule_Intro extends Fragment {
+
+    public frag0_rule_Intro() {
+
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.rule_fragment_04,container,false);
-        return v;
- }
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.rule_fragment_00, container, false);
+        return rootView;
+    }
 }

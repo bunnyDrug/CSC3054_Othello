@@ -3,6 +3,8 @@ package com.CSC.othello3054.game.Game;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -35,6 +37,8 @@ class Player {
 
     private int playerDiskColour;
 
+    private ImageView turnIndicator;
+
     /**
      * A class that represents the players in the game. This player class is
      * responsible for holding its own timer and score. Any updates to these
@@ -51,7 +55,7 @@ class Player {
      */
     public Player(String name, TextView textViewName,
                   int score, TextView textViewScore,
-                  TextView textViewTimer, int playerDiskColour) {
+                  TextView textViewTimer, int playerDiskColour, ImageView turnIndicator) {
 
         this.name = name;
         this.textViewName = textViewName;
@@ -62,6 +66,8 @@ class Player {
         this.textViewTimer = textViewTimer;
 
         this.playerDiskColour = playerDiskColour;
+
+        this.turnIndicator = turnIndicator;
     }
 
     /**
@@ -122,6 +128,8 @@ class Player {
         //accent colour
         //TODO: refactor this
         textViewName.setTextColor(Color.parseColor(colour_accent_blue));
+        turnIndicator.setVisibility(View.VISIBLE);
+        turnIndicator.animate().alpha(1);
     }
 
     /**
@@ -131,6 +139,8 @@ class Player {
         //TODO: refactor this
         // lighter colour
         textViewName.setTextColor(Color.parseColor(primary_dark_material_light));
+        turnIndicator.setVisibility(View.INVISIBLE);
+        turnIndicator.animate().alpha(0);
     }
 
     /**

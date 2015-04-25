@@ -20,6 +20,7 @@
         <!--android:textColor="@color/colour_accent_blue"/>-->
 <!-- text view that would disply the top 5 scores from the game databse-->
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textScores"
