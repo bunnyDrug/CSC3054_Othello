@@ -20,6 +20,9 @@ import com.CSC.othello3054.game.Rules.RuleFragments.Frag2_rule_PlayingOthello;
 import com.CSC.othello3054.game.Rules.RuleFragments.Frag3_rule_BasicRules;
 import com.CSC.othello3054.game.Rules.RuleFragments.Frag4_rule_HowToWin;
 
+/**
+ * using the fragments and the drawer slider to create a view of the rules and guide lines
+ */
 public class Rules extends ActionBarActivity {
 
     private ListView drawerList;
@@ -27,6 +30,10 @@ public class Rules extends ActionBarActivity {
 
     private ActionBarDrawerToggle mDrawerToggle;
 
+    /**
+     * the on create calls all the methods that where created in this class
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +52,9 @@ public class Rules extends ActionBarActivity {
     private void startDrawerClickListener() {
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
     }
-
+    /**
+     * This method sets the drawer icon, to three bars instead of the basic arrow
+     */
     private void setDrawerIcon() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
@@ -74,6 +83,10 @@ public class Rules extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+    /**
+     * sync the toggle state
+     * @param savedInstanceState
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -99,7 +112,10 @@ public class Rules extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * getting the array highScore_array
+     * and creating the drawer slider list view
+     */
     private void initDrawer() {
         String[] rulesMenuList = getResources().getStringArray(R.array.rules_array);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -108,7 +124,10 @@ public class Rules extends ActionBarActivity {
         // Set the adapter for the list view
         drawerList.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, rulesMenuList));
     }
-
+    /**
+     * This sets the fragment that will display of the loading of the activity
+     * using the fragment manager is sets the default to the top high scores
+     */
     private void setInitialFrag() {
         Fragment fragment1 = new Frag0_rule_Intro();
         FragmentManager fragmentManager = getFragmentManager();
@@ -117,6 +136,10 @@ public class Rules extends ActionBarActivity {
                 .commit();
     }
 
+    /**
+     * once the user clicks on one of the menu items the onItemClickListener checks which
+     * one has been picked in what position
+     */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {

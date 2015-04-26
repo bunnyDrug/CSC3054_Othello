@@ -18,7 +18,7 @@ import com.CSC.othello3054.game.R;
  * Created by Chris on 12/03/2015.
  */
 public final class Frag1_higScores_AllScores extends Fragment {
-
+    // get the app database from the main menu.
     DBHelper dbHelper = MainMenu.getDatabase();
 
 
