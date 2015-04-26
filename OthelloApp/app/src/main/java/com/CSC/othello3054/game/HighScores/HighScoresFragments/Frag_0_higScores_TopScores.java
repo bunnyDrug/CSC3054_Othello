@@ -28,7 +28,7 @@ import com.facebook.share.widget.ShareButton;
  * gets database methods to populate the highScores in list Views
  * gets the method for sharing to facebook
  */
-public final class Frag0_higScores_TopScores extends Fragment {
+public final class Frag_0_higScores_TopScores extends Fragment {
     // get the app database from the main menu.
     DBHelper dbHelper = MainMenu.getDatabase();
 
@@ -37,7 +37,7 @@ public final class Frag0_higScores_TopScores extends Fragment {
      * empty constructor
      *
      */
-    public Frag0_higScores_TopScores() {
+    public Frag_0_higScores_TopScores() {
     }
 
     /**

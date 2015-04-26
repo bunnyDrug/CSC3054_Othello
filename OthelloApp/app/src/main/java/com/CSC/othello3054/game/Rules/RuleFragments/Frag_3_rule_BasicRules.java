@@ -18,7 +18,7 @@ import com.CSC.othello3054.game.R;
  * sets an empty constructor
  * sets onCreateView which holds the info of the layout
  */
-public class Frag3_rule_BasicRules extends Fragment {
+public class Frag_3_rule_BasicRules extends Fragment {
     /**
      * onCreateView
      * to set the layout of rule_fragment_03

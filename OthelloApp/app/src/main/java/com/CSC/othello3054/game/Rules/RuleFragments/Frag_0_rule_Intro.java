@@ -9,29 +9,36 @@ import android.view.ViewGroup;
 import com.CSC.othello3054.game.R;
 
 /**
- * Created by don on 22/04/2015.
+ * Created by Chris on 12/03/2015.
  */
+
 /**
- * Frag1_rule-howToWin
+ * Frag0_rule-intro
  * extends Fragment
- * to display the fragment how to win
+ * to display the fragment introduction
  * sets an empty constructor
  * sets onCreateView which holds the info of the layout
  */
-public class Frag4_rule_HowToWin extends Fragment {
+public final class Frag_0_rule_Intro extends Fragment {
+    /**
+     * empty Constructor
+     */
+    public Frag_0_rule_Intro() {
+
+    }
+
     /**
      * onCreateView
-     * to set the layout of rule_fragment_04
+     * to set the layout of rule_fragment_00
      *
      * @param inflater to get the layout XML
      * @param container the container of which the fragment is stored
      * @param savedInstanceState stored previous state
-     * @return v the layout of rule_fragment_04
+     * @return rootView the layout of rule_fragment_00
      */
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.rule_fragment_04,container,false);
-        return v;
- }
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.rule_fragment_00, container, false);
+        return rootView;
+    }
 }

@@ -14,8 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag0_higScores_TopScores;
-import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag1_higScores_AllScores;
+import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag_0_higScores_TopScores;
+import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag_1_higScores_AllScores;
 import com.CSC.othello3054.game.R;
 import com.facebook.FacebookSdk;
 
@@ -176,7 +176,7 @@ public class HighScores extends ActionBarActivity {
      * using the fragment manager is sets the default to the top high scores
      */
     private void setInitialFrag() {
-        Fragment fragment1 = new Frag0_higScores_TopScores();
+        Fragment fragment1 = new Frag_0_higScores_TopScores();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, fragment1)
@@ -208,8 +208,8 @@ public class HighScores extends ActionBarActivity {
      * @param position Swaps fragments in the main content view
      */
     private void selectItem(int position) {
-        Fragment fragment0 = new Frag0_higScores_TopScores();
-        Fragment fragment1 = new Frag1_higScores_AllScores();
+        Fragment fragment0 = new Frag_0_higScores_TopScores();
+        Fragment fragment1 = new Frag_1_higScores_AllScores();
 
 
         FragmentManager fragmentManager = getFragmentManager();

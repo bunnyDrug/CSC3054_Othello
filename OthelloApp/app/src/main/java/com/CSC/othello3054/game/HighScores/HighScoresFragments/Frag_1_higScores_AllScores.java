@@ -24,7 +24,7 @@ import com.CSC.othello3054.game.R;
  * gets database methods to populate the highScores in list Views
  * gets the method for sharing to facebook
  */
-public final class Frag1_higScores_AllScores extends Fragment {
+public final class Frag_1_higScores_AllScores extends Fragment {
     // get the app database from the main menu.
     DBHelper dbHelper = MainMenu.getDatabase();
 
@@ -33,7 +33,7 @@ public final class Frag1_higScores_AllScores extends Fragment {
      * empty constructor
      *
      */
-    public Frag1_higScores_AllScores() {
+    public Frag_1_higScores_AllScores() {
 
     }
 
