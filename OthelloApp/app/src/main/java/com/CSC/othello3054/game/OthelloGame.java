@@ -25,7 +25,7 @@ public class OthelloGame extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_game_board);
 
         // SEE JAVADOC FOR DETAILS. (F1 in Android Studio)
 

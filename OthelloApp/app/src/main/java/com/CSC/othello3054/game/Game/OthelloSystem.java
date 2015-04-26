@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.CSC.othello3054.game.GameDataBase.DBHelper;
+import com.CSC.othello3054.game.HighScoresDatabase.DBHelper;
 import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
 

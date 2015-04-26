@@ -11,28 +11,13 @@
     android:baselineAligned="false"
     android:weightSum="1">
 
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/TopScores"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:textSize="42sp"-->
-        <!--android:textColor="@color/colour_accent_blue"/>-->
-<!-- text view that would disply the top 5 scores from the game databse-->
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textScores"
-        android:text="@string/title_activity_high_scores"
-        android:textSize="20sp"/>
 <!--title/ header of the xml -->
     <TextView
         android:layout_marginTop="40dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Top 10 Scores of"
+        android:text="The top 10"
         android:textAllCaps="true"
         android:textColor="@color/noir"
         android:gravity="end|bottom"
@@ -42,7 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="72sp"
-        android:text="Othello"
+        android:text="Scores"
         android:textAllCaps="true"
         android:textColor="@color/colour_500_orange"
         android:gravity="end|top"
@@ -53,7 +38,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/share_view"
-        android:text="@string/com_facebook_share_button_text" />
+        android:text="@string/com_facebook_share_button_text"
+        android:layout_gravity="end"
+        />
+
+    <!--LinerLayout to break up the page between contents and title -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--Header for the names to define what is below it -->
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textStyle="bold"
+            android:textColor="@color/colour_accent_blue"
+            android:gravity="start"
+            android:layout_weight="1"
+            />
+        <!--Header for the score to define what is below it -->
+        <TextView
+            android:id="@+id/header2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score"
+            android:textStyle="bold"
+            android:textColor="@color/colour_accent_blue"
+            android:gravity="end"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
 <!--Linear Layout to split up the contents  -->
     <LinearLayout
         android:orientation="vertical"

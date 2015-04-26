@@ -11,9 +11,9 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
-public final class frag0_rule_Intro extends Fragment {
+public final class Frag0_rule_Intro extends Fragment {
 
-    public frag0_rule_Intro() {
+    public Frag0_rule_Intro() {
 
     }
 

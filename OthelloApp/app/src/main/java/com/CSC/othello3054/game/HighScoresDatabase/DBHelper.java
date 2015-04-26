@@ -1,4 +1,4 @@
-package com.CSC.othello3054.game.GameDataBase;
+package com.CSC.othello3054.game.HighScoresDatabase;
 
 /**
  * Created by Chris on 27/03/2015.
@@ -10,7 +10,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
@@ -69,9 +68,9 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param db the database you wish to query
      * @return String: A formatted string containing the top 5 players.
      */
-    public String topFivePlayersToString(SQLiteDatabase db) {
+    public String topPlayerToStringFBSHARE(SQLiteDatabase db) {
         String dbString = "";
-        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + Column_PlayerScore + " DESC LIMIT 5";
+        String query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + Column_PlayerScore + " DESC LIMIT 1";
 
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();

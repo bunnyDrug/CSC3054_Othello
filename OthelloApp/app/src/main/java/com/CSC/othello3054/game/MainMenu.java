@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.CSC.othello3054.game.GameDataBase.DBHelper;
+import com.CSC.othello3054.game.HighScoresDatabase.DBHelper;
 import com.CSC.othello3054.game.HighScores.Class.HighScores;
 import com.CSC.othello3054.game.Rules.Class.Rules;
 import com.melnykov.fab.FloatingActionButton;
@@ -38,7 +38,7 @@ public class MainMenu extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_page);
+        setContentView(R.layout.activity_main_menu);
 
         cbCheckBox = (CheckBox) findViewById(R.id.cbMode);
 

@@ -11,7 +11,7 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
-public class frag2_rule_PlayingOthello extends Fragment {
+public class Frag2_rule_PlayingOthello extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

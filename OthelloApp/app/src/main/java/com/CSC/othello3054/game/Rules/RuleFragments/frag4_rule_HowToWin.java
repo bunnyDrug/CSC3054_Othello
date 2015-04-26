@@ -11,7 +11,7 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by don on 22/04/2015.
  */
-public class frag4_rule_HowToWin extends Fragment {
+public class Frag4_rule_HowToWin extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){

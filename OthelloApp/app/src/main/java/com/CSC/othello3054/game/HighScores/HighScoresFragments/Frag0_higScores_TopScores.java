@@ -11,7 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.CSC.othello3054.game.GameDataBase.DBHelper;
+import com.CSC.othello3054.game.HighScoresDatabase.DBHelper;
 import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
 import com.facebook.share.model.ShareLinkContent;
@@ -39,8 +39,6 @@ public final class Frag0_higScores_TopScores extends Fragment {
         return rootView;
     }
 
-
-
     /**
      * Builds up a content Class to allow score sharing to a users Facebook
      * timeline.<br>
@@ -58,15 +56,13 @@ public final class Frag0_higScores_TopScores extends Fragment {
         } else {
             ShareLinkContent content = new ShareLinkContent.Builder()
                     .setContentUrl(Uri.parse("http://bunnydrug.github.io/CSC3054_Othello/"))
-                    .setContentTitle("Othello - Top 5 High Scores")
-                    .setContentDescription("Can you beat my top scores?\n" + getScores())
+                    .setContentTitle("Othello - Top Score")
+                    .setContentDescription("Can you beat my top score?\n" + getScores())
                     .build();
 
             shareButton.setShareContent(content);
         }
-
     }
-
 
     /**
      * Gets the top 5 scores from the database of players returned as a string.
@@ -76,20 +72,17 @@ public final class Frag0_higScores_TopScores extends Fragment {
      */
     private String getScores() {
         String scores;
-        if (dbHelper.topFivePlayersToString(dbHelper.getWritableDatabase()).equals("")) {
+        if (dbHelper.topPlayerToStringFBSHARE(dbHelper.getWritableDatabase()).equals("")) {
             scores = "No Scores to display";
         } else {
-            scores = dbHelper.topFivePlayersToString(dbHelper.getReadableDatabase());
+            scores = dbHelper.topPlayerToStringFBSHARE(dbHelper.getReadableDatabase());
         }
         return scores;
     }
 
-
     /**
-     *ListView method to show all results of the database
-     * Using SimpleCursorAdapter
-     * @method to be called in the the page create
      *
+     * @param view
      */
     private void populateTopListView(View view){
         Cursor cursor = dbHelper.topTen(dbHelper.getReadableDatabase());
@@ -97,7 +90,7 @@ public final class Frag0_higScores_TopScores extends Fragment {
         String[] fromTheFields = new String[]{DBHelper.Column_Player, DBHelper.Column_PlayerScore};
         int[] ToTheList = new int[]{R.id.item_Name, R.id.item_score};
         ListView lv =(ListView) view.findViewById(R.id.topList);
-        ListAdapter adapter = new SimpleCursorAdapter(view.getContext(), R.layout.contents, cursor, fromTheFields, ToTheList,0);
+        ListAdapter adapter = new SimpleCursorAdapter(view.getContext(), R.layout.score_table_contents, cursor, fromTheFields, ToTheList,0);
         lv.setAdapter(adapter);
     }
 }

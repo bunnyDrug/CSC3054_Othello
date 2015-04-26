@@ -11,7 +11,7 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
-public class frag3_rule_BasicRules extends Fragment {
+public class Frag3_rule_BasicRules extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){

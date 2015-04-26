@@ -4,7 +4,6 @@ package com.CSC.othello3054.game.HighScores.Class;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -13,28 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
-import com.CSC.othello3054.game.GameDataBase.DBHelper;
 import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag0_higScores_TopScores;
 import com.CSC.othello3054.game.HighScores.HighScoresFragments.Frag1_higScores_AllScores;
-import com.CSC.othello3054.game.MainMenu;
 import com.CSC.othello3054.game.R;
 import com.facebook.FacebookSdk;
-
-;
 
 /**
  * Created by Don - 14/04/2015 (my birthday)
  */
 
 public class HighScores extends ActionBarActivity {
-
-
-    // get the app database from the main menu.
-    DBHelper dbHelper = MainMenu.getDatabase();
 
     private ListView drawerList;
     private DrawerLayout drawerLayout;
@@ -53,19 +42,11 @@ public class HighScores extends ActionBarActivity {
 
         setInitialFrag();
 
-
-        // read the javadoc...
-        //setInitial();
-
         initDrawer();
 
         setDrawerIcon();
 
         startDrawerClickListener();
-
-        //populateListView();
-
-        //populateTopListView();
     }
 
     private void startDrawerClickListener() {
@@ -132,7 +113,6 @@ public class HighScores extends ActionBarActivity {
     }
 
 
-
     private void initDrawer() {
         String[] rulesMenuList = getResources().getStringArray(R.array.highScore_array);
         drawerLayout = (DrawerLayout) findViewById(R.id.scores_drawer_layout);
@@ -141,19 +121,6 @@ public class HighScores extends ActionBarActivity {
         // Set the adapter for the list view
         drawerList.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, rulesMenuList));
     }
-    /**
-     * set the ContentView to the list value  to be seen
-     */
-    private void setInitial()
-    {
-        setContentView(R.layout.scores_fragment_00);
-    }
-
-/**
- * @class
- *
- *
- */
 
     private void setInitialFrag() {
         Fragment fragment1 = new Frag0_higScores_TopScores();
@@ -162,7 +129,6 @@ public class HighScores extends ActionBarActivity {
                 .replace(R.id.content_frame, fragment1)
                 .commit();
     }
-
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -178,9 +144,7 @@ public class HighScores extends ActionBarActivity {
     /**
      * to get the value of what is being selected in the drawer
      *
-     * @param position
-     * Swaps fragments in the main content view
-
+     * @param position Swaps fragments in the main content view
      */
     private void selectItem(int position) {
         Fragment fragment0 = new Frag0_higScores_TopScores();
@@ -195,40 +159,15 @@ public class HighScores extends ActionBarActivity {
                         .commit();
                 break;
             case 1:
-
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, fragment1)
                         .commit();
-
                 break;
             default:
                 break;
         }
-
         // Highlight the selected item, update the title, and close the drawer
         drawerList.setItemChecked(position, true);
         drawerLayout.closeDrawer(drawerList);
     }
-
-
-
-
-//    /**
-//     * Sets the text of TextView.textScores to the provided string parameter.
-//     */
-//    public void printScores(String scores){
-//        txtViewTextScores = (TextView) findViewById(R.id.textScores);
-//        txtViewTextScores.setText(scores);
-//    }
-    }
-
-    /**
-     * used to set the drawer icon, it calls in the drawer_layout
-     * creates the drawer toggle feature
-     * sets up its opened and closed state
-     */
-
-
-
-
-
+}

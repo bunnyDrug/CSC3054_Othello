@@ -11,9 +11,9 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
-public final class frag1_rule_AimOfTheGame extends Fragment {
+public final class Frag1_rule_AimOfTheGame extends Fragment {
 
-    public frag1_rule_AimOfTheGame() {
+    public Frag1_rule_AimOfTheGame() {
 
     }
 

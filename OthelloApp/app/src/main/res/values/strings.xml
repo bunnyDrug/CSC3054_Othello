@@ -60,7 +60,7 @@
     <string name="facebook_app_id">642126629251885</string>
 
     <!--Slide bar rule strings -->
-    <string name="howToPlay">No one like being told what to do\n\nGood thing you only need a few simple rules to quickly start playing your own games of Othello\nJust Swipe right to get started</string>
+    <string name="howToPlay">No one likes being told what to do\n\nGood thing you only need a few simple rules to quickly start playing your own games of Othello\nJust pull the drawer in or tap the icon at the top left to get started</string>
     <string name="AimOfTheGame">
         is one of superiority\n\nOutwit your opponent and take control of the
         game board by outnumbering your opponents pieces with your own.
