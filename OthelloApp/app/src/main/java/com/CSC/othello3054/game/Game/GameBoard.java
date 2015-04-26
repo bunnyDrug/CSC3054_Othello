@@ -4,10 +4,13 @@ import com.CSC.othello3054.game.R;
 
 /**
  * Created by don on 05/03/2015.
+ *
  * Holds the locations of the counters on the game board
  * These are stored in an array.
  */
 class GameBoard {
+
+
 
     private int[] board = new int[64];
 
@@ -20,9 +23,14 @@ class GameBoard {
      * Creates a new array to hold the disks/counters in play. The new board
      * is initialised with othello starting positions - two white and two black
      * counters.
+     * The edges of the board are also initialised here for use later.
+     * Parameters allow for the modification of counters before a game starts.
+     *
+     * @param black the image asset you wish used to display the black counters
+     * @param white the image asset you wish used to display the white counters
      */
-    public GameBoard() {
-        initStartingPieces();
+    public GameBoard(int black, int white) {
+        initStartingPieces(black, white);
         defineBoardEdges();
     }
 
@@ -30,15 +38,17 @@ class GameBoard {
      * Populates the board array with drawable resources to represent the disks
      * in play - the middle four tiles contain the starting counters for a new
      * game.
+     * @param black the image asset you wish used to display the black counters
+     * @param white the image asset you wish used to display the white counters
      */
-    private void initStartingPieces() {
+    private void initStartingPieces(int black, int white) {
         for (int i = 0; i < board.length; i ++) {
             board[i] = R.drawable.placement_counter;
             if (i == 27 || i == 36) {
-                board[i] = R.drawable.white_disk;
+                board[i] = white;
             }
             if (i == 28 || i == 35) {
-                board[i] = R.drawable.black_disk;
+                board[i] = black;
             }
         }
     }
@@ -53,6 +63,10 @@ class GameBoard {
         defineBottomBoardEdge();
     }
 
+    /**
+     * runs from the top left corner to the bottom left corner to define that
+     * edge of the board.
+     */
     private void defineLeftBoardEdge() {
         int row = board.length / 8;
         for (int i = 0; i < row; i++) {
@@ -60,6 +74,9 @@ class GameBoard {
         }
     }
 
+    /**
+     * defines the right hand side of the board
+     */
     private void defineRightBoardEdge() {
         int columns = board.length / 8 - 1;
         for (int i = 0; i < columns +1; i++) {
@@ -67,6 +84,9 @@ class GameBoard {
         }
     }
 
+    /**
+     * defines the top of the board
+     */
     private void defineTopBoardEdge() {
         int columns = board.length / 8;
         for (int i = 0; i < columns; i++) {
@@ -74,6 +94,9 @@ class GameBoard {
         }
     }
 
+    /**
+     * defines the bottom of the board - Bottom left to bottom right tile.
+     */
     private void defineBottomBoardEdge() {
         int columns = board.length / 8;
         for (int i = 0; i < columns; i++) {

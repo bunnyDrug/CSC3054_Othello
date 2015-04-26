@@ -2,22 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.CSC.othello3054.game" >
 
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".MainMenu"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,17 +28,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
-
         <activity
-            android:name=".Rules.Classes.RuleOne"
+            android:name=".Rules.Class.Rules"
             android:label="@string/title_activity_rules_page" >
         </activity>
         <activity
-            android:name="com.CSC.othello3054.game.SpalshScreen.Othello"
-            android:label="@string/title_activity_othello" >
-        </activity>
-        <activity
-            android:name="com.CSC.othello3054.game.SpalshScreen.SplashScreen"
+            android:name=".SplashScreen.SplashScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Othello"
             android:theme="@style/FullscreenTheme" >
@@ -51,31 +45,22 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity
-            android:name=".Rules.Classes.RuleTwo"
-            android:label="@string/title_activity_rule_two" >
-        </activity>
-        <activity
-            android:name=".Rules.Classes.RuleThree"
-            android:label="@string/title_activity_rule_three" >
-        </activity>
-        <activity
-            android:name=".HighScores"
-            android:label="@string/title_activity_view_scores"
-            >
-        </activity>
 
-        <activity android:name="com.facebook.FacebookActivity"
-                  android:configChanges=
-                      "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
-                  android:label="@string/app_name" />
+        <activity
+            android:name=".HighScores.Class.HighScores"
+            android:label="@string/title_activity_high_scores" >
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <provider android:authorities="com.facebook.app.FacebookContentProvider642126629251885"
-                  android:name="com.facebook.FacebookContentProvider"
-                  android:exported="true" />
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider642126629251885"
+            android:exported="true" />
+
     </application>
-
-
 
 </manifest>

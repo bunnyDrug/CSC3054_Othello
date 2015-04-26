@@ -1,0 +1,146 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--Player 1 top 25% of the screen-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="fill_parent"
+                android:src="@drawable/white_player1"
+                android:adjustViewBounds="true"/>
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/white_player_turn"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_play"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:animateLayoutChanges="true"
+                />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/white_player_name"
+                    android:text="@string/label_player_one"
+                    android:textSize="24sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/white_player_score"
+                    android:text="@string/label_score"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/white_player_timer"
+                    android:text="@string/label_timer"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--Board lives in here 50%-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="0.5"
+        android:gravity="center_horizontal|center_vertical">
+
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/gridView1"
+                  android:numColumns="8"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:gravity="center">
+        </GridView>
+
+    </LinearLayout>
+
+
+    <!--Player 2 bottom 25% of screen-->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="fill_parent"
+            android:src="@drawable/black_player1"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:id="@+id/black_player_turn"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_play"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:animateLayoutChanges="true"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/black_player_name"
+                android:text="@string/label_player_two"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/black_player_score"
+                android:text="@string/label_score"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/black_player_timer"
+                android:text="@string/label_timer"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

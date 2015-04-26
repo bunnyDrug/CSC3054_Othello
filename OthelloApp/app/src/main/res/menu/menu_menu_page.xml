@@ -6,10 +6,11 @@
             android:id="@+id/menu_Rules"
             android:orderInCategory="1"
             app:showAsAction="never"
-            android:title="Rules"/>
+            android:title="@string/menu_rules"/>
+
         <item
             android:id="@+id/menu_scores"
-            android:orderInCategory="3"
+            android:orderInCategory="2"
             app:showAsAction="never"
-            android:title="Scores"/>
+            android:title="@string/menu_scores"/>
 </menu>

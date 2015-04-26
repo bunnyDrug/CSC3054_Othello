@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This XML is for the displaying of the list view.  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+<!-- Table layout to help design the list view
+     holds a table row which has two texts views -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <!-- this table row is controlling the distances between the the items in the list view -->
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:gravity="start"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/colour_500_orange"
+                    android:text="itemName"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:id="@+id/item_Name"/>
+
+                <TextView
+                    android:gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colour_500_orange"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="itemScore"
+                    android:textStyle="bold"
+                    android:id="@+id/item_score"
+                    android:layout_weight="1"
+                    android:layout_column="22" />
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

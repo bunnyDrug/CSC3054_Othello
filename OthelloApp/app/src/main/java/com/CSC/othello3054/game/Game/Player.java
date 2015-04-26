@@ -3,15 +3,22 @@ package com.CSC.othello3054.game.Game;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
  * Created by don on 05/03/2015.
+ *
  * Player class
  * each player holds its own score and time remaining (until game over)
  */
 
 class Player {
+
+    public static final String colour_accent_blue = "#2196F3";
+    //public static final String primary_dark_material_light = "#ff757575";
+    public static final String primary_dark_material_light = "#FFE0B2";
 
     // 1 second
     private final long TICK_INTERVAL = 1000;
@@ -19,17 +26,18 @@ class Player {
     // TODO: read this in from a settings page - remove hard coded value
     private long playerTimeLimit = 30000;
 
-
     private String name;
     private TextView textViewName;
-
-
 
     private int score;
     private TextView textViewScore;
 
     private TextView textViewTimer;
     private CountDownTimer countDownTimer;
+
+    private int playerDiskColour;
+
+    private ImageView turnIndicator;
 
     /**
      * A class that represents the players in the game. This player class is
@@ -47,7 +55,7 @@ class Player {
      */
     public Player(String name, TextView textViewName,
                   int score, TextView textViewScore,
-                  TextView textViewTimer) {
+                  TextView textViewTimer, int playerDiskColour, ImageView turnIndicator) {
 
         this.name = name;
         this.textViewName = textViewName;
@@ -56,6 +64,10 @@ class Player {
         this.textViewScore = textViewScore;
 
         this.textViewTimer = textViewTimer;
+
+        this.playerDiskColour = playerDiskColour;
+
+        this.turnIndicator = turnIndicator;
     }
 
     /**
@@ -84,6 +96,7 @@ class Player {
 
                 public void onFinish() {
                     textViewTimer.setText("Game over");
+                    textViewTimer.setTextColor(Color.parseColor("#ff0000"));
                     playerTimeLimit = 0;
                 }
             }.start();
@@ -91,7 +104,7 @@ class Player {
     }
 
     /**
-     * Stops the player timer
+     * Pauses the player timer
      */
     public void pauseTimer() {
         if (countDownTimer == null) {
@@ -102,41 +115,80 @@ class Player {
     }
 
     /**
-     * Sets the text on the screen to show the player name.
+     * Prints the player name to the screen
      */
     public void printName() {
         textViewName.setText(name);
     }
 
-    public void setTurnColour() {
+    /**
+     * Sets the player name to 'accent blue'
+     */
+    public void setTurnIndicator() {
         //accent colour
         //TODO: refactor this
-        textViewName.setTextColor(Color.parseColor("#2196F3"));
+        textViewName.setTextColor(Color.parseColor(colour_accent_blue));
+        turnIndicator.setVisibility(View.VISIBLE);
+        turnIndicator.animate().alpha(1);
     }
 
-    public void setNotTurnColour() {
+    /**
+     * Sets the player name to 'primary_dark_material_light'
+     */
+    public void resetTurnIndicator() {
         //TODO: refactor this
         // lighter colour
-        textViewName.setTextColor(Color.parseColor("#ff757575"));
+        textViewName.setTextColor(Color.parseColor(primary_dark_material_light));
+        turnIndicator.setVisibility(View.INVISIBLE);
+        turnIndicator.animate().alpha(0);
     }
 
+    /**
+     * Updates the player score variable.
+     * @param score int: the new score to be updated
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
+    /**
+     * Prints the player score to the screen
+     */
     public void printScore() {
         textViewScore.setText("Current Score: " + score);
     }
 
+    /**
+     * Returns the players current score value
+     * @return int: the players current score
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * returns the players name
+     * @return String: the player name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Checks to see if the player has time remaining on their personal timer
+     * @return boolean: <b>TRUE</b> If a players timer has reached zero
+     * <br>
+     *     boolean: <b>FALSE</b> If a player has more than 0 seconds left on the timer.
+     */
     public boolean hasRunOutOfTime() {
         return playerTimeLimit == 0;
+    }
+
+    /**
+     * Returns the disk colour that the player is playing with.
+     * @return int: a disk (black or white) used in the game board.
+     */
+    public int getPlayerDiskColour() {
+        return playerDiskColour;
     }
 }
