@@ -8,47 +8,47 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <meta-data
+        android:theme="@style/AppTheme"
+        >
+
+    <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".MainMenu"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".OthelloGame"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Rules.Class.Rules"
-            android:label="@string/title_activity_rules_page" >
+            android:label="@string/title_activity_rules_page"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".SplashScreen.SplashScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Othello"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme"
+            android:screenOrientation="portrait">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
 
         <activity
             android:name=".HighScores.Class.HighScores"
-            android:label="@string/title_activity_high_scores" >
+            android:label="@string/title_activity_high_scores"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
