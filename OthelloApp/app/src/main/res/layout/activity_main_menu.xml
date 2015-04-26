@@ -1,3 +1,10 @@
+<!--The XML of the mainMenu activity
+    Creates the textView for the title
+    Creates editTexts for entering player names
+    Creates a spinner for player to select a time
+    Creates a checkBox for a select colourBlind mode
+    Creates a floatButton to start the game
+    -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"

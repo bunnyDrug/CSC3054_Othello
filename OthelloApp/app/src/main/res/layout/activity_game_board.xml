@@ -1,4 +1,10 @@
+<!--Layout of the gameBoard
+    Creates the top player Picture, nameText, ScoreText, timerText
+    Creates the gameBoard 8x8 piece board
+    Creates the bottom player Picture, nameText, ScoreText, timerText
+    using three linearLayouts -->
 <LinearLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/activity_vertical_margin"

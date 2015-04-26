@@ -17,15 +17,34 @@ import com.CSC.othello3054.game.R;
 /**
  * Created by Chris on 12/03/2015.
  */
+/**
+ * public class Frag0_higScores_TopScores
+ * extends Fragment
+ * gets the layout view to be set once called in the highScores drawer slider
+ * gets database methods to populate the highScores in list Views
+ * gets the method for sharing to facebook
+ */
 public final class Frag1_higScores_AllScores extends Fragment {
-
+    // get the app database from the main menu.
     DBHelper dbHelper = MainMenu.getDatabase();
 
-
+    /**
+     * Frag0_higScores_TopScores()
+     * empty constructor
+     *
+     */
     public Frag1_higScores_AllScores() {
 
     }
 
+    /**
+     * This method sets the rootView to the fragment of top scores into the to be false
+     * calls in the populateListView method on the activity load
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return rootView  the layout of All Scores
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.scores_fragment_01, container, false);
@@ -36,13 +55,14 @@ public final class Frag1_higScores_AllScores extends Fragment {
     }
 
 
-
     /**
-     * ListView method to show all results of the database
-     * Using SimpleCursorAdapter
-     * @method to be called in the button of load a new layout All scores
+     * populateListView
+     * takes the String fromTheFields to get the two columns from the database that we want
+     * places them into the two layout items that we want by using the toTheList array
+     * listAdapter creates new SimpleCursorAdapter to place the string values in the layout values
+     * then sets them into the list view
+     * @param view
      */
-
     private void populateListView(View view){
 
         Cursor cursor = dbHelper.getAllRows(dbHelper.getReadableDatabase());

@@ -4,6 +4,7 @@ package com.CSC.othello3054.game.HighScoresDatabase;
  * Created by Chris on 27/03/2015.
  * This class is to be used to connect a database to the project.
  * Assists in creating, updating and deleting values from the database
+ * Getting rows to be displayed in the listView
  */
 
 import android.content.ContentValues;
@@ -14,7 +15,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class DBHelper extends SQLiteOpenHelper {
-
+    /**
+     * Variables set up to create the database
+     *
+     */
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "Othello.db";
 
@@ -23,10 +27,23 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Column_Player = "player_name";
     public static final String Column_PlayerScore = "player_score";
 
+    /**
+     * to get this database name and the version
+     * constructor
+     * @param context required to create a new database
+     *                database name and database version
+     */
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * method for on create
+     * to be called in the opening of the app so that the database is created
+     * string query to create the actual database giving it the table name
+     * table columns and their values
+     * @param db SQLiteDatabase: the database to be created
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME + "(" +
@@ -37,6 +54,14 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    /**
+     * onUpdate
+     * update method to check if the is an existing database, drop it if there is and replace it
+     * to be called at the opening of the app if necessary
+     * @param db SQLiteDatabase: the database to be updated with the new record
+     * @param oldVersion int value of the old database version
+     * @param newVersion int value of the new database version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+    <!--XMl layout of rule_Fragment_00 Rule Introduction
+     Creates title with two textViews
+     Creates the content with a textView which calls in a string/howToPlay -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"

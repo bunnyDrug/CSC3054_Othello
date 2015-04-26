@@ -20,13 +20,35 @@ import com.facebook.share.widget.ShareButton;
 /**
  * Created by Chris on 12/03/2015.
  */
+
+/**
+ * public class Frag0_higScores_TopScores
+ * extends Fragment
+ * gets the layout view to be set once called in the highScores drawer slider
+ * gets database methods to populate the highScores in list Views
+ * gets the method for sharing to facebook
+ */
 public final class Frag0_higScores_TopScores extends Fragment {
     // get the app database from the main menu.
     DBHelper dbHelper = MainMenu.getDatabase();
 
+    /**
+     * Frag0_higScores_TopScores()
+     * empty constructor
+     *
+     */
     public Frag0_higScores_TopScores() {
     }
 
+    /**
+     * onCreateView
+     * This method sets the rootView to the fragment of top scores into the to be false
+     * calls in the initFacebookShare
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return rootView the layout of topScores
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.scores_fragment_00, container, false);
@@ -81,7 +103,11 @@ public final class Frag0_higScores_TopScores extends Fragment {
     }
 
     /**
-     *
+     *Gets the top 10 scores from the database of players set into a listView
+     * takes the String fromTheFields to get the two columns from the database that we want
+     * places them into the two layout items that we want by using the toTheList array
+     * listAdapter creates new SimpleCursorAdapter to place the string values in the layout values
+     * then sets them into the list view
      * @param view
      */
     private void populateTopListView(View view){
