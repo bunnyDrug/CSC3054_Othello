@@ -11,12 +11,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * SplashScreen
+ * extends Activity
+ * uses intent to go to the next activity mainMenu
  * creating a splash screen for the app
  * it uses a timer to go to the next activity
  * this to run at app load so the user sees this screen first
  */
 public class SplashScreen extends Activity {
-
+    /**
+     * onCreate
+     * set the xml to the activity_splash_screen to be displayed
+     * sets a new intent to go to the next activity
+     * creates a timer to count down the seconds before going to the next activity
+     * @param savedInstanceState the state previously stored
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

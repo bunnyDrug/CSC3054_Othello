@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--This XML is for the displaying of the list view.  -->
+<!--This XML is for the displaying of the list view.
+  creates a table layout with a table row
+  in the table row there are two items from which the data is entered -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">

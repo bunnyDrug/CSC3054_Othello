@@ -21,17 +21,27 @@ import com.CSC.othello3054.game.Rules.RuleFragments.Frag3_rule_BasicRules;
 import com.CSC.othello3054.game.Rules.RuleFragments.Frag4_rule_HowToWin;
 
 /**
+ * class Rules
+ * extends ActionBarActivity
  * using the fragments and the drawer slider to create a view of the rules and guide lines
+ * get methods to create the rules view
  */
 public class Rules extends ActionBarActivity {
-
+    /**
+     * variables required to create the Drawer slider
+     */
     private ListView drawerList;
     private DrawerLayout drawerLayout;
 
     private ActionBarDrawerToggle mDrawerToggle;
 
     /**
+     * onCreate
      * the on create calls all the methods that where created in this class
+     * setInitialFrag to get the content layout that is run at activity startup
+     * set the drawer icon
+     * start the Drawer click event
+     *
      * @param savedInstanceState
      */
     @Override
@@ -49,11 +59,21 @@ public class Rules extends ActionBarActivity {
 
     }
 
+    /**
+     * startDrawerClickListener
+     *
+     * sets the click listener for the drawerList
+     * which calls in the @method DrawerItemClickListener
+     */
     private void startDrawerClickListener() {
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
     }
     /**
-     * This method sets the drawer icon, to three bars instead of the basic arrow
+     * setDrawerIcon
+     * drawer layout gets the Score_drawer_layout and creates it
+     * In this method it sets the drawer icon, to three bars instead of the basic arrow
+     * calls the @super to get the drawer open and close
+     * sets toggle as the DrawerListener
      */
     private void setDrawerIcon() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -84,8 +104,12 @@ public class Rules extends ActionBarActivity {
     }
 
     /**
-     * sync the toggle state
-     * @param savedInstanceState
+     * onPostCreate
+     *
+     * sets the mDrawerToggle syncState after the DrawerLayout's instance state has been
+     * restored
+     *
+     * @param savedInstanceState stores the previous state
      */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -93,17 +117,29 @@ public class Rules extends ActionBarActivity {
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
-
+    /**
+     * onConfigurationChanged
+     *
+     * sets the mDrawerToggle to the new Configuration from the private created actionBar
+     * @param newConfig overdrives the mDrawerToggle
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
+    /**
+     * OnOptionsItemSelected
+     * Pass the event to ActionBarDrawerToggle, if it returns
+     * true, then it has handled the app icon touch event
+     *
+     * @param item to be pass into the next method
+     * @return true if the item is selected
+     * @return onOptionsItemSelected(item) of mDrawerToggle
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Pass the event to ActionBarDrawerToggle, if it returns
-        // true, then it has handled the app icon touch event
+
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -113,8 +149,11 @@ public class Rules extends ActionBarActivity {
     }
 
     /**
+     *initDrawer
+     * Method called in onCreate
      * getting the array highScore_array
      * and creating the drawer slider list view
+     * uses the ArrayAdapter to get the list of items to be stored in the slider drawer
      */
     private void initDrawer() {
         String[] rulesMenuList = getResources().getStringArray(R.array.rules_array);
@@ -125,8 +164,10 @@ public class Rules extends ActionBarActivity {
         drawerList.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_item, rulesMenuList));
     }
     /**
+     * setInitialFrag
+     * Method called in onCreate
      * This sets the fragment that will display of the loading of the activity
-     * using the fragment manager is sets the default to the top high scores
+     * using the fragment manager is sets the default to the Introduction fragment
      */
     private void setInitialFrag() {
         Fragment fragment1 = new Frag0_rule_Intro();
@@ -137,8 +178,12 @@ public class Rules extends ActionBarActivity {
     }
 
     /**
-     * once the user clicks on one of the menu items the onItemClickListener checks which
-     * one has been picked in what position
+     * DrawerItemClickListener
+     * implements android.widget.ListView to get the event click
+     * method called in onCreate
+     * This method is called once a user clicks on one of the menu items the onItemClickListener,
+     * checks which one has been picked in what position setsTitle to the position past in
+     *
      */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -152,7 +197,11 @@ public class Rules extends ActionBarActivity {
     }
 
     /**
-     * Swaps fragments in the main content view
+     * SelectItem
+     * This method is to get the value of what is being selected in the drawer
+     * declares new variables of the fragments to use within a case statement
+     * the case statement then selects which fragement will displyed depend on the position passed in
+     * @param position Swaps fragments in the main content view
      */
     private void selectItem(int position) {
 

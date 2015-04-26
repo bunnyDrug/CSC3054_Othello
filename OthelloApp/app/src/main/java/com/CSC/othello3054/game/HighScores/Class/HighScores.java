@@ -34,6 +34,12 @@ public class HighScores extends ActionBarActivity {
 
     private ActionBarDrawerToggle mDrawerToggle;
 
+    /**
+     * The onCreate starts on the activity load and in this activity
+     * methods are called to run at the start up of this activity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +60,10 @@ public class HighScores extends ActionBarActivity {
     }
 
     /**
-     * sets the click listener for the drawer slider
+     * startDrawerClickListener
+     *
+     * sets the click listener for the drawerList
+     * which calls in the @method DrawerItemClickListener
      */
     private void startDrawerClickListener() {
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
@@ -62,7 +71,11 @@ public class HighScores extends ActionBarActivity {
 
 
     /**
-     * This method sets the drawer icon, to three bars instead of the basic arrow
+     * setDrawerIcon
+     * drawer layout gets the Score_drawer_layout and creates it
+     * In this method it sets the drawer icon, to three bars instead of the basic arrow
+     * calls the @super to get the drawer open and close
+     * sets toggle as the DrawerListener
      */
     private void setDrawerIcon() {
         drawerLayout = (DrawerLayout) findViewById(R.id.scores_drawer_layout);
@@ -92,6 +105,14 @@ public class HighScores extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+    /**
+     * onPostCreate
+     *
+     * sets the mDrawerToggle syncState after the DrawerLayout's instance state has been
+     * restored
+     *
+     * @param savedInstanceState stores the previous state
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -99,16 +120,29 @@ public class HighScores extends ActionBarActivity {
         mDrawerToggle.syncState();
     }
 
+    /**
+     * onConfigurationChanged
+     *
+     * sets the mDrawerToggle to the new Configuration from the private created actionBar
+     * @param newConfig
+     */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    /**
+     * OnOptionsItemSelected
+     * Pass the event to ActionBarDrawerToggle, if it returns
+     * true, then it has handled the app icon touch event
+     *
+     * @param item
+     * @return onOptionsItemSelected(item)
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Pass the event to ActionBarDrawerToggle, if it returns
-        // true, then it has handled the app icon touch event
+
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -119,8 +153,11 @@ public class HighScores extends ActionBarActivity {
 
 
      /**
+     *initDrawer
+     *
      * getting the array highScore_array
      * and creating the drawer slider list view
+     * uses the ArrayAdapter to get the list of items to be stored in the slider drawer
      */
 
     private void initDrawer() {
@@ -133,6 +170,8 @@ public class HighScores extends ActionBarActivity {
     }
 
     /**
+     * setInitialFrag
+     *
      * This sets the fragment that will display of the loading of the activity
      * using the fragment manager is sets the default to the top high scores
      */
@@ -144,8 +183,11 @@ public class HighScores extends ActionBarActivity {
                 .commit();
     }
     /**
-     * once the user clicks on one of the menu items the onItemClickListener checks which
-     * one has been picked in what position
+     * DrawerItemClickListener
+     * implements android.widget.ListView
+     * This method is called once a user clicks on one of the menu items the onItemClickListener,
+     * checks which one has been picked in what position setsTitle to the position past in
+     *
      */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -159,7 +201,9 @@ public class HighScores extends ActionBarActivity {
     }
 
     /**
-     * to get the value of what is being selected in the drawer
+     * SelectItem
+     * This method is to get the value of what is being selected in the drawer
+     * declares new variables of the fragments to use within a case statement
      *
      * @param position Swaps fragments in the main content view
      */
@@ -170,11 +214,13 @@ public class HighScores extends ActionBarActivity {
 
         FragmentManager fragmentManager = getFragmentManager();
         switch (position) {
+            //case 0 sets the content frame to the highScores
             case 0:
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, fragment0)
                         .commit();
                 break;
+            //case 1 sets the content frame to all scores
             case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, fragment1)
