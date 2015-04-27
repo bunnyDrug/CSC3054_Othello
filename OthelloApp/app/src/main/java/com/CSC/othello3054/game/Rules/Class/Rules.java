@@ -14,11 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.CSC.othello3054.game.R;
-import com.CSC.othello3054.game.Rules.RuleFragments.Frag0_rule_Intro;
-import com.CSC.othello3054.game.Rules.RuleFragments.Frag1_rule_AimOfTheGame;
-import com.CSC.othello3054.game.Rules.RuleFragments.Frag2_rule_PlayingOthello;
-import com.CSC.othello3054.game.Rules.RuleFragments.Frag3_rule_BasicRules;
-import com.CSC.othello3054.game.Rules.RuleFragments.Frag4_rule_HowToWin;
+import com.CSC.othello3054.game.Rules.RuleFragments.Frag_0_rule_Intro;
+import com.CSC.othello3054.game.Rules.RuleFragments.Frag_1_rule_AimOfTheGame;
+import com.CSC.othello3054.game.Rules.RuleFragments.Frag_2_rule_PlayingOthello;
+import com.CSC.othello3054.game.Rules.RuleFragments.Frag_3_rule_BasicRules;
+import com.CSC.othello3054.game.Rules.RuleFragments.Frag_4_rule_HowToWin;
 
 /**
  * class Rules
@@ -170,7 +170,7 @@ public class Rules extends ActionBarActivity {
      * using the fragment manager is sets the default to the Introduction fragment
      */
     private void setInitialFrag() {
-        Fragment fragment1 = new Frag0_rule_Intro();
+        Fragment fragment1 = new Frag_0_rule_Intro();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame, fragment1)
@@ -205,11 +205,11 @@ public class Rules extends ActionBarActivity {
      */
     private void selectItem(int position) {
 
-        Fragment fragment0 = new Frag0_rule_Intro();
-        Fragment fragment1 = new Frag1_rule_AimOfTheGame();
-        Fragment fragment2 = new Frag2_rule_PlayingOthello();
-        Fragment fragment3 = new Frag3_rule_BasicRules();
-        Fragment fragment4 = new Frag4_rule_HowToWin();
+        Fragment fragment0 = new Frag_0_rule_Intro();
+        Fragment fragment1 = new Frag_1_rule_AimOfTheGame();
+        Fragment fragment2 = new Frag_2_rule_PlayingOthello();
+        Fragment fragment3 = new Frag_3_rule_BasicRules();
+        Fragment fragment4 = new Frag_4_rule_HowToWin();
 
         FragmentManager fragmentManager = getFragmentManager();
         switch (position) {
